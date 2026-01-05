@@ -1,0 +1,903 @@
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO - Tous les services, une seule entreprise">
+    <meta name="theme-color" content="#E73C3E">
+    <link rel="manifest" href="manifest.json">
+    
+    <title>MOKO | Services & Conciergerie</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body class="">
+    <!-- Preloader-->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="logo-box">
+                <img src="assets/media/logo moko (2).png" alt="FlyNow" class="preloader-logo">
+            </div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper mr-4">
+
+        <!-- MOBILE APP VIEW (Visible only on mobile) -->
+        <div class="mobile-app-view d-lg-none">
+            <!-- Header -->
+            <div class="mobile-header">
+                <div class="user-profile-row">
+                    <div class="user-info">
+                        <img src="assets/media/user/user-1.png" alt="User" class="user-avatar">
+                        <div class="user-greeting">
+                            <h4>Bonjour, Client</h4>
+                            <div class="user-location">
+                                <i class="fas fa-map-marker-alt"></i> Brazzaville, CG
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <div class="notification-dot"></div>
+                    </div>
+                </div>
+                <h2 class="header-title">Quel service souhaitez-vous utiliser ?</h2>
+                
+                <!-- Search -->
+                <div class="mobile-search-bar">
+                    <div class="search-input-group">
+                        <i class="far fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Rechercher un service...">
+                    </div>
+                    <button class="filter-btn">
+                        <i class="fal fa-sliders-h"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Promo Banner -->
+            <div class="promo-banner">
+                <div class="promo-content">
+                    <div class="promo-discount">45% OFF</div>
+                    <div class="promo-text">Réductions exclusives sur les services à domicile</div>
+                    <a href="flight-booking.html" class="promo-btn">Commander</a>
+                </div>
+                <img src="assets/media/banner/banner.png" alt="Worker" class="promo-image">
+            </div>
+
+            <!-- Categories Grid -->
+            <div id="mobile-categories-wrapper">
+                <div class="section-header">
+                    <h3 class="section-title">Catégories</h3>
+                    <a href="flight-listing.html" class="see-all">Voir tout</a>
+                </div>
+                <div class="categories-grid" id="mobile-categories-container">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+
+            <!-- Popular Services -->
+            <div id="mobile-popular-wrapper">
+                <div class="section-header">
+                    <h3 class="section-title">Services Populaires</h3>
+                    <a href="flight-listing.html" class="see-all">Voir tout</a>
+                </div>
+                <div class="mobile-popular-services" id="mobile-popular-container">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+            
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Profil</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- Header Area Start -->
+        <header>
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+
+                            <div class="main-menu__nav">
+                                <ul class="main-menu__list">
+                                    <li><a href="index.html" class="active">Accueil</a></li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);">Services</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="flight-listing.html">Tous les services</a></li>
+                                            <li><a href="flight-booking.html">Commander</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="flight-booking.html">Commandant</a></li>
+                                    <li><a href="about-us.html">A propos</a></li>
+                                    <li><a href="contact.html">Contactez</a></li>
+       
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-menu__right">
+                            <a href="#" class="main-menu__search search-toggler d-xl-flex d-none">
+                                <i class="fal fa-search"></i>
+                            </a>
+                            <div class="main-menu-signup__login d-xl-flex d-none">
+                                <a href="login.html" class="main-menu__login">
+                                    Connexion
+                                </a>
+                                <div class="center_slach d-xl-flex d-none">/</div>
+                                <a href="sign-up.html" class="main-menu__login">
+                                    Inscription
+                                </a>
+                            </div>
+                            <a href="#" class="main-menu__toggler mobile-nav__toggler">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- Header Area end -->
+
+        <!-- Hero Banner start -->
+        <section class="hero-banner-1">
+            <div class="container-fluid">
+                <div class="content">
+                    <div class="vector-image">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1414" height="319" viewbox="0 0 1414 319" fill="none">
+                            <path class="path" d="M-0.5 215C62.4302 220.095 287 228 373 143.5C444.974 72.7818 368.5 -3.73136 320.5 1.99997C269.5 8.08952 231.721 43.5 253.5 119C275.279 194.5 367 248.212 541.5 207.325C675.76 175.867 795.5 82.7122 913 76.7122C967.429 73.9328 1072.05 88.6813 1085 207.325C1100 344.712 882 340.212 922.5 207.325C964.415 69.7967 1354 151.5 1479 183.5" stroke="#ECECF2" stroke-width="6" stroke-linecap="round" stroke-dasharray="round"></path>
+                            
+                            <path class="dashed" d="M-0.5 215C62.4302 220.095 287 228 373 143.5C444.974 72.7818 368.5 -3.73136 320.5 1.99997C269.5 8.08952 231.721 43.5 253.5 119C275.279 194.5 367 248.212 541.5 207.325C675.76 175.867 795.5 82.7122 913 76.7122C967.429 73.9328 1072.05 88.6813 1085 207.325C1100 344.712 882 340.212 922.5 207.325C964.415 69.7967 1354 151.5 1479 183.5" stroke="#212627" stroke-width="6" stroke-linecap="round" stroke-dasharray="22 22"></path>
+                        </svg>
+                        <div class="location-image">
+                            <img src="assets/media/icons/location-blue.png" alt="">
+                        </div>
+                    </div>
+                    <div class="row align-items-center row-gap-5">
+                        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5 col-sm-5">
+                            <div class="content-block">
+                                <h1 class="lightest-black mb-16"><span class="color-primary">Commandez</span> Tous Vos <span class="color-primary">Services</span> Maintenant !</h1>
+                                <p class="dark-gray mb-24">Tous les services. Une seule entreprise. Simplifiez votre quotidien avec MOKO.</p>
+                                <a href="flight-booking.html" class="cus-btn ">Multiservice</a>
+                            </div>
+                        </div>
+                        <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7 col-sm-7">
+                            <div class="image flynow-tilt" data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 3, "speed": 700, "scale": 1.02 }'>
+                                <img src="assets/media/banner/banner.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Hero Banner End -->
+
+        <!-- Booking Area Start -->
+        <section class="booking mb-20">
+            <div class="container-fluid">
+                <div class="content">
+                    <div class="card">
+                        <div class="card-header overflow-auto">
+                            <!-- ID for JS injection -->
+                            <ul class="nav nav-tabs card-header-tabs flex-nowrap" id="booking-tabs-container" role="tablist" style="overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; padding-bottom: 5px;">
+                                <!-- Content will be generated by booking-generator.js -->
+                            </ul>
+                        </div>
+                        <div class="card-body tab-content" id="booking-content-container">
+                             <!-- Content will be generated by booking-generator.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Booking Area End -->
+
+        <!-- Benefits Start -->
+        <section class="benefit p-40" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-6 mb-xl-0 mb-24">
+                        <div class="benefit-block bg-white">
+                            <div class="image-box">
+                                <img src="assets/media/vector/benefit-1.png" alt="">
+                            </div>
+                            <div class="text-box">
+                                <h4 class="lightest-black mb-8">Service Client 24/7</h4>
+                                <p class="color-medium-gray">Une équipe disponible à tout moment pour vous.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 mb-lg-0 mb-24">
+                        <div class="benefit-block bg-white">
+                            <div class="image-box">
+                                <img src="assets/media/vector/benefit-2.png" alt="">
+                            </div>
+                            <div class="text-box">
+                                <h4 class="lightest-black mb-8">Couverture Complète</h4>
+                                <p class="color-medium-gray">Des services accessibles partout où vous êtes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 ">
+                        <div class="benefit-block bg-white">
+                            <div class="image-box">
+                                <img src="assets/media/vector/benefit-3.png" alt="">
+                            </div>
+                            <div class="text-box">
+                                <h4 class="lightest-black mb-8">Satisfait ou Remboursé</h4>
+                                <p class="color-medium-gray">Votre satisfaction est notre priorité absolue.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Benefits End -->
+
+        <!-- Flight Card Slider Start -->
+        <section class="flight-card p-40 mb-40" data-sal="slide-down" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+            <div class="container-fluid">
+                <h3 class="lightest-black h3 bold mb-40">20 GRANDES CATÉGORIES – MOKO</h3>
+                <div class="flight-card-slider compact-cards" id="categories-slider-container">
+                    <!-- Categories will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+        <!-- Flight Card Slider End -->
+
+        <!-- Travel us sec Start -->
+        <div class="travel-sec mb-40">
+            <div class="cloud-vector-block">
+                <img src="assets/media/vector/cloud-vector.png" alt="" class="cloud-vector">
+            </div>
+            <img src="assets/media/vector/vector-line.png" alt="" class="line-vector">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-center row-gap-sm-5 row-gap-4">
+                    <div class="col-xxl-3 col-lg-4 col-md-8" data-sal="slide-right" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                        <div class="left-content">
+                            <img src="assets/media/LOGO.jpg" alt="" class="mb-40">
+                            <div class="text mb-40">
+                                <span class="h1 review-block bg-lightest-gray"> SIMPLIFIEZ</span> <span class="h1 review-block bg-lightest-gray">Votre</span>
+                                <span class="h1 bg-lightest-gray"> VIE</span> <span class="h1 bg-lightest-gray color-primary">Au</span>
+                                <span class="h1 bg-lightest-gray color-primary"> QUOTIDIEN</span>
+                            </div>
+                            <a href="flight-booking.html" class="cus-btn">Multiservice</a>
+                        </div>
+                    </div>
+                    <div class="offset-xxl-1 col-xxl-8 col-lg-8 col-md-10">
+                        <div class="right-images-block" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                            <img src="assets/media/vector/border-line.png" alt="" class="border-image">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-lg-3 col-md-3 col-3">
+                                    <img src="assets/media/images/Pointe-noire.jpg" alt="" class="side-image">
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-5">
+                                    <img src="assets/media/images/Brazzaville.jpg" alt="" class="center-image">
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-3">
+                                    <img src="assets/media/images/Dolisie.jpg" alt="" class="side-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Travel us sec End -->
+
+        <!-- Global Travel Start -->
+        <section class="global-travel-hotel p-40">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between mb-40 flex-md-nowrap flex-wrap">
+                    <h3 class="fw-700 lightest-black mb-md-0 mb-3">Sous-catégories Populaires</h3>
+                    <a href="flight-listing.html" class="cus-btn ">Explorer</a>
+                </div>
+                <div class="row justify-content-center row-gap-4">
+                    <div class="col-xxl-6 col-lg-5 col-md-7 col-10" data-sal="slide-right" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                        <img src="assets/media/images/map.png" alt="">
+                    </div>
+                    <div class="col-xxl-6 col-lg-7">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6" data-sal="slide-left" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                                <div class="hotel-block bg-white p-24 light-shadow mb-24">
+                                    <div class="image-box mb-24">
+                                        <a href="flight-listing.html"><img src="assets/media/cities/Ménage & Nettoyage.jpg" alt="Ménage & Nettoyage"></a>
+                                        <div class="price">
+                                            <h6>Maison <span class="color-sec"></span></h6>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h5 class="black mb-8"><a href="flight-listing.html">Ménage & Nettoyage</a></h5>
+                                        <div class="d-flex gap-8 mb-24">
+                                            <div class="icon d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/location.png" alt="">
+                                                <h6 class="color-medium-gray">Congo Brazzaville</h6>
+                                            </div>
+                                        </div>
+                                        <a href="hotel-detail.html" class="cus-btn full-width">Découvrir</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="hotel-block bg-white p-24 light-shadow mb-24">
+                                    <div class="image-box mb-24">
+                                        <a href="flight-listing.html"><img src="assets/media/cities/Babysitting.jpg" alt="Babysitting"></a>
+                                        <div class="price">
+                                            <h6>Famille <span class="color-sec"></span></h6>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h5 class="black mb-8"><a href="flight-listing.html">Babysitting</a></h5>
+                                        <div class="d-flex gap-8 mb-24">
+                                            <div class="icon d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/location.png" alt="">
+                                                <h6 class="color-medium-gray">Congo Brazzaville</h6>
+                                            </div>
+                                        </div>
+                                        <a href="hotel-detail.html" class="cus-btn full-width">Découvrir</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="hotel-block bg-white p-24 light-shadow mb-24">
+                                    <div class="image-box mb-24">
+                                        <a href="flight-listing.html"><img src="assets/media/cities/Chauffeur Privé.jpg" alt="Chauffeur Privé"></a>
+                                        <div class="price">
+                                            <h6>Transport <span class="color-sec"></span></h6>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h5 class="black mb-8"><a href="flight-listing.html">Chauffeur Privé</a></h5>
+                                        <div class="d-flex gap-8 mb-24">
+                                            <div class="icon d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/location.png" alt="">
+                                                <h6 class="color-medium-gray">Congo Brazzaville</h6>
+                                            </div>
+                                        </div>
+                                        <a href="hotel-detail.html" class="cus-btn full-width">Découvrir</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="hotel-block bg-white p-24 light-shadow mb-24">
+                                    <div class="image-box mb-24">
+                                        <a href="flight-listing.html"><img src="assets/media/cities/Développement App.jpg" alt="Développement App"></a>
+                                        <div class="price">
+                                            <h6>Digital <span class="color-sec"></span></h6>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h5 class="black mb-8"><a href="flight-listing.html">Développement App</a></h5>
+                                        <div class="d-flex gap-8 mb-24">
+                                            <div class="icon d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/location.png" alt="">
+                                                <h6 class="color-medium-gray">Congo Brazzaville</h6>
+                                            </div>
+                                        </div>
+                                        <a href="hotel-detail.html" class="cus-btn full-width">Découvrir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Global Travel End -->
+
+        <!-- Achievement Section Start -->
+        <section class="achievement p-40">
+            <div class="container-fluid">
+                <div class="bg-white light-shadow br-20 achievements-block">
+                    <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-12 mb-xl-0 mb-24" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                            <h5 class="color-primary mb-16">Notre Modèle</h5>
+                            <h3 class="h3 bold mb-8">Tous les services. Une seule entreprise</h3>
+                            <p class="dark-gray mb-24 w-90">Créer une entreprise digitale unique permettant à un client de : faire une demande de service, payer une seule entreprise, recevoir un service clé en main, 👉 sans jamais voir ni gérer des prestataires.</p>
+                            <div class="counter-section mb-24">
+                                <div class="row row-gap-4">
+                                    <div class="col-sm-6">
+                                        <div class="counter-count bg-lightest-gray">
+                                            <div>
+                                                <span class="count h3 bold color-primary">20</span>
+                                                <span class="h3 bold color-primary">+</span>
+                                                <h5 class="title white">Catégories</h5>
+                                            </div>
+                                            <img src="assets/media/icons/user.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="counter-count bg-lightest-gray">
+                                            <div>
+                                                <span class="count h3 bold color-primary">100</span>
+                                                <span class="h3 bold color-primary">%</span>
+                                                <h5 class="title white">Service Clé en main</h5>
+                                            </div>
+                                            <img src="assets/media/icons/user-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-md-flex gap-32 align-items-center">
+                                <h5 class="lightest-black mb-md-0 mb-16">Connectons-nous pour plus d'informations
+                                </h5>
+                                <a href="contact.html" class="cus-btn">Contactez-nous</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-12" data-sal="slide-down" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                            <img src="assets/media/images/femme-moderne-vue-de-cote-sur-le-balcon.jpg" alt="" class="achievement-image light-shadow br-20">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Achievement Section End -->
+
+        <!-- Testimonials Section Start -->
+        <section class="testimonials p-40">
+            <div class="container-fluid">
+                <div class="testimonials-box bg-white light-shadow br-20">
+                    <div class="row align-items-center row-gap-4">
+                        <div class="col-xl-4" data-sal="slide-left" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                            <div class="text-area">
+                                <h5 class="color-primary mb-16">Témoignages</h5>
+                                <h3 class="h1 bold lightest-black">Ce que nos clients pensent de nous ?</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 offset-xl-1" data-sal="slide-right" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+
+                            <div class="testimonial-slider">
+                                <div class="review-block bg-lightest-gray pad-32 br-10">
+                                    <div class="user-image d-flex mb-32">
+                                        <img src="assets/media/user/user-1.png" alt="">
+                                        <img src="assets/media/user/user-2.png" alt="">
+                                        <img src="assets/media/user/user-3.png" alt="">
+                                    </div>
+                                    <h6 class="light-black mb-32">Grâce à MOKO, j'ai trouvé une aide ménagère en 5 minutes. Service impeccable et intervenant très professionnel ! Je recommande vivement.</h6>
+                                    <h5 class="light-black mb-2">Sophie Martin</h5>
+                                    <p class="dark-gray">Cliente Particulière</p>
+                                </div>
+                                <div class="review-block bg-lightest-gray pad-32 br-10">
+                                    <div class="user-image d-flex mb-32">
+                                        <img src="assets/media/user/user-2.png" alt="">
+                                        <img src="assets/media/user/user-1.png" alt="">
+                                        <img src="assets/media/user/user-3.png" alt="">
+                                    </div>
+                                    <h6 class="light-black mb-32">Une gestion administrative parfaite. Je n'ai plus à m'inquiéter de la paperasse pour mon entreprise. Tout est géré par MOKO.</h6>
+                                    <h5 class="light-black mb-2">Thomas Dubois</h5>
+                                    <p class="dark-gray">Entrepreneur</p>
+                                </div>
+                                <div class="review-block bg-lightest-gray pad-32 br-10">
+                                    <div class="user-image d-flex mb-32">
+                                        <img src="assets/media/user/user-3.png" alt="">
+                                        <img src="assets/media/user/user-1.png" alt="">
+                                        <img src="assets/media/user/user-2.png" alt="">
+                                    </div>
+                                    <h6 class="light-black mb-32">MOKO a transformé ma façon de gérer mon quotidien. Tout est centralisé, simple et rapide. Un vrai gain de temps !</h6>
+                                    <h5 class="light-black mb-2">Marie Lefebvre</h5>
+                                    <p class="dark-gray">Mère de famille</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials Section End -->
+
+        <!-- Blog Area Start -->
+        <section class="news-blog p-40" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between mb-40">
+                    <h3 class="h3 bold lightest-black p-0">Nos dernières nouvelles</h3>
+                    <a href="blog-listing.html" class="cus-btn">Voir plus</a>
+                </div>
+                <div class="row row-gap-4">
+                    <div class="col-xxl-6 col-xl-4 col-lg-12 col-md-6 col-sm-6">
+                        <div class="blog-box bg-white light-shadow p-24 br-20">
+                            <div class="row align-items-center row-gap-3">
+                                <div class="col-xxl-6 col-xl-12 col-lg-6">
+                                    <div class="image-box">
+                                        <a href="blog-detail.html"><img src="assets/media/blog/blog-1.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-xl-12 col-lg-6">
+                                    <div class="content-box">
+                                        <div class="d-flex gap-16 mb-24">
+                                            <div class="d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/user-bk.png" alt="">
+                                                <p class="h6 dark-gray">Malisa John</p>
+                                            </div>
+                                            <div class="vr-line"></div>
+                                            <div class="d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/calender.png" alt="">
+                                                <p class="h6 dark-gray">08 Août, 2023</p>
+                                            </div>
+                                        </div>
+                                        <h5 class="lightest-black mb-8"><a href="blog-detail.html">Gagner du temps au quotidien : Astuces et Conseils</a></h5>
+                                        <p class="dark-gray mb-24">Découvrez comment optimiser votre emploi du temps et déléguer les tâches ménagères.</p>
+                                        <a href="blog-detail.html" class="cus-btn small-pad">Lire la suite</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-xl-4 col-lg-12 col-md-6 col-sm-6">
+                        <div class="blog-box bg-white light-shadow p-24 br-20">
+                            <div class="row align-items-center row-gap-3">
+                                <div class="col-xxl-6 col-xl-12 col-lg-6">
+                                    <div class="image-box">
+                                        <a href="blog-detail.html"><img src="assets/media/blog/blog-3.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-xl-12 col-lg-6">
+                                    <div class="content-box">
+                                        <div class="d-flex gap-16 mb-24">
+                                            <div class="d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/user-bk.png" alt="">
+                                                <p class="h6 dark-gray">Malisa John</p>
+                                            </div>
+                                            <div class="vr-line"></div>
+                                            <div class="d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/calender.png" alt="">
+                                                <p class="h6 dark-gray">08 Août 2023</p>
+                                            </div>
+                                        </div>
+                                        <h5 class="lightest-black mb-8"><a href="blog-detail.html">Déléguer pour mieux vivre : Le guide complet</a></h5>
+                                        <p class="dark-gray mb-24">Apprenez à lâcher prise et à confier vos tâches administratives et logistiques à des pros.</p>
+                                        <a href="blog-detail.html" class="cus-btn small-pad">Lire la suite</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-xl-4 col-lg-12 col-md-6 col-sm-6">
+                        <div class="blog-box bg-white light-shadow p-24 br-20">
+                            <div class="row align-items-center row-gap-3">
+                                <div class="col-xxl-6 col-xl-12 col-lg-6">
+                                    <div class="image-box">
+                                        <a href="blog-detail.html"><img src="assets/media/blog/blog-2.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-xl-12 col-lg-6">
+                                    <div class="content-box">
+                                        <div class="d-flex gap-16 mb-24">
+                                            <div class="d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/user-bk.png" alt="">
+                                                <p class="h6 dark-gray">Malisa John</p>
+                                            </div>
+                                            <div class="vr-line"></div>
+                                            <div class="d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/calender.png" alt="">
+                                                <p class="h6 dark-gray">08 Août 2023</p>
+                                            </div>
+                                        </div>
+                                        <h5 class="lightest-black mb-8"><a href="blog-detail.html">Les avantages d'un service de conciergerie digitale</a></h5>
+                                        <p class="dark-gray mb-24">Découvrez comment une simple application peut transformer votre gestion quotidienne.</p>
+                                        <a href="blog-detail.html" class="cus-btn small-pad">Lire la suite</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xxl-6 col-xl-4 col-lg-12 col-md-6 col-sm-6 d-xxl-block d-xl-none">
+                        <div class="blog-box bg-white light-shadow p-24 br-20">
+                            <div class="row align-items-center row-gap-3">
+                                <div class="col-xxl-6 col-xl-12 col-lg-6">
+                                    <div class="image-box">
+                                        <a href="blog-detail.html"><img src="assets/media/blog/blog-4.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-xl-12 col-lg-6">
+                                    <div class="content-box">
+                                        <div class="d-flex gap-16 mb-24">
+                                            <div class="d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/user-bk.png" alt="">
+                                                <p class="h6 dark-gray">Malisa John</p>
+                                            </div>
+                                            <div class="vr-line"></div>
+                                            <div class="d-flex align-items-center gap-8">
+                                                <img src="assets/media/icons/calender.png" alt="">
+                                                <p class="h6 dark-gray">08 Aug, 2023</p>
+                                            </div>
+                                        </div>
+                                        <h5 class="lightest-black mb-8"><a href="blog-detail.html">L'avenir du service à la personne : Digital et Humain</a></h5>
+                                        <p class="dark-gray mb-24">Comment la technologie améliore la qualité des services à la personne.</p>
+                                        <a href="blog-detail.html" class="cus-btn small-pad">Lire la suite</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Blog Area End -->
+
+        <!-- App Download Section Start -->
+        <section class="app-download p-40 bg-lightest-gray" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-xl-6 col-lg-6 mb-lg-0 mb-32">
+                        <h2 class="lightest-black mb-16">Téléchargez l'application <span class="color-primary">MOKO</span></h2>
+                        <p class="dark-gray mb-32">Accédez à tous nos services en un clic depuis votre mobile. Une expérience fluide, rapide et sécurisée. Installez l'application maintenant !</p>
+                        <div class="d-flex gap-24 flex-wrap">
+                            <button id="install-ios" class="cus-btn bg-black d-flex align-items-center gap-12" style="padding: 12px 24px; border-radius: 10px;">
+                                <i class="fab fa-apple" style="font-size: 28px;"></i>
+                                <div class="text-start">
+                                    <span style="font-size: 10px; display: block; line-height: 1;">Télécharger sur</span>
+                                    <span style="font-size: 16px; font-weight: 700; line-height: 1;">App Store</span>
+                                </div>
+                            </button>
+                            <button id="install-android" class="cus-btn bg-black d-flex align-items-center gap-12" style="padding: 12px 24px; border-radius: 10px;">
+                                <i class="fab fa-google-play" style="font-size: 24px;"></i>
+                                <div class="text-start">
+                                    <span style="font-size: 10px; display: block; line-height: 1;">DISPONIBLE SUR</span>
+                                    <span style="font-size: 16px; font-weight: 700; line-height: 1;">Google Play</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 text-center">
+                        <img src="assets/media/images/application.png" alt="MOKO App" class="br-20 light-shadow" style="max-height: 400px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- App Download Section End -->
+
+        <!-- iOS Install Instruction Modal -->
+        <div class="modal fade" id="iosInstallModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Installer sur iPhone / iPad</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p class="mb-3">Pour installer MOKO sur votre appareil iOS :</p>
+                        <ol class="text-start d-inline-block">
+                            <li class="mb-2">1. Appuyez sur le bouton <strong>Partager</strong> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Apple_Share_icon.svg/1200px-Apple_Share_icon.svg.png" width="20" style="vertical-align: middle;"> dans Safari.</li>
+                            <li class="mb-2">2. Faites défiler vers le bas.</li>
+                            <li>3. Sélectionnez <strong>"Sur l'écran d'accueil"</strong> <i class="far fa-plus-square"></i>.</li>
+                        </ol>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cus-btn small-pad" data-bs-dismiss="modal">Compris</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Start -->
+        <footer class="bg-white p-40" data-sal="slide-down" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-lg-0 mb-32 ">
+                        <a href=""><img src="assets/media/logo moko (2).png" alt="" class="mb-16"></a>
+                        <p class="dark-gray mb-16">Nous nous engageons à rendre votre quotidien plus simple avec les meilleurs services et offres.</p>
+                        <h6 class="lightest-black mb-8">Abonnez-vous à nos offres spéciales</h6>
+                        <form action="index.html" method="post">
+                            <input type="email" class="form-control" placeholder="Adresse e-mail" name="email">
+                            <button type="submit" class="subscribe">S'abonner</button>
+                        </form>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-lg-0 mb-32">
+                        <h4 class="light-black mb-24">Services</h4>
+                        <div class="our-links">
+                            <ul class="unstyled">
+                                <li class="mb-16"><a href="flight-booking.html" class="light-black">Commander un service</a>
+                                </li>
+                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Services de voyage</a>
+                                </li>
+                                <li class="mb-16"><a href="car-booking.html" class="light-black">Transport</a></li>
+                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Planifier un projet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-lg-0 mb-32">
+                        <h4 class="light-black mb-24">Liens utiles</h4>
+                        <div class="our-links">
+                            <ul class="unstyled">
+                                <li class="mb-16"><a href="https://www.facebook.com/share/1BywNXQQiW/?mibextid=wwXIfr" target="_blank" class="light-black">Facebook</a></li>
+                                <li class="mb-16"><a href="https://www.tiktok.com/@mokomoko2683?_r=1&_t=ZM-92Z6D5zlaMl" target="_blank" class="light-black">TikTok</a></li>
+                                <li class="mb-16"><a href="https://www.linkedin.com/in/moko-officiel-79344a3a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="light-black">LinkedIn</a></li>
+                                <li class="mb-16"><a href="https://pin.it/2y4Vupj5b" target="_blank" class="light-black">Pinterest</a></li>
+                                <li class="mb-16"><a href="https://youtube.com/@mokoofficiel242?si=4KYeySqr2LvMqQGu" target="_blank" class="light-black">YouTube</a></li>
+                                <li class="mb-16"><a href="mailto:mokocg242@gmail.com" class="light-black">Gmail</a></li>
+                                <li class="mb-16"><a href="https://whatsapp.com/channel/0029Vb7IiqQIt5s4d8aj280e" target="_blank" class="light-black">WhatsApp Channel</a></li>
+                                <li class="mb-16"><a href="https://wa.me/36203630726" target="_blank" class="light-black">Message WhatsApp</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-md-0 mb-32">
+                        <h4 class="light-black mb-24">Gérer</h4>
+                        <div class="our-links">
+                            <ul class="unstyled">
+                                <li class="mb-16"><a href="flight-booking.html" class="light-black">Mon Compte</a></li>
+                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Suivre ma commande</a></li>
+                                <li class="mb-16"><a href="car-listing.html" class="light-black">Chauffeur privé</a>
+                                </li>
+                                <li class="mb-16"><a href="flight-listing.html" class="light-black">Support Client</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <h4 class="light-black mb-16">Contactez-nous</h4>
+                        <div class="follow-us">
+                            <ul class="unstyled">
+                                <li class="mb-8"><img src="assets/media/icons/location-bk.png" alt="">&nbsp;&nbsp;Brazzaville, République du Congo.</li>
+                                <li class="mb-8 h4 color-primary"><img src="assets/media/icons/telephone.png" alt="">&nbsp;&nbsp;+242 06 950 87 90</li>
+                                <li class="mb-24"><a href="mailto:contact@moko.cg"><img src="assets/media/icons/mail.png" alt="">&nbsp;&nbsp;contact@moko.cg</a></li>
+                            </ul>
+                        </div>
+                        <div class="social-link mb-32">
+                            <h6 class="light-black mb-8">Suivez-nous !</h6>
+                            <ul class="unstyled">
+                                <li><a href="https://www.facebook.com/share/1BywNXQQiW/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.tiktok.com/@mokomoko2683?_r=1&_t=ZM-92Z6D5zlaMl" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/moko-officiel-79344a3a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://pin.it/2y4Vupj5b" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+                                <li><a href="https://youtube.com/@mokoofficiel242?si=4KYeySqr2LvMqQGu" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="https://whatsapp.com/channel/0029Vb7IiqQIt5s4d8aj280e" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                            </ul>
+                        </div>
+                        <p class="light-black">©2025 MOKO Tous droits réservés.</p>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Area End  -->
+
+        <!-- modal-popup area Start  -->
+        <div class="search-popup">
+            <div class="search-popup__overlay search-toggler"></div>
+            <div class="search-popup__content">
+                <form role="search" method="get" class="search-popup__form" action="index.html">
+                    <input type="text" id="search" placeholder="Rechercher ici...">
+                    <button type="submit"><i class="fal fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <!-- search-popup end-->
+    </div>
+
+    <!-- Back To Top Start -->
+    <a href="#main-wrapper" id="backto-top" class="back-to-top"><i class="fas fa-angle-up"></i></a>
+
+
+    <!-- Mobile Menu Start -->
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"></span>
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image"><img src="assets/media/logo moko (2).png" alt="" class="invisible"></a>
+            </div>
+            <div class="mobile-nav__container"></div>
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:contact@moko.cg">contact@moko.cg</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:+242069508790">+242 06 950 87 90</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Mobile Menu End -->
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/calendar/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/jquery-appear.js"></script>
+    <script src="assets/js/vendor/jquery-validator.js"></script>
+    <script src="assets/js/vendor/aksVideoPlayer.js"></script>
+    <script src="assets/js/vendor/tilt.jquery.js"></script>
+    <script src="assets/js/vendor/calendar/picker.js"></script>
+    <script src="assets/js/vendor/calendar/picker.date.js"></script>
+    <script src="assets/js/vendor/autoComplete.js"></script>
+    <script src="assets/js/vendor/jquery.timepicker.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+
+    <!-- Site Scripts -->
+    <script src="assets/js/date.js"></script>
+    <script src="assets/js/categories-data.js"></script>
+    <script src="assets/js/booking-generator.js"></script>
+    <script src="assets/js/index-categories.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/mobile-view.js"></script>
+    <script src="assets/js/install-app.js"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('MOKO ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('MOKO ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Custom MOKO Script for Counters -->
+    <script>
+        $(document).ready(function() {
+            // Maison Tab - Update Intervenants count
+            $('#flight .increment, #flight .decrement').on('click', function() {
+                var intervenants = $('#adult').val();
+                // Ensure we don't display NaN
+                if(!intervenants) intervenants = 0;
+                $('.total-pasenger').text(intervenants);
+            });
+
+            // Famille Tab - Update Beneficiaries count
+            $('#hotel .increment, #hotel .decrement').on('click', function() {
+                var beneficiaries = $('#age_beneficiary').val();
+                if(!beneficiaries) beneficiaries = 0;
+                $('.total-guest').text(beneficiaries);
+            });
+        });
+    </script>
+</body>
+
+</html>

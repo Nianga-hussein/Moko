@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Événements et Loisirs">
+
+    <title>MOKO | Événements et Loisirs</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        /* Specific Styles for Events Page */
+        .event-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .event-calendar-icon {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .event-location-icon {
+            position: absolute;
+            right: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .event-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .event-subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 3px;
+        }
+
+        .event-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .event-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 13px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .event-search i.fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Category Buttons Grid */
+        .event-cats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 20px 20px 10px;
+        }
+
+        .event-cat-btn {
+            background: #fff;
+            border-radius: 12px;
+            padding: 8px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            text-decoration: none;
+            color: #333;
+            font-size: 10px;
+            font-weight: 600;
+            border: 1px solid #eee;
+        }
+
+        .event-cat-btn i {
+            font-size: 12px;
+            color: #f33c0e; /* Moko Red */
+        }
+
+        /* Popular Events Section */
+        .section-header-event {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .section-header-event h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0;
+            color: #111;
+        }
+
+        /* Event Cards */
+        .event-list {
+            padding: 0 20px 80px;
+        }
+
+        .event-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            display: flex;
+            height: 110px;
+        }
+
+        .event-img {
+            width: 110px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .event-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .event-loc {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .event-time {
+            font-size: 10px;
+            color: #111;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 5px;
+        }
+
+        .event-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-price {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .btn-participate {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-free {
+            background: #8bc34a; /* Green for Free */
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        /* Payment Bar */
+        .payment-bar {
+            background: #fff3e0; /* Light orange */
+            margin: 0 20px 10px;
+            padding: 8px 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .payment-icons img {
+            height: 12px;
+            margin-left: 3px;
+            vertical-align: middle;
+        }
+
+        /* Bottom Floating Bar */
+        .floating-event-bar {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        .float-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .float-btn i {
+            color: #f33c0e; /* Moko Red */
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Events) -->
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="event-header">
+                <a href="flight-listing.html" class="event-calendar-icon"><i class="fas fa-chevron-left"></i></a>
+                <i class="fas fa-map-marker-alt event-location-icon"></i>
+                
+                <h2 class="event-title">Événements</h2>
+                <p class="event-subtitle">Découvre et participe aux événements près de toi</p>
+                
+                <div class="event-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher un événement, un lieu...">
+                </div>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9; min-height: 100vh;">
+                
+                <!-- Categories Grid -->
+                <div class="event-cats-grid">
+                    <a href="#" class="event-cat-btn">
+                        <i class="fas fa-music"></i> Concerts & Musique
+                    </a>
+                    <a href="#" class="event-cat-btn">
+                        <i class="fas fa-theater-masks"></i> Culture & Arts
+                    </a>
+                    <a href="#" class="event-cat-btn">
+                        <i class="fas fa-futbol"></i> Sport
+                    </a>
+                    <a href="#" class="event-cat-btn">
+                        <i class="fas fa-microphone-alt"></i> Conférences
+                    </a>
+                    <a href="#" class="event-cat-btn">
+                        <i class="fas fa-graduation-cap"></i> Formations
+                    </a>
+                    <a href="#" class="event-cat-btn">
+                        <i class="fas fa-glass-cheers"></i> Soirées
+                    </a>
+                </div>
+
+                <!-- Popular Events -->
+                <div class="section-header-event">
+                    <h4>Événements populaires</h4>
+                    <i class="fas fa-chevron-right text-muted" style="font-size: 12px;"></i>
+                </div>
+
+                <div class="event-list">
+                    <!-- Event 1 -->
+                    <div class="event-card">
+                        <img src="assets/media/Événements privés.jpeg" alt="Concert" class="event-img">
+                        <div class="event-content">
+                            <div>
+                                <h4 class="event-name">Festival Musique Live</h4>
+                                <p class="event-loc">Quartier Poto-Poto, Brazzaville</p>
+                                <p class="event-time"><i class="far fa-clock"></i> 27 avril, 21:00</p>
+                            </div>
+                            <div class="event-bottom">
+                                <span class="event-price">Dès 5.000 FCFA</span>
+                                <a href="flight-booking.html" class="btn-participate"><i class="fas fa-chevron-right"></i> Participer</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 2 -->
+                    <div class="event-card">
+                        <img src="assets/media/Événements professionnels.jpeg" alt="Conference" class="event-img">
+                        <div class="event-content">
+                            <div>
+                                <h4 class="event-name">Conférence sur l'Entrepreneuriat</h4>
+                                <p class="event-loc"><i class="fas fa-map-marker-alt"></i> Centre Ville, Brazzaville</p>
+                                <p class="event-time"><i class="far fa-clock"></i> 25 Avril | 18:00</p>
+                            </div>
+                            <div class="event-bottom">
+                                <span class="event-price"></span>
+                                <a href="flight-booking.html" class="btn-free">Gratuit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="event-card">
+                        <img src="assets/media/Animation & logistique.jpeg" alt="Football" class="event-img">
+                        <div class="event-content">
+                            <div>
+                                <h4 class="event-name">Tournoi de Football</h4>
+                                <p class="event-loc"><i class="fas fa-map-marker-alt"></i> Stade Felix Eboué, Brazzaville</p>
+                                <p class="event-time"><i class="far fa-clock"></i> 28 Avril | 16:00</p>
+                            </div>
+                            <div class="event-bottom">
+                                <span class="event-price"></span>
+                                <a href="flight-booking.html" class="btn-participate" style="background:#558b2f;">1 000 FCFA</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Bar -->
+                <div class="payment-bar">
+                    <span><i class="fas fa-phone-alt"></i> Réserver / Payer</span>
+                    <div class="payment-icons">
+                        <img src="assets/media/icons/mtn.png" alt="MTN" onerror="this.style.display='none'">
+                        <img src="assets/media/icons/momo.png" alt="MoMo" onerror="this.style.display='none'">
+                        <img src="assets/media/icons/airtel.png" alt="Airtel" onerror="this.style.display='none'">
+                        <span>Money</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+
+                <!-- Floating Bottom Bar -->
+                <div class="floating-event-bar">
+                    <a href="chat.html" class="float-btn">
+                        <i class="far fa-comments"></i> Discuter avec l'organisateur
+                    </a>
+                    <a href="#" class="float-btn">
+                        <i class="fas fa-map-marker-alt"></i> Partager cet évent
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- DESKTOP VIEW (Hidden on Mobile) -->
+        <header class="d-none d-lg-block">
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="page-content m-0 d-none d-lg-block">
+            <div class="title-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner-area v-2">
+                            <div class="content-box text-alignment">
+                                <h1 class="fw-700 lightest-black">Événements et Loisirs</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop content placeholder -->
+            <div class="container-fluid p-5">
+                <p>Pour voir la version mobile, veuillez réduire la taille de votre fenêtre ou utiliser un téléphone.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

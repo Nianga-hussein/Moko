@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Boutiques et Commerces">
+
+    <title>MOKO | Boutiques et Commerces</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        /* Specific Styles for Boutiques Page */
+        .shop-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .shop-back-btn {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+        
+        .shop-search-icon-top {
+            position: absolute;
+            right: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .shop-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .shop-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .shop-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .shop-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .shop-search i.fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .shop-search i.fa-microphone {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Section Labels */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #333;
+            margin: 20px 20px 15px;
+        }
+        
+        .section-label i {
+            color: #f33c0e; /* Orange/Red icon */
+        }
+
+        /* Nearby Shops Grid */
+        .nearby-shops-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+
+        .shop-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .shop-img-wrapper {
+            height: 100px;
+            position: relative;
+        }
+
+        .shop-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .shop-content {
+            padding: 10px;
+        }
+
+        .shop-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .shop-type {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .shop-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .shop-rating {
+            font-size: 11px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .shop-rating i {
+            color: #fbc02d; /* Gold star */
+            font-size: 10px;
+        }
+
+        .badge-open {
+            background: #4caf50;
+            color: #fff;
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* Categories Grid */
+        .categories-commerce-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+
+        .cat-comm-item {
+            background: #fff; /* White bg instead of gray */
+            border-radius: 12px;
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            text-decoration: none;
+            color: #333;
+        }
+
+        .cat-comm-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+
+        .cat-comm-name {
+            font-size: 10px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Popular Products Horizontal Scroll */
+        .popular-products-scroll {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 0 20px 20px;
+            scrollbar-width: none;
+        }
+        .popular-products-scroll::-webkit-scrollbar { display: none; }
+
+        .product-card {
+            min-width: 140px;
+            width: 140px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .product-price {
+            font-size: 12px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .btn-add-cart {
+            background: #4caf50; /* Green add button */
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+
+        /* Help Footer */
+        .help-footer {
+            background: #e8f5e9; /* Light green bg */
+            margin: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .help-footer .agent-pic {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+        
+        .help-text h5 {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0;
+            color: #111;
+        }
+        
+        .help-text p {
+            font-size: 11px;
+            color: #666;
+            margin: 2px 0 0;
+        }
+        
+        .help-actions {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+        
+        .btn-call-green {
+            width: 30px;
+            height: 30px;
+            background: #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+        }
+        
+        .payment-icons img {
+            height: 15px;
+            margin-left: 3px;
+        }
+
+        .btn-itineraire {
+            background: #2e7d32;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Boutiques et Commerces) -->
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="shop-header">
+                <a href="flight-listing.html" class="shop-back-btn"><i class="fas fa-chevron-left"></i></a>
+                <i class="fas fa-search shop-search-icon-top"></i>
+                
+                <h2 class="shop-title">Boutiques & commerces locaux</h2>
+                <p class="shop-subtitle">Soutiens les vendeurs près de toi</p>
+                
+                <div class="shop-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher un produit ou une boutique">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9; padding-bottom: 100px;">
+                
+                <!-- Boutiques à proximité -->
+                <div class="section-label">
+                    <i class="fas fa-store"></i> Boutiques à proximité
+                </div>
+
+                <div class="nearby-shops-grid">
+                    <!-- Shop 1 -->
+                    <a href="flight-booking.html" class="shop-card">
+                        <div class="shop-img-wrapper">
+                            <img src="assets/media/Commerce & Produits.jpg" alt="Boutique Chez Marie">
+                        </div>
+                        <div class="shop-content">
+                            <h4 class="shop-name">Boutique Chez Marie</h4>
+                            <p class="shop-type">Épicerie • Brazzaville</p>
+                            <div class="shop-meta">
+                                <span class="shop-rating"><i class="fas fa-star"></i> 4.6</span>
+                                <span class="badge-open">Ouvert</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Shop 2 -->
+                    <a href="flight-booking.html" class="shop-card">
+                        <div class="shop-img-wrapper">
+                            <img src="assets/media/E-commerce.jpeg" alt="Tech Plus">
+                        </div>
+                        <div class="shop-content">
+                            <h4 class="shop-name">Tech Plus</h4>
+                            <p class="shop-type">Téléphones • Accessoires</p>
+                            <div class="shop-meta">
+                                <span class="shop-rating"><i class="fas fa-star"></i> 4.4</span>
+                                <span class="badge-open">Ouvert</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Catégories de commerces -->
+                <div class="section-label">
+                    <i class="fas fa-th-large"></i> Catégories de commerces
+                </div>
+
+                <div class="categories-commerce-grid">
+                    <a href="#" class="cat-comm-item">
+                        <img src="assets/media/Commerce & Produits.jpg" alt="Alimentation" class="cat-comm-img">
+                        <span class="cat-comm-name">Alimentation</span>
+                    </a>
+                    <a href="#" class="cat-comm-item">
+                        <img src="assets/media/Achat & revente.jpeg" alt="Mode" class="cat-comm-img">
+                        <span class="cat-comm-name">Mode</span>
+                    </a>
+                    <a href="#" class="cat-comm-item">
+                        <img src="assets/media/E-commerce.jpeg" alt="Tech" class="cat-comm-img">
+                        <span class="cat-comm-name">Tech</span>
+                    </a>
+                    <a href="#" class="cat-comm-item">
+                        <img src="assets/media/Produits locaux & artisanaux.jpg" alt="Beauté" class="cat-comm-img">
+                        <span class="cat-comm-name">Beauté</span>
+                    </a>
+                    <a href="#" class="cat-comm-item">
+                        <img src="assets/media/Produits locaux & artisanaux.jpg" alt="Maison" class="cat-comm-img">
+                        <span class="cat-comm-name">Maison</span>
+                    </a>
+                    <a href="#" class="cat-comm-item">
+                        <img src="assets/media/icons/service-2.png" alt="Services" class="cat-comm-img">
+                        <span class="cat-comm-name">Services</span>
+                    </a>
+                    <a href="#" class="cat-comm-item">
+                        <img src="assets/media/icons/service-1.png" alt="Services" class="cat-comm-img">
+                        <span class="cat-comm-name">Services</span>
+                    </a>
+                    <a href="flight-listing.html" class="cat-comm-item" style="justify-content: center;">
+                        <i class="fas fa-chevron-right text-muted" style="font-size: 20px;"></i>
+                    </a>
+                </div>
+
+                <!-- Produits populaires -->
+                <div class="section-label">
+                    <i class="fas fa-shopping-basket"></i> Produits populaires
+                </div>
+
+                <div class="popular-products-scroll">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <img src="assets/media/Commerce & Produits.jpg" alt="Riz" class="product-img">
+                        <h5 class="product-name">Riz local, 5 kg</h5>
+                        <p class="product-price">3,250 FCFA</p>
+                        <a href="#" class="btn-add-cart"><i class="fas fa-shopping-cart"></i> Ajouter</a>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <img src="assets/media/Commerce & Produits.jpg" alt="Tomates" class="product-img">
+                        <h5 class="product-name">Tomates fraîches</h5>
+                        <p class="product-price">800 FCFA</p>
+                        <a href="#" class="btn-add-cart"><i class="fas fa-shopping-cart"></i> Ajouter</a>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <img src="assets/media/Achat & revente.jpeg" alt="Chemise" class="product-img">
+                        <h5 class="product-name">Chemise homme</h5>
+                        <p class="product-price">6,000 FCFA</p>
+                        <a href="#" class="btn-add-cart"><i class="fas fa-shopping-cart"></i> Ajouter</a>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <img src="assets/media/E-commerce.jpeg" alt="Infinix" class="product-img">
+                        <h5 class="product-name">Infinix Hot 30</h5>
+                        <p class="product-price">125,000 FCFA</p>
+                        <a href="#" class="btn-add-cart"><i class="fas fa-shopping-cart"></i> Ajouter</a>
+                    </div>
+                </div>
+
+                <!-- Help Footer -->
+                <div class="help-footer">
+                    <img src="assets/media/user/user-2.png" alt="Agent" class="agent-pic">
+                    <div class="help-text">
+                        <h5>Besoin d'aide ?</h5>
+                        <p>Discuter avec le vendeur</p>
+                        <div class="payment-icons mt-1">
+                            <img src="assets/media/icons/visa.png" alt="Visa" style="height: 12px; display:inline-block; background:#fff; padding:1px; border-radius:2px;">
+                            <img src="assets/media/icons/mastercard.png" alt="Master" style="height: 12px; display:inline-block; background:#fff; padding:1px; border-radius:2px;">
+                        </div>
+                    </div>
+                    <div class="help-actions">
+                        <a href="tel:+" class="btn-call-green"><i class="fas fa-phone-alt"></i></a>
+                        <a href="#" class="btn-itineraire">Itinéraire</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- DESKTOP VIEW (Hidden on Mobile) -->
+        <header class="d-none d-lg-block">
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="page-content m-0 d-none d-lg-block">
+            <div class="title-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner-area v-2">
+                            <div class="content-box text-alignment">
+                                <h1 class="fw-700 lightest-black">Boutiques et Commerces</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop content placeholder -->
+            <div class="container-fluid p-5">
+                <p>Pour voir la version mobile, veuillez réduire la taille de votre fenêtre ou utiliser un téléphone.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO - Complète ton profil">
+
+    <title>MOKO | Complète ton profil</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        .profile-header {
+            background: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .profile-back-btn {
+            color: #333;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .profile-container {
+            padding: 20px;
+            padding-bottom: 100px;
+            background: #fff;
+        }
+
+        .profile-title {
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5px;
+            color: #111;
+        }
+
+        .profile-subtitle {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-group-profile {
+            margin-bottom: 15px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-icon {
+            color: #666;
+            width: 20px;
+            text-align: center;
+        }
+
+        .form-input-profile {
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+        }
+
+        .form-input-profile::placeholder {
+            color: #999;
+        }
+
+        .form-select-arrow {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .section-label-profile {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Tags / Chips */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-chip {
+            background: #f0f0f0;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 12px;
+            color: #555;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tag-chip.active {
+            background: #fdece8; /* Light red */
+            border-color: #f33c0e; /* Moko Red border */
+            color: #f33c0e;
+        }
+
+        .tag-chip i {
+            font-size: 12px;
+        }
+
+        /* Social Inputs */
+        .social-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .social-input-group {
+            flex: 1;
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-icon {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
+
+        .social-field {
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-size: 12px;
+            outline: none;
+        }
+
+        /* Checkbox */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .checkbox-custom.checked {
+            background: #f33c0e;
+            border-color: #f33c0e;
+            color: #fff;
+        }
+
+        /* Submit Button */
+        .btn-create-account {
+            background: #f33c0e;
+            color: #fff;
+            width: 100%;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            margin-top: 25px;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+        }
+
+        .btn-create-account:hover {
+            background: #d32f08;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="profile-header">
+                <a href="profile.html" class="profile-back-btn"><i class="fas fa-arrow-left"></i></a>
+                <div style="flex:1; text-align:center;">
+                    <!-- Dots indicator -->
+                    <span style="height:6px; width:6px; background:#ddd; border-radius:50%; display:inline-block;"></span>
+                    <span style="height:6px; width:6px; background:#333; border-radius:50%; display:inline-block; margin:0 3px;"></span>
+                    <span style="height:6px; width:6px; background:#ddd; border-radius:50%; display:inline-block;"></span>
+                </div>
+                <div style="width:20px;"></div>
+            </div>
+
+            <div class="profile-container">
+                <h2 class="profile-title">Complète ton profil</h2>
+                <p class="profile-subtitle">Aide-nous à personnaliser ton expérience Moko.</p>
+
+                <!-- Form -->
+                <div class="form-group-profile">
+                    <i class="far fa-user form-icon"></i>
+                    <input type="text" class="form-input-profile" placeholder="Nom & Prénom *">
+                    <i class="fas fa-chevron-right form-select-arrow"></i>
+                </div>
+
+                <div class="form-group-profile">
+                    <img src="https://flagcdn.com/w20/cg.png" style="width:20px; border-radius:2px;">
+                    <span style="font-size:14px; color:#333;">Numéro de téléphone *</span>
+                    <input type="tel" class="form-input-profile" value="06 123 4567" style="text-align:right;">
+                </div>
+
+                <div class="form-group-profile">
+                    <i class="fas fa-map-marker-alt form-icon"></i>
+                    <input type="text" class="form-input-profile" value="Brazzaville *">
+                    <i class="fas fa-chevron-right form-select-arrow"></i>
+                </div>
+
+                <div class="form-group-profile">
+                    <i class="fas fa-map-marker-alt form-icon"></i>
+                    <input type="text" class="form-input-profile" value="Poto-Poto *">
+                    <i class="fas fa-chevron-right form-select-arrow"></i>
+                </div>
+
+                <!-- Main Space Selection -->
+                <div class="section-label-profile"><i class="fas fa-map-marker-alt"></i> Quel est ton espace principal ?</div>
+                <div class="tags-container">
+                    <div class="tag-chip active"><i class="fas fa-suitcase"></i> Client</div>
+                    <div class="tag-chip"><i class="fas fa-briefcase"></i> Fournisseur</div>
+                    <div class="tag-chip"><i class="fas fa-credit-card"></i></div>
+                    <div class="tag-chip"><i class="fas fa-store"></i> Vendeur / Commerçant</div>
+                    <div class="tag-chip"><i class="fas fa-building"></i> Entreprise</div>
+                    <div class="tag-chip"><i class="fas fa-graduation-cap"></i> Étudiant</div>
+                    <div class="tag-chip"><i class="fas fa-wrench"></i> Autre</div>
+                </div>
+
+                <!-- Interests -->
+                <div class="section-label-profile">Loisirs & centres d'intérêt (optionnel)</div>
+                <div class="tags-container">
+                    <div class="tag-chip active" style="background:#f33c0e; color:#fff; border:none;"><i class="fas fa-music"></i> Musique</div>
+                    <div class="tag-chip active" style="background:#f33c0e; color:#fff; border:none;"><i class="fas fa-futbol"></i> Sport</div>
+                    <div class="tag-chip active" style="background:#f33c0e; color:#fff; border:none;">Voyage</div>
+                    <div class="tag-chip active" style="background:#f33c0e; color:#fff; border:none;">Business</div>
+                    <div class="tag-chip"><i class="fas fa-book"></i> Lecture</div>
+                    <div class="tag-chip"><i class="fas fa-graduation-cap"></i> Création</div>
+                    <div class="tag-chip"><i class="fas fa-gamepad"></i> Jeux</div>
+                    <div class="tag-chip">+ Autre</div>
+                </div>
+
+                <!-- Socials -->
+                <div style="margin-top:20px;">
+                    <div class="social-input-row">
+                        <div class="social-input-group">
+                            <i class="fab fa-facebook-f social-icon"></i>
+                            <span style="font-size:12px;">Facebook</span>
+                        </div>
+                        <div class="social-input-group">
+                            <i class="fab fa-instagram social-icon" style="color:#E1306C;"></i>
+                            <span style="font-size:12px;">Instagram</span>
+                        </div>
+                        <div class="social-input-group" style="background:transparent; justify-content:flex-end;">
+                            <span style="font-size:12px; color:#999;">dén ou @</span>
+                        </div>
+                    </div>
+                    <div class="social-input-row">
+                        <div class="social-input-group">
+                            <i class="fab fa-tiktok social-icon"></i>
+                            <span style="font-size:12px;">TikTok</span>
+                        </div>
+                        <div class="social-input-group">
+                            <i class="fab fa-linkedin-in social-icon" style="color:#0077b5;"></i>
+                            <span style="font-size:12px;">Linkedin</span>
+                        </div>
+                        <div class="social-input-group" style="background:transparent; justify-content:flex-end;">
+                            <span style="font-size:12px; color:#999;">dén numero</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms -->
+                <div class="checkbox-container">
+                    <div class="checkbox-custom checked"><i class="fas fa-check" style="font-size:10px;"></i></div>
+                    <span>J'accepte les conditions</span>
+                </div>
+
+                <a href="profile.html" class="btn-create-account">Créer mon compte</a>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item active">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

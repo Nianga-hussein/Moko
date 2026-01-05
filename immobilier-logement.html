@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Immobilier & Logement">
+
+    <title>MOKO | Immobilier & Logement</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        /* Specific Styles for Real Estate Page */
+        .immo-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .immo-home-btn {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .immo-location-icon {
+            position: absolute;
+            right: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .immo-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .immo-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .immo-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .immo-search i.fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 0 20px;
+            margin-top: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .filter-tabs::-webkit-scrollbar { display: none; }
+
+        .filter-tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            background: #fff;
+            color: #666;
+            border: 1px solid #ddd;
+            text-decoration: none;
+        }
+
+        .filter-tab.active {
+            background: #006400; /* Dark Green from image */
+            color: #fff;
+            border-color: #006400;
+        }
+
+        /* Property Card */
+        .property-list {
+            padding: 20px;
+            padding-bottom: 80px;
+        }
+
+        .property-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            display: flex;
+            height: 140px;
+        }
+
+        .property-img {
+            width: 130px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .property-content {
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .property-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .property-location {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .property-price {
+            font-size: 14px;
+            font-weight: 700;
+            color: #b8860b; /* Gold/Dark Yellow price */
+            margin-bottom: 5px;
+        }
+
+        .property-features {
+            font-size: 10px;
+            color: #555;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .property-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn-details {
+            flex: 1;
+            background: #f5f5f5;
+            color: #333;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 0;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-discuss-green {
+            flex: 1;
+            background: #006400; /* Dark Green */
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 0;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Floating Contact Bar */
+        .contact-bar {
+            position: fixed;
+            bottom: 80px; /* Above bottom nav */
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .contact-item i {
+            color: #006400;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Immobilier) -->
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="immo-header">
+                <a href="flight-listing.html" class="immo-home-btn"><i class="fas fa-home"></i></a>
+                <i class="fas fa-map-marker-alt immo-location-icon"></i>
+                
+                <h2 class="immo-title">Immobilier & Logement</h2>
+                
+                <div class="immo-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher une maison, un appartement...">
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <a href="#" class="filter-tab active">Location</a>
+                <a href="#" class="filter-tab">Vente</a>
+                <a href="#" class="filter-tab">Court séjour</a>
+                <a href="#" class="filter-tab"><i class="fas fa-filter"></i> Budget</a>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9;">
+                
+                <div class="property-list">
+                    <!-- Property 1 -->
+                    <div class="property-card">
+                        <img src="assets/media/Location.jpeg" alt="Appartement" class="property-img">
+                        <div class="property-content">
+                            <div>
+                                <h4 class="property-title">Appartement moderne</h4>
+                                <p class="property-location">Quartier Plateau, Brazzaville</p>
+                                <p class="property-price">250 000 FCFA <span style="font-size:10px; color:#666; font-weight:400;">/ mois</span></p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 2 chambres</span>
+                                    <span><i class="fas fa-bath"></i> 2 salles de bain</span>
+                                </div>
+                            </div>
+                            <div class="property-actions">
+                                <a href="flight-booking.html" class="btn-details">Voir détails</a>
+                                <a href="chat.html" class="btn-discuss-green"><i class="far fa-comment-dots"></i> Discuter</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 2 -->
+                    <div class="property-card">
+                        <img src="assets/media/Achat & vente.jpeg" alt="Maison" class="property-img">
+                        <div class="property-content">
+                            <div>
+                                <h4 class="property-title">Grande maison</h4>
+                                <p class="property-location">Quartier Moukondo, Brazzaville</p>
+                                <p class="property-price">500 000 FCFA <span style="font-size:10px; color:#666; font-weight:400;">/ mois</span></p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 3 chambres</span>
+                                    <span><i class="fas fa-bath"></i> 2 salles de bain</span>
+                                </div>
+                            </div>
+                            <div class="property-actions">
+                                <a href="flight-booking.html" class="btn-details">Voir détails</a>
+                                <a href="chat.html" class="btn-discuss-green"><i class="far fa-comment-dots"></i> Discuter</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 3 -->
+                    <div class="property-card">
+                        <img src="assets/media/Location courte durée.jpeg" alt="Studio" class="property-img">
+                        <div class="property-content">
+                            <div>
+                                <h4 class="property-title">Studio meublé</h4>
+                                <p class="property-location">Quartier Talangai, Brazzaville</p>
+                                <p class="property-price">120 000 FCFA <span style="font-size:10px; color:#666; font-weight:400;">/ mois</span></p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 1 chambre</span>
+                                    <span><i class="fas fa-bath"></i> 1 salle de bain</span>
+                                </div>
+                            </div>
+                            <div class="property-actions">
+                                <a href="flight-booking.html" class="btn-details">Voir détails</a>
+                                <a href="tel:+" class="btn-discuss-green"><i class="far fa-comment-dots"></i> Appeler</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Contact Bar -->
+                <div class="contact-bar">
+                    <a href="chat.html" class="contact-item">
+                        <i class="far fa-comment-dots"></i> Contacter l'agent
+                    </a>
+                    <a href="#" class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i> Voir sur la carte
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- DESKTOP VIEW (Hidden on Mobile) -->
+        <header class="d-none d-lg-block">
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="page-content m-0 d-none d-lg-block">
+            <div class="title-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner-area v-2">
+                            <div class="content-box text-alignment">
+                                <h1 class="fw-700 lightest-black">Immobilier & Logement</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop content placeholder -->
+            <div class="container-fluid p-5">
+                <p>Pour voir la version mobile, veuillez réduire la taille de votre fenêtre ou utiliser un téléphone.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

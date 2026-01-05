@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Santé & Bien-être">
+
+    <title>MOKO | Santé & Bien-être</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        /* Specific Styles for Health Page */
+        .health-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .health-kit-icon {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .health-location-icon {
+            position: absolute;
+            right: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .health-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .health-subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 3px;
+        }
+
+        .health-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .health-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 13px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .health-search i.fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Category Icons Grid */
+        .health-cats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 20px 20px 10px;
+        }
+
+        .health-cat-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 10px 5px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            text-decoration: none;
+            color: #333;
+            border: 1px solid transparent;
+        }
+
+        .health-cat-item.active {
+            background: #e8f5e9; /* Light green bg */
+            border-color: #006400; /* Dark green border */
+        }
+
+        .health-cat-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .health-cat-name {
+            font-size: 10px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Health List */
+        .health-list {
+            padding: 10px 20px 80px;
+        }
+
+        .health-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 15px;
+        }
+
+        .health-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .health-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .health-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 2px;
+        }
+
+        .health-role {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .health-meta {
+            font-size: 11px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .health-rating i {
+            color: #fbc02d;
+            font-size: 10px;
+        }
+
+        .health-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .btn-main-action {
+            background: #006400; /* Dark Green */
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .btn-secondary-action {
+            background: #006400; /* Dark Green */
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        /* Help Footer */
+        .help-footer-health {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+            background: #e8f5e9; /* Light Green */
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        
+        .help-btn-left {
+            background: #006400;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .payment-icons img {
+            height: 12px;
+            margin-left: 2px;
+            background: #fff;
+            padding: 1px;
+            border-radius: 2px;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Health) -->
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="health-header">
+                <a href="flight-listing.html" class="health-kit-icon"><i class="fas fa-chevron-left"></i></a>
+                <i class="fas fa-map-marker-alt health-location-icon"></i>
+                
+                <h2 class="health-title">Santé & Bien-être</h2>
+                <p class="health-subtitle">Prends soin de toi simplement</p>
+                
+                <div class="health-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher un médecin, une pharmacie...">
+                </div>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9; min-height: 100vh;">
+                
+                <!-- Categories Grid -->
+                <div class="health-cats-grid">
+                    <a href="#" class="health-cat-item active">
+                        <img src="assets/media/icons/stethoscope.png" onerror="this.src='assets/media/icons/service-1.png'" alt="Consultation" class="health-cat-icon">
+                        <span class="health-cat-name">Consultation médicale</span>
+                    </a>
+                    <a href="#" class="health-cat-item">
+                        <img src="assets/media/icons/pills.png" onerror="this.src='assets/media/icons/service-2.png'" alt="Pharmacie" class="health-cat-icon">
+                        <span class="health-cat-name">Pharmacie</span>
+                    </a>
+                    <a href="#" class="health-cat-item">
+                        <img src="assets/media/icons/calendar.png" onerror="this.src='assets/media/icons/benefit-1.png'" alt="Rendez-vous" class="health-cat-icon">
+                        <span class="health-cat-name">Prise de rendez-vous</span>
+                    </a>
+                    <a href="#" class="health-cat-item">
+                        <img src="assets/media/icons/meditation.png" onerror="this.src='assets/media/icons/benefit-2.png'" alt="Bien-être" class="health-cat-icon">
+                        <span class="health-cat-name">Bien-être & coaching</span>
+                    </a>
+                </div>
+
+                <!-- Health List -->
+                <div class="health-list">
+                    <!-- Doctor -->
+                    <div class="health-card">
+                        <img src="assets/media/Soins à domicile.jpg" alt="Dr Jean" class="health-img">
+                        <div class="health-content">
+                            <h4 class="health-name">Dr Jean M.</h4>
+                            <p class="health-role">Médecin généraliste</p>
+                            <div class="health-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Brazzaville</span>
+                                <span class="health-rating"><i class="fas fa-star"></i> 4.6</span>
+                            </div>
+                            <div class="health-actions">
+                                <a href="flight-booking.html" class="btn-main-action">Prendre RDV</a>
+                                <a href="chat.html" class="btn-secondary-action"><i class="far fa-comment-dots"></i></a>
+                                <a href="tel:+" class="btn-secondary-action"><i class="fas fa-phone-alt"></i> Appeler</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pharmacy -->
+                    <div class="health-card">
+                        <img src="assets/media/Soins à domicile.jpg" alt="Pharmacie" class="health-img">
+                        <div class="health-content">
+                            <h4 class="health-name">Pharmacie Centrale</h4>
+                            <p class="health-role" style="color:#4caf50;">Ouverte jusqu'à 22h</p>
+                            <div class="health-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Poto-Poto</span>
+                            </div>
+                            <div class="health-actions">
+                                <a href="flight-booking.html" class="btn-main-action"><i class="fas fa-pills"></i> Voir médicaments</a>
+                                <a href="tel:+" class="btn-secondary-action"><i class="fas fa-phone-alt"></i></a>
+                                <a href="#" class="btn-secondary-action"><i class="fas fa-directions"></i> Itinéraire</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coach -->
+                    <div class="health-card">
+                        <img src="assets/media/Coaching santé.jpg" alt="Coach" class="health-img">
+                        <div class="health-content">
+                            <h4 class="health-name">Coach Bien-Être Plus</h4>
+                            <p class="health-role">Coaching • Nutrition • Sport</p>
+                            <div class="health-meta">
+                                <span class="health-rating"><i class="fas fa-star"></i> 4.4</span>
+                                <span class="health-rating"><i class="fas fa-star"></i> 4.4</span>
+                            </div>
+                            <div class="health-actions">
+                                <a href="flight-booking.html" class="btn-main-action"><i class="fas fa-envelope"></i> Contacter</a>
+                                <a href="chat.html" class="btn-secondary-action"><i class="far fa-comment-dots"></i> Discuter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Help Footer Bar -->
+                <div class="help-footer-health">
+                    <a href="chat.html" class="help-btn-left">
+                        <i class="far fa-comment-dots"></i> Besoin d'aide ?
+                    </a>
+                    <div class="payment-icons">
+                        <img src="assets/media/icons/mtn.png" alt="MTN" onerror="this.style.display='none'">
+                        <img src="assets/media/icons/momo.png" alt="MoMo" onerror="this.style.display='none'">
+                        <img src="assets/media/icons/airtel.png" alt="Airtel" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- DESKTOP VIEW (Hidden on Mobile) -->
+        <header class="d-none d-lg-block">
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="page-content m-0 d-none d-lg-block">
+            <div class="title-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner-area v-2">
+                            <div class="content-box text-alignment">
+                                <h1 class="fw-700 lightest-black">Santé & Bien-être</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop content placeholder -->
+            <div class="container-fluid p-5">
+                <p>Pour voir la version mobile, veuillez réduire la taille de votre fenêtre ou utiliser un téléphone.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

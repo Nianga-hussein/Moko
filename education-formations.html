@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Éducation et Formation">
+
+    <title>MOKO | Éducation et Formation</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        /* Specific Styles for Education Page */
+        .edu-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .edu-back-btn {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .edu-notification {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .edu-search-icon-top {
+            position: absolute;
+            right: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .edu-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .edu-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .edu-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .edu-search i.fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .edu-search i.fa-microphone {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Section Labels */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #333;
+            margin: 20px 20px 15px;
+        }
+        
+        .section-label i {
+            color: #f33c0e; /* Moko Red instead of Green */
+        }
+
+        /* Feature Cards Grid */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+
+        .edu-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .edu-img-wrapper {
+            height: 100px;
+            position: relative;
+        }
+
+        .edu-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .edu-content {
+            padding: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .edu-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 5px;
+        }
+
+        .edu-card-desc {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .btn-view-green {
+            background: #f33c0e; /* Moko Red instead of Green */
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 5px 0;
+            border-radius: 15px;
+            text-align: center;
+            display: block;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Detailed School Cards */
+        .school-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 0 20px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .school-header {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .school-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .school-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0 0 3px;
+            color: #111;
+        }
+
+        .school-info p {
+            font-size: 11px;
+            color: #666;
+            margin: 0 0 3px;
+        }
+        
+        .school-location {
+            font-size: 11px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-program {
+            background: #f33c0e; /* Moko Red instead of Green */
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 0;
+            border-radius: 20px;
+            text-align: center;
+            display: block;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        /* Help Footer */
+        .help-footer {
+            background: #fbe9e7; /* Light red/orange bg instead of green */
+            margin: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .help-footer .agent-pic {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+        
+        .help-text h5 {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0;
+            color: #111;
+        }
+        
+        .help-text p {
+            font-size: 11px;
+            color: #666;
+            margin: 2px 0 0;
+        }
+        
+        .btn-discuss {
+            background: #006400; /* Dark green for Whatsapp/Chat is fine, or change to black/red. Let's keep dark green for chat as it's standard, or Moko Red? User said "site colors". Let's use Moko Red to be safe */
+            background: #f33c0e;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: auto;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Education) -->
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="edu-header">
+                <a href="flight-listing.html" class="edu-back-btn"><i class="fas fa-chevron-left"></i></a>
+                <i class="fas fa-search edu-search-icon-top"></i>
+                
+                <h2 class="edu-title">Éducation & Formation</h2>
+                
+                <div class="edu-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher une formation, école ou université">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9; padding-bottom: 100px;">
+                
+                <!-- Formations Section -->
+                <div class="section-label">
+                    <i class="fas fa-book-open"></i> Formations
+                </div>
+
+                <div class="edu-grid">
+                    <!-- Card 1 -->
+                    <a href="formations-locales.html" class="edu-card">
+                        <div class="edu-img-wrapper">
+                            <img src="assets/media/Coaching & mentorat.jpeg" alt="Formations">
+                        </div>
+                        <div class="edu-content">
+                            <h4 class="edu-card-title">Formations</h4>
+                            <p class="edu-card-desc">Cours pratiques, métiers, certificats</p>
+                            <span class="btn-view-green">Voir les formations</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="ecoles-instituts.html" class="edu-card">
+                        <div class="edu-img-wrapper">
+                            <img src="assets/media/Certifications.jpeg" alt="Écoles">
+                        </div>
+                        <div class="edu-content">
+                            <h4 class="edu-card-title">Écoles & Instituts</h4>
+                            <p class="edu-card-desc">Formations professionnelles, spécialisées</p>
+                            <span class="btn-view-green">Voir les écoles</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Universités Section -->
+                <div class="section-label">
+                    <i class="fas fa-graduation-cap"></i> Universités
+                </div>
+
+                <div class="edu-grid">
+                    <!-- Card 1 -->
+                    <a href="universites.html" class="edu-card">
+                        <div class="edu-img-wrapper">
+                            <img src="assets/media/Orientation & études.jpeg" alt="Universités">
+                        </div>
+                        <div class="edu-content">
+                            <h4 class="edu-card-title">Universités</h4>
+                            <p class="edu-card-desc">Licence, Master, Doctorat</p>
+                            <span class="btn-view-green">Voir les universités</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="flight-booking.html" class="edu-card">
+                        <div class="edu-img-wrapper">
+                            <img src="assets/media/Études & mobilité internationale.jpeg" alt="Étranger">
+                        </div>
+                        <div class="edu-content">
+                            <h4 class="edu-card-title">Étudier à l'étranger</h4>
+                            <p class="edu-card-desc">France, Hongrie, Canada, etc.</p>
+                            <span class="btn-view-green">Préparer mon projet</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Écoles & Instituts List -->
+                <div class="section-label">
+                    <i class="fas fa-university"></i> Écoles & Instituts
+                </div>
+
+                <div class="school-card">
+                    <div class="school-header">
+                        <img src="assets/media/logo moko.png" alt="Logo" class="school-logo">
+                        <div class="school-info">
+                            <h4>Institut Supérieur de Technologie</h4>
+                            <p>Digital & Tech</p>
+                            <div class="school-location"><i class="fas fa-map-marker-alt"></i> Brazzaville</div>
+                        </div>
+                    </div>
+                    <a href="flight-booking.html" class="btn-program">Voir programmes</a>
+                </div>
+
+                <!-- Universités List -->
+                <div class="section-label">
+                    <i class="fas fa-graduation-cap"></i> Universités
+                </div>
+
+                <div class="school-card">
+                    <div class="school-header">
+                        <img src="assets/media/logo moko.png" alt="Logo" class="school-logo">
+                        <div class="school-info">
+                            <h4>Université Marien Ngouabi</h4>
+                            <p>Congo</p>
+                            <div class="school-location"><i class="fas fa-user-graduate"></i> Licence • Master • Doctorat</div>
+                        </div>
+                    </div>
+                    <a href="flight-booking.html" class="btn-program">Voir détails</a>
+                </div>
+
+                <div class="section-label">
+                    <i class="fas fa-university"></i> Écoles & Universités
+                </div>
+
+                <div class="school-card">
+                    <div class="school-header">
+                        <img src="assets/media/logo moko.png" alt="Logo" class="school-logo">
+                        <div class="school-info">
+                            <h4>Institut Supérieur de Technologie</h4>
+                            <p>Brazzaville</p>
+                        </div>
+                    </div>
+                    <a href="flight-booking.html" class="btn-program">Voir programmes</a>
+                </div>
+
+                <div class="school-card">
+                    <div class="school-header">
+                        <img src="https://flagcdn.com/w160/hu.png" alt="Logo" class="school-logo">
+                        <div class="school-info">
+                            <h4>Université de Szeged</h4>
+                            <p>Hongrie</p>
+                            <div class="school-location"><i class="fas fa-user-graduate"></i> Licence • Master • Doctorat</div>
+                        </div>
+                    </div>
+                    <a href="flight-booking.html" class="btn-program">Voir programmes</a>
+                </div>
+
+                <!-- Help Footer -->
+                <div class="help-footer">
+                    <img src="assets/media/user/user-1.png" alt="Agent" class="agent-pic">
+                    <div class="help-text">
+                        <h5>Besoin d'aide pour choisir ?</h5>
+                        <p>Conseiller Éducation & Visa</p>
+                    </div>
+                    <a href="chat.html" class="btn-discuss"><i class="far fa-comment-dots"></i> Discuter maintenant</a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- DESKTOP VIEW (Hidden on Mobile) -->
+        <header class="d-none d-lg-block">
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="page-content m-0 d-none d-lg-block">
+            <div class="title-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner-area v-2">
+                            <div class="content-box text-alignment">
+                                <h1 class="fw-700 lightest-black">Éducation et Formation</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop content placeholder -->
+            <div class="container-fluid p-5">
+                <p>Pour voir la version mobile, veuillez réduire la taille de votre fenêtre ou utiliser un téléphone.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

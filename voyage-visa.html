@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Voyage et Visa">
+
+    <title>MOKO | Voyage et Visa</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <!-- Ensure mobile design CSS is loaded -->
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        /* Specific Styles for Voyage et Visa Page */
+        .visa-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .visa-back-btn {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .visa-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .visa-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .visa-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .visa-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .visa-search i.fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .visa-search i.fa-microphone {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Popular Countries */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            margin: 20px 20px 15px;
+        }
+
+        .section-label i {
+            color: #f33c0e; /* Moko Red */
+        }
+
+        .countries-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+
+        .country-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .country-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .flag-icon {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .country-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0;
+            color: #111;
+        }
+
+        .visa-tags {
+            font-size: 10px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .btn-details {
+            background: #333; /* Dark button */
+            color: #fff;
+            font-size: 10px;
+            padding: 4px 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            display: inline-block;
+            float: right;
+            margin-top: 5px;
+        }
+
+        /* Detailed France Card */
+        .detailed-country-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 0 20px 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .detailed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .detailed-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detailed-header h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .visa-types-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .visa-type-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .visa-type-item i {
+            color: #2ecc71; /* Green check */
+            font-size: 10px;
+        }
+
+        .btn-see-details-large {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 15px;
+            float: right;
+            text-decoration: none;
+        }
+
+        /* List Items */
+        .region-title {
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .country-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 12px 15px;
+            margin: 0 20px 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .country-list-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .country-name-list {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Help Banner */
+        .help-banner {
+            background: #e8f5e9;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .agent-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .help-content h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0;
+            color: #111;
+        }
+
+        .help-content p {
+            font-size: 11px;
+            color: #666;
+            margin: 2px 0 0;
+        }
+
+        .whatsapp-icon {
+            width: 30px;
+            height: 30px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            margin-left: auto;
+        }
+
+        .btn-talk {
+            background: #333;
+            color: #fff;
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 15px;
+            text-decoration: none;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Voyage et Visa) -->
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="visa-header">
+                <a href="flight-listing.html" class="visa-back-btn"><i class="fas fa-chevron-left"></i></a>
+                <h2 class="visa-title">Visa par pays</h2>
+                <p class="visa-subtitle">Choisis ta destination</p>
+                
+                <div class="visa-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher un pays">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9; padding-bottom: 100px;">
+                
+                <!-- Popular Countries -->
+                <div class="section-label">
+                    <i class="fas fa-fire"></i> Pays populaires
+                </div>
+
+                <div class="countries-grid">
+                    <!-- France -->
+                    <div class="country-card">
+                        <div class="country-header">
+                            <img src="https://flagcdn.com/w160/fr.png" alt="France" class="flag-icon">
+                            <div class="country-info">
+                                <h4>France</h4>
+                                <div class="visa-tags">
+                                    Visa Schengen<br>
+                                    Tourisme • Études
+                                </div>
+                            </div>
+                        </div>
+                        <a href="flight-booking.html" class="btn-details">Voir détails</a>
+                    </div>
+
+                    <!-- Canada -->
+                    <div class="country-card">
+                        <div class="country-header">
+                            <img src="https://flagcdn.com/w160/ca.png" alt="Canada" class="flag-icon">
+                            <div class="country-info">
+                                <h4>Canada</h4>
+                                <div class="visa-tags">
+                                    Visa visiteur<br>
+                                    Études
+                                </div>
+                            </div>
+                        </div>
+                        <a href="flight-booking.html" class="btn-details">Voir détails</a>
+                    </div>
+
+                    <!-- Belgique -->
+                    <div class="country-card">
+                        <div class="country-header">
+                            <img src="https://flagcdn.com/w160/be.png" alt="Belgique" class="flag-icon">
+                            <div class="country-info">
+                                <h4>Belgique</h4>
+                                <div class="visa-tags">
+                                    Visa Schengen
+                                </div>
+                            </div>
+                        </div>
+                        <a href="flight-booking.html" class="btn-details">Voir détails</a>
+                    </div>
+
+                    <!-- Maroc -->
+                    <div class="country-card">
+                        <div class="country-header">
+                            <img src="https://flagcdn.com/w160/ma.png" alt="Maroc" class="flag-icon">
+                            <div class="country-info">
+                                <h4>Maroc</h4>
+                                <div class="visa-tags">
+                                    Visa court séjour
+                                </div>
+                            </div>
+                        </div>
+                        <a href="flight-booking.html" class="btn-details">Voir détails</a>
+                    </div>
+                </div>
+
+                <!-- Detailed France Card -->
+                <div class="detailed-country-card">
+                    <div class="detailed-header">
+                        <div class="detailed-header-left">
+                            <img src="https://flagcdn.com/w160/fr.png" alt="France" class="flag-icon">
+                            <h4>France</h4>
+                        </div>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                    </div>
+                    <div class="visa-types-grid">
+                        <div class="visa-type-item"><i class="fas fa-plane"></i> Types de visa</div>
+                        <div class="visa-type-item"><i class="fas fa-check"></i> Tourisme</div>
+                        <div class="visa-type-item" style="padding-left: 20px;">Visa Schengen</div>
+                        <div class="visa-type-item"><i class="fas fa-check"></i> Études</div>
+                        <div class="visa-type-item" style="padding-left: 20px;">Visa Études</div>
+                    </div>
+                    <a href="flight-booking.html" class="btn-see-details-large">Voir détails <i class="fas fa-chevron-right"></i></a>
+                    <div style="clear: both;"></div>
+                </div>
+
+                <!-- Regions Lists -->
+                <h5 class="region-title">Afrique</h5>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/ma.png" alt="Maroc" class="flag-icon">
+                        <span class="country-name-list">Maroc</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/tn.png" alt="Tunisie" class="flag-icon">
+                        <span class="country-name-list">Tunisie</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/dz.png" alt="Algérie" class="flag-icon">
+                        <span class="country-name-list">Algérie</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/sn.png" alt="Sénégal" class="flag-icon">
+                        <span class="country-name-list">Sénégal</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/ci.png" alt="Côte d'Ivoire" class="flag-icon">
+                        <span class="country-name-list">Côte d'Ivoire</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/cm.png" alt="Cameroun" class="flag-icon">
+                        <span class="country-name-list">Cameroun</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/cg.png" alt="Congo" class="flag-icon">
+                        <span class="country-name-list">Congo</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/ga.png" alt="Gabon" class="flag-icon">
+                        <span class="country-name-list">Gabon</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/ng.png" alt="Nigeria" class="flag-icon">
+                        <span class="country-name-list">Nigeria</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/za.png" alt="Afrique du Sud" class="flag-icon">
+                        <span class="country-name-list">Afrique du Sud</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+
+                <h5 class="region-title mt-3">Europe</h5>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/fr.png" alt="France" class="flag-icon">
+                        <span class="country-name-list">France</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/be.png" alt="Belgique" class="flag-icon">
+                        <span class="country-name-list">Belgique</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/de.png" alt="Allemagne" class="flag-icon">
+                        <span class="country-name-list">Allemagne</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/it.png" alt="Italie" class="flag-icon">
+                        <span class="country-name-list">Italie</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/es.png" alt="Espagne" class="flag-icon">
+                        <span class="country-name-list">Espagne</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/gb.png" alt="Royaume-Uni" class="flag-icon">
+                        <span class="country-name-list">Royaume-Uni</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/pt.png" alt="Portugal" class="flag-icon">
+                        <span class="country-name-list">Portugal</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/nl.png" alt="Pays-Bas" class="flag-icon">
+                        <span class="country-name-list">Pays-Bas</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/ch.png" alt="Suisse" class="flag-icon">
+                        <span class="country-name-list">Suisse</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/se.png" alt="Suède" class="flag-icon">
+                        <span class="country-name-list">Suède</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+
+                <h5 class="region-title mt-3">Amérique</h5>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/ca.png" alt="Canada" class="flag-icon">
+                        <span class="country-name-list">Canada</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/us.png" alt="États-Unis" class="flag-icon">
+                        <span class="country-name-list">États-Unis</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/br.png" alt="Brésil" class="flag-icon">
+                        <span class="country-name-list">Brésil</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/mx.png" alt="Mexique" class="flag-icon">
+                        <span class="country-name-list">Mexique</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/ar.png" alt="Argentine" class="flag-icon">
+                        <span class="country-name-list">Argentine</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/co.png" alt="Colombie" class="flag-icon">
+                        <span class="country-name-list">Colombie</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/cl.png" alt="Chili" class="flag-icon">
+                        <span class="country-name-list">Chili</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/pe.png" alt="Pérou" class="flag-icon">
+                        <span class="country-name-list">Pérou</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/cu.png" alt="Cuba" class="flag-icon">
+                        <span class="country-name-list">Cuba</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/do.png" alt="République dominicaine" class="flag-icon">
+                        <span class="country-name-list">République dominicaine</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+
+                <h5 class="region-title mt-3">Asie</h5>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/cn.png" alt="Chine" class="flag-icon">
+                        <span class="country-name-list">Chine</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/jp.png" alt="Japon" class="flag-icon">
+                        <span class="country-name-list">Japon</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/in.png" alt="Inde" class="flag-icon">
+                        <span class="country-name-list">Inde</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/ae.png" alt="Émirats arabes unis" class="flag-icon">
+                        <span class="country-name-list">Émirats arabes unis</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/tr.png" alt="Turquie" class="flag-icon">
+                        <span class="country-name-list">Turquie</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/th.png" alt="Thaïlande" class="flag-icon">
+                        <span class="country-name-list">Thaïlande</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/vn.png" alt="Vietnam" class="flag-icon">
+                        <span class="country-name-list">Vietnam</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/kr.png" alt="Corée du Sud" class="flag-icon">
+                        <span class="country-name-list">Corée du Sud</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/id.png" alt="Indonésie" class="flag-icon">
+                        <span class="country-name-list">Indonésie</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+                <div class="country-list-item">
+                    <div class="country-list-left">
+                        <img src="https://flagcdn.com/w160/my.png" alt="Malaisie" class="flag-icon">
+                        <span class="country-name-list">Malaisie</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-muted"></i>
+                </div>
+
+                <!-- Help Banner -->
+                <div class="help-banner">
+                    <img src="assets/media/user/user-1.png" alt="Agent" class="agent-img">
+                    <div class="help-content">
+                        <h5>Besoin d'aide ?</h5>
+                        <p>Discuter avec un conseiller<br>- 5 min</p>
+                    </div>
+                    <div class="whatsapp-icon"><i class="fab fa-whatsapp"></i></div>
+                    <a href="chat.html" class="btn-talk">Parler a un conseiller</a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- DESKTOP VIEW (Hidden on Mobile) -->
+        <header class="d-none d-lg-block">
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="page-content m-0 d-none d-lg-block">
+            <div class="title-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner-area v-2">
+                            <div class="content-box text-alignment">
+                                <h1 class="fw-700 lightest-black">Voyage et Visa</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop content placeholder -->
+            <div class="container-fluid p-5">
+                <p>Pour voir la version mobile, veuillez réduire la taille de votre fenêtre ou utiliser un téléphone.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

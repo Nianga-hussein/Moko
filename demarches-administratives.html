@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Démarches Administratives">
+
+    <title>MOKO | Démarches Administratives</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        /* Specific Styles for Admin Page */
+        .admin-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .admin-wifi-icon {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .admin-battery-icon {
+            position: absolute;
+            right: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .admin-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .admin-subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 3px;
+        }
+
+        .admin-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .admin-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 13px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .admin-search i.fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Services Grid */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .admin-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            text-decoration: none;
+            color: #333;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            height: 100px;
+            justify-content: center;
+        }
+
+        .admin-icon {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .admin-name {
+            font-size: 11px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Help Footer */
+        .help-footer-admin {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+            background: #f9f9f9; /* Light Grey/Beige */
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+            border: 1px solid #eee;
+        }
+        
+        .help-avatar-admin {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .help-text-admin {
+            flex: 1;
+        }
+        
+        .help-text-admin h6 {
+            font-size: 12px;
+            font-weight: 700;
+            margin: 0;
+            color: #111;
+        }
+        
+        .help-text-admin p {
+            font-size: 10px;
+            color: #666;
+            margin: 0;
+        }
+        
+        .btn-discuss-admin {
+            background: #3f51b5; /* Blue button */
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+        
+        .payment-logo-small {
+            height: 12px;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Admin) -->
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="admin-header">
+                <a href="flight-listing.html" class="admin-wifi-icon"><i class="fas fa-chevron-left"></i></a>
+                <i class="fas fa-battery-full admin-battery-icon"></i>
+                
+                <h2 class="admin-title">Démarches administratives</h2>
+                <p class="admin-subtitle">Fais tes documents simplement</p>
+                
+                <div class="admin-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher une démarche...">
+                </div>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9; min-height: 100vh;">
+                
+                <!-- Grid -->
+                <div class="admin-grid">
+                    <!-- CNI -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/id-card.png" alt="CNI" class="admin-icon">
+                        <span class="admin-name">Carte<br>d'identité (CNI)</span>
+                    </a>
+                    
+                    <!-- Passport -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/passport.png" alt="Passeport" class="admin-icon">
+                        <span class="admin-name">Passeport</span>
+                    </a>
+                    
+                    <!-- Lettre -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/contract.png" alt="Lettre" class="admin-icon">
+                        <span class="admin-name">Lettre<br>de motivation</span>
+                    </a>
+                    
+                    <!-- CV -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/cv.png" alt="CV" class="admin-icon">
+                        <span class="admin-name">CV</span>
+                    </a>
+                    
+                    <!-- Carte Fiscale -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/id-card-2.png" alt="Fiscale" class="admin-icon">
+                        <span class="admin-name">Carte<br>fiscale</span>
+                    </a>
+                    
+                    <!-- Carte CNSS -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/credit-card.png" alt="CNSS" class="admin-icon">
+                        <span class="admin-name">Carte CNSS</span>
+                    </a>
+                    
+                    <!-- Titre séjour -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/visa.png" alt="Séjour" class="admin-icon">
+                        <span class="admin-name">Titre<br>de séjour</span>
+                    </a>
+                    
+                    <!-- Casier -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/justice.png" alt="Casier" class="admin-icon">
+                        <span class="admin-name">Casier<br>judiciaire</span>
+                    </a>
+                    
+                    <!-- Traduction -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/translate.png" alt="Traduction" class="admin-icon">
+                        <span class="admin-name">Traduction<br>& légalisation</span>
+                    </a>
+                    
+                    <!-- NIU -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/document.png" alt="NIU" class="admin-icon">
+                        <span class="admin-name">NIU</span>
+                    </a>
+                    
+                    <!-- Passeport (Repeat/Other) -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/passport-2.png" alt="Passeport" class="admin-icon">
+                        <span class="admin-name">Passeport</span>
+                    </a>
+                    
+                    <!-- Traduction (Repeat/Other) -->
+                    <a href="flight-booking.html" class="admin-card">
+                        <img src="assets/media/icons/stamp.png" alt="Traduction" class="admin-icon">
+                        <span class="admin-name">Traduction<br>& légalisation</span>
+                    </a>
+                </div>
+
+                <!-- Help Footer -->
+                <div class="help-footer-admin">
+                    <img src="assets/media/user/user-2.png" alt="Agent" class="help-avatar-admin">
+                    <div class="help-text-admin">
+                        <h6>Conseiller administratif</h6>
+                        <p>Discuter maintenant</p>
+                    </div>
+                    <img src="assets/media/icons/mtn.png" class="payment-logo-small">
+                    <a href="chat.html" class="btn-discuss-admin">Discuter maintenant</a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- DESKTOP VIEW (Hidden on Mobile) -->
+        <header class="d-none d-lg-block">
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="page-content m-0 d-none d-lg-block">
+            <div class="title-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner-area v-2">
+                            <div class="content-box text-alignment">
+                                <h1 class="fw-700 lightest-black">Démarches Administratives</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop content placeholder -->
+            <div class="container-fluid p-5">
+                <p>Pour voir la version mobile, veuillez réduire la taille de votre fenêtre ou utiliser un téléphone.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Transport & Logistique">
+
+    <title>MOKO | Transport & Logistique</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        /* Specific Styles for Transport Page */
+        .trans-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .trans-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .trans-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .trans-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 13px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .trans-search i.fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Category Grid */
+        .trans-cats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 20px 20px 10px;
+        }
+
+        .trans-cat-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            text-decoration: none;
+            color: #333;
+            min-height: 70px;
+        }
+        
+        .trans-cat-img {
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .trans-cat-name {
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        /* Filter Tabs */
+        .trans-filters {
+            display: flex;
+            gap: 15px;
+            padding: 10px 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .trans-filters::-webkit-scrollbar { display: none; }
+
+        .trans-filter-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .trans-filter-link.active {
+            color: #111;
+            font-weight: 700;
+            border-bottom: 2px solid #f33c0e;
+        }
+
+        /* Transport Card */
+        .trans-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 0 20px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .trans-card-top {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .trans-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .trans-info {
+            flex: 1;
+        }
+
+        .trans-name {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0 0 2px;
+            color: #111;
+        }
+
+        .trans-loc {
+            font-size: 11px;
+            color: #666;
+            margin: 0 0 2px;
+        }
+
+        .trans-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: #555;
+            background: #f9f9f9;
+            padding: 5px 8px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .trans-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-trans-action {
+            flex: 1;
+            background: #006400; /* Dark Green from image */
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 0;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .btn-trans-outline {
+            flex: 1;
+            background: #fff;
+            border: 1px solid #006400;
+            color: #006400;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 0;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Help Footer */
+        .help-footer-trans {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+            background: #fff3e0; /* Light Orange/Beige */
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        
+        .help-text-trans {
+            font-size: 11px;
+            font-weight: 600;
+            color: #333;
+            flex: 1;
+        }
+        
+        .payment-icons-trans {
+            display: flex;
+            gap: 3px;
+        }
+        
+        .payment-icons-trans img {
+            height: 12px;
+            background: #fff;
+            padding: 1px;
+            border-radius: 2px;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Transport) -->
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="trans-header">
+                <a href="flight-listing.html" class="text-white" style="position: absolute; left: 20px; top: 25px; font-size: 18px;"><i class="fas fa-chevron-left"></i></a>
+                <h2 class="trans-title">Transport & Logistique</h2>
+                
+                <div class="trans-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Transport, livraison, déménagement...">
+                </div>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9; min-height: 100vh; padding-bottom: 100px;">
+                
+                <!-- Categories -->
+                <div class="trans-cats-grid">
+                    <a href="#" class="trans-cat-card">
+                        <img src="assets/media/icons/car.png" alt="Transport" class="trans-cat-img">
+                        <span class="trans-cat-name">Transport<br>urbain</span>
+                    </a>
+                    <a href="#" class="trans-cat-card">
+                        <img src="assets/media/icons/delivery-truck.png" alt="Livraison" class="trans-cat-img">
+                        <span class="trans-cat-name">Livraison<br>& colis</span>
+                    </a>
+                    <a href="#" class="trans-cat-card">
+                        <img src="assets/media/icons/box.png" alt="Fret" class="trans-cat-img">
+                        <span class="trans-cat-name">Fret &<br>logistique</span>
+                    </a>
+                    <a href="#" class="trans-cat-card">
+                        <img src="assets/media/icons/rent-car.png" alt="Location" class="trans-cat-img">
+                        <span class="trans-cat-name">Location<br>véhicule</span>
+                    </a>
+                </div>
+
+                <!-- Filters -->
+                <div class="trans-filters">
+                    <a href="#" class="trans-filter-link active">Course d'urgence</a>
+                    <a href="#" class="trans-filter-link">Interurbain</a>
+                    <a href="#" class="trans-filter-link">Logistique</a>
+                </div>
+
+                <!-- Taxi Yambi -->
+                <div class="trans-card">
+                    <div class="trans-card-top">
+                        <img src="assets/media/Transport de personnes.jpeg" alt="Taxi" class="trans-logo">
+                        <div class="trans-info">
+                            <h4 class="trans-name">Taxi Yambi</h4>
+                            <p class="trans-loc"><i class="fas fa-map-marker-alt"></i> Brazzaville</p>
+                            <div class="trans-detail-row">
+                                <span><i class="fas fa-clock"></i> Dispo 24/7</span>
+                                <span><strong>800 FCFA</strong> / course</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans-actions">
+                        <a href="flight-booking.html" class="btn-trans-action"><i class="fas fa-check-circle"></i> Commander</a>
+                        <a href="chat.html" class="btn-trans-outline"><i class="far fa-comment-dots"></i> Discuter</a>
+                        <a href="tel:+" class="btn-trans-outline"><i class="fas fa-phone-alt"></i> Appeler</a>
+                    </div>
+                </div>
+
+                <!-- KoliXpress -->
+                <div class="trans-card">
+                    <div class="trans-card-top">
+                        <img src="assets/media/Livraison locale.jpeg" alt="Koli" class="trans-logo">
+                        <div class="trans-info">
+                            <h4 class="trans-name">KoliXpress</h4>
+                            <p class="trans-loc"><i class="fas fa-map-marker-alt"></i> Brazzaville - Pointe-Noire</p>
+                            <div class="trans-detail-row">
+                                <span><i class="fas fa-box"></i> Colis express</span>
+                                <span><strong>3000 FCFA</strong> / colis</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans-actions">
+                        <a href="flight-booking.html" class="btn-trans-action"><i class="fas fa-check-circle"></i> Commander</a>
+                        <a href="chat.html" class="btn-trans-outline"><i class="far fa-comment-dots"></i> Discuter</a>
+                        <a href="tel:+" class="btn-trans-outline"><i class="fas fa-phone-alt"></i> Appeler</a>
+                    </div>
+                </div>
+
+                <!-- TransCo -->
+                <div class="trans-card">
+                    <div class="trans-card-top">
+                        <img src="assets/media/Fret & marchandises.jpeg" alt="TransCo" class="trans-logo">
+                        <div class="trans-info">
+                            <h4 class="trans-name">TransCo Afrique</h4>
+                            <p class="trans-loc"><i class="fas fa-map-marker-alt"></i> Brazzaville - Pointe-Noire</p>
+                            <div class="trans-detail-row">
+                                <span><i class="fas fa-truck"></i> Fret lourd</span>
+                                <span>Sur devis</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans-actions">
+                        <a href="flight-booking.html" class="btn-trans-action"><i class="fas fa-check-circle"></i> Commander</a>
+                        <a href="chat.html" class="btn-trans-outline"><i class="far fa-comment-dots"></i> Discuter</a>
+                        <a href="#" class="btn-trans-outline"><i class="fas fa-file-invoice"></i> Devis</a>
+                    </div>
+                </div>
+
+                <!-- Location Hiace -->
+                <div class="trans-card">
+                    <div class="trans-card-top">
+                        <img src="assets/media/Chauffeur privé.jpeg" alt="Hiace" class="trans-logo">
+                        <div class="trans-info">
+                            <h4 class="trans-name">Location Hiace • Kia</h4>
+                            <p class="trans-loc"><i class="fas fa-map-marker-alt"></i> Brazzaville</p>
+                            <div class="trans-detail-row">
+                                <span><i class="fas fa-car"></i> Location journée</span>
+                                <span><strong>30K FCFA</strong> / jour</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans-actions">
+                        <a href="flight-booking.html" class="btn-trans-action"><i class="fas fa-check-circle"></i> Commander</a>
+                        <a href="chat.html" class="btn-trans-outline"><i class="far fa-comment-dots"></i> Discuter</a>
+                        <a href="tel:+" class="btn-trans-outline"><i class="fas fa-phone-alt"></i> Appeler</a>
+                    </div>
+                </div>
+
+                <!-- Help Footer -->
+                <div class="help-footer-trans">
+                    <img src="assets/media/bus.png" onerror="this.src='assets/media/icons/car.png'" style="height:20px;">
+                    <div class="help-text-trans">Transport scolaire Gilson Travels</div>
+                    <div class="payment-icons-trans">
+                        <img src="assets/media/icons/mtn.png" alt="MTN">
+                        <img src="assets/media/icons/momo.png" alt="MoMo">
+                        <img src="assets/media/icons/airtel.png" alt="Airtel">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- DESKTOP VIEW (Hidden on Mobile) -->
+        <header class="d-none d-lg-block">
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="page-content m-0 d-none d-lg-block">
+            <div class="title-banner">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner-area v-2">
+                            <div class="content-box text-alignment">
+                                <h1 class="fw-700 lightest-black">Transport & Logistique</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Desktop content placeholder -->
+            <div class="container-fluid p-5">
+                <p>Pour voir la version mobile, veuillez réduire la taille de votre fenêtre ou utiliser un téléphone.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

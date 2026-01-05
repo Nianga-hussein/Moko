@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MOKO Services - Formations Locales">
+
+    <title>MOKO | Formations Locales</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+    
+    <style>
+        .form-header {
+            background: #f33c0e; /* Moko Red */
+            color: #fff;
+            padding: 20px 20px 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .form-back-btn {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .form-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .form-search {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .form-search input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: none;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-search i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        .form-search i.fa-search { left: 15px; }
+        .form-search i.fa-microphone { right: 15px; }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #333;
+            margin: 20px 20px 15px;
+        }
+        .section-label i { color: #f33c0e; }
+
+        /* Popular Formations Grid */
+        .pop-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+
+        .pop-form-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .pop-form-img {
+            width: 100%;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .pop-form-title {
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 5px;
+            height: 24px;
+            overflow: hidden;
+        }
+
+        .pop-form-meta {
+            font-size: 9px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .badge-level {
+            background: #fff3e0;
+            color: #f57c00;
+            font-size: 8px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: auto;
+        }
+
+        /* List Formations */
+        .list-form-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 0 20px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 15px;
+        }
+
+        .list-form-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .list-form-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-form-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0 0 5px;
+            color: #111;
+            line-height: 1.3;
+        }
+
+        .list-form-price {
+            background: #fbc02d;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            align-self: flex-start;
+            margin-bottom: 5px;
+        }
+
+        .list-form-meta {
+            font-size: 10px;
+            color: #666;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .btn-start {
+            background: #333;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            align-self: flex-end;
+            margin-top: auto;
+        }
+
+        /* Help Footer */
+        .help-footer {
+            background: #fbe9e7; /* Light red/orange bg */
+            margin: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .help-footer .agent-pic {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+        
+        .help-text h5 {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0;
+            color: #111;
+        }
+        
+        .help-actions {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .btn-call-green {
+            width: 30px;
+            height: 30px;
+            background: #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .btn-ask {
+            font-size: 10px;
+            color: #333;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+        <div class="mobile-app-view d-lg-none p-0">
+            <!-- Header -->
+            <div class="form-header">
+                <a href="education-formations.html" class="form-back-btn"><i class="fas fa-chevron-left"></i></a>
+                <div style="position: absolute; right: 20px; top: 25px; color: #fff; font-size: 18px;"><i class="fas fa-search"></i></div>
+                <h2 class="form-title">Formations</h2>
+                <div class="form-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher une formation">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+
+            <div class="mobile-content-container" style="background: #f9f9f9; padding-bottom: 100px;">
+                
+                <div class="section-label">
+                    <i class="fas fa-leaf"></i> Formations populaires
+                </div>
+
+                <!-- Popular Grid -->
+                <div class="pop-form-grid">
+                    <div class="pop-form-card">
+                        <img src="assets/media/Conseil business.jpeg" alt="Business" class="pop-form-img">
+                        <h5 class="pop-form-title">Business & Entrepreneuriat</h5>
+                        <p class="pop-form-meta">4 semaines</p>
+                        <span class="badge-level">★ Débutant</span>
+                    </div>
+                    <div class="pop-form-card">
+                        <img src="assets/media/Formations digitales.jpeg" alt="Digital" class="pop-form-img">
+                        <h5 class="pop-form-title">Digital & Tech</h5>
+                        <p class="pop-form-meta">4 semaines</p>
+                        <span class="badge-level">★ Débutant</span>
+                    </div>
+                    <div class="pop-form-card">
+                        <img src="assets/media/Formations professionnelles.jpeg" alt="Métiers" class="pop-form-img">
+                        <h5 class="pop-form-title">Métiers pratiques</h5>
+                        <p class="pop-form-meta">4 semaines</p>
+                        <span class="badge-level">★ Tout niveau</span>
+                    </div>
+                </div>
+
+                <div class="section-label">
+                    <i class="fas fa-graduation-cap"></i> Formations
+                </div>
+
+                <!-- List Items -->
+                <div class="list-form-card">
+                    <img src="assets/media/Business plan.jpeg" alt="Business" class="list-form-img">
+                    <div class="list-form-content">
+                        <h4 class="list-form-title">Créer et gérer un business rentable</h4>
+                        <span class="list-form-price">10,000 FCFA</span>
+                        <div class="list-form-meta">
+                            <span>24 heures</span>
+                            <span>★ Débutant</span>
+                        </div>
+                        <a href="#" class="btn-start">Commencer</a>
+                    </div>
+                </div>
+
+                <div class="list-form-card">
+                    <img src="assets/media/Marketing digital.jpeg" alt="Community" class="list-form-img">
+                    <div class="list-form-content">
+                        <h4 class="list-form-title">Apprendre le community management</h4>
+                        <span class="list-form-price" style="background:#e0e0e0; color:#333;">Gratuit</span>
+                        <div class="list-form-meta">
+                            <span>18 heures</span>
+                            <span>★ Gratuit</span>
+                        </div>
+                        <a href="#" class="btn-start">Commencer</a>
+                    </div>
+                </div>
+
+                <div class="list-form-card">
+                    <img src="assets/media/Bricolage.jpeg" alt="Elec" class="list-form-img">
+                    <div class="list-form-content">
+                        <h4 class="list-form-title">Formation en dépannage electrique</h4>
+                        <span class="list-form-price" style="background:#e0e0e0; color:#333;">Gratuit</span>
+                        <div class="list-form-meta">
+                            <span>15 heures</span>
+                            <span>★ Gratuit</span>
+                        </div>
+                        <a href="#" class="btn-start">Commencer</a>
+                    </div>
+                </div>
+
+                <!-- Help Footer -->
+                <div class="help-footer">
+                    <img src="assets/media/user/user-1.png" alt="Agent" class="agent-pic">
+                    <div class="help-text">
+                        <h5>Poser une question</h5>
+                        <div style="display:flex; gap:5px; margin-top:5px;">
+                            <img src="assets/media/icons/visa.png" style="height:12px; background:#fff; padding:1px;">
+                            <img src="assets/media/icons/mastercard.png" style="height:12px; background:#fff; padding:1px;">
+                        </div>
+                    </div>
+                    <div class="help-actions">
+                        <a href="tel:+" class="btn-call-green"><i class="fas fa-phone-alt"></i></a>
+                        <a href="#" class="btn-ask">Poser une question</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Compte</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>

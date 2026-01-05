@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="FlyNow HTML5 Template">
+
+    <title>FlyNow | Travling And Tours Template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/wizard/smart_wizard_all.min.css">
+    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+</head>
+
+<body class="o-scroll" id="js-scroll">
+    <!-- Preloader-->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="logo-box">
+                <img src="assets/media/logo moko (2).png" alt="FlyNow" class="preloader-logo">
+            </div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+    <!-- Back To Top Start -->
+    <a href="#main-wrapper" id="backto-top" class="back-to-top"><i class="fas fa-angle-up"></i></a>
+    <!-- Main Wrapper Start -->
+    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+        <!-- MOBILE APP VIEW (Booking Page) -->
+        <div class="mobile-app-view d-lg-none">
+            <div class="mobile-header">
+                <div class="user-profile-row">
+                    <div class="user-greeting">
+                        <h4>Réserver un service</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item active">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Profil</span>
+                </a>
+            </nav>
+        </div>
+        <!-- END MOBILE APP VIEW -->
+
+        <!-- Header Area Start -->
+        <header>
+            <nav class="main-menu">
+                <div class="container-fluid">
+                    <div class="main-menu__block">
+                        <div class="main-menu__left">
+
+                            <div class="main-menu__logo">
+                                <a href="index.html">
+                                    <img src="assets/media/logo moko (2).png" alt="MOKO">
+                                </a>
+                            </div>
+
+                            <div class="main-menu__nav">
+                                <ul class="main-menu__list">
+                                    <li><a href="index.html">Accueil</a></li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="active">Services</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="flight-listing.html">Tous les services</a></li>
+                                            <li><a href="flight-booking.html" class="active">Commander</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="flight-booking.html">Commandant</a></li>
+                                    <li><a href="about-us.html">A propos</a></li>
+                                    <li><a href="contact.html">Contactez</a></li>
+       
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-menu__right">
+                            <a href="#" class="main-menu__search search-toggler d-xl-flex d-none">
+                                <i class="fal fa-search"></i>
+                            </a>
+                            <div class="main-menu-signup__login d-xl-flex d-none">
+                                <a href="login.html" class="main-menu__login">
+                                    Connexion
+                                </a>
+                                <div class="center_slach d-xl-flex d-none">/</div>
+                                <a href="sign-up.html" class="main-menu__login">
+                                    Inscription
+                                </a>
+                            </div>
+                            <a href="#" class="main-menu__toggler mobile-nav__toggler">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- Header Area end -->
+
+        <!-- Title-Banner Start -->
+        <div class="title-banner mb-20">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="banner-area">
+                        <img src="assets/media/banner/vacation.png" alt="" class="left-image">
+                        <div class="content-box">
+                            <h1 class="fw-700 lightest-black">Demande de <br class="title-break"> Service</h1>
+                        </div>
+                        <img src="assets/media/banner/plane-2.png" alt="" class="right-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Title-Banner End -->
+
+        <!-- Main Content Start -->
+        <div class="page-content m-0">
+
+            <!-- Flight-Booking Start -->
+            <section class="flight-booking" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-xl-8">
+                        <div class="booking-form">
+                            <form action="flight-booking.html" id="flight-form" method="post" role="form" class="contact-form form-wizard">
+                                <div class="form-wizard-header">
+                                    <ul class="nav list-unstyled form-wizard-steps clearfix">
+                                        <li class="nav-item activated">
+                                            <button class="nav-link">
+                                                <span class="number">1</span><i class="fal fa-check"></i>
+                                            </button>
+                                            <h5 class="color-black">Votre sélection</h5>
+                                        </li>
+                                        <li class="nav-item active">
+                                            <button class="nav-link">
+                                                <span class="number">2</span><i class="fal fa-check"></i>
+                                            </button>
+                                            <h5 class="color-black">Vos détails</h5>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link">
+                                                <span class="number">3</span><i class="fal fa-check"></i>
+                                            </button>
+                                            <h5 class="color-black">Étape finale</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="wizard-content overflow-visible mb-24">
+                                
+                                    
+                                    <fieldset id="step-2" class="tab-pane show wizard-fieldset p-0">
+                                        <div id="wizardValidator">
+                                            <div class="detail-form mb-32">
+                                                <h4 class="black p-0 mb-40">Entrez vos coordonnées</h4>
+                                                <div class="row ">
+                                                    <div class="col-sm-3 mb-40">
+                                                        <div class="gender-select">
+                                                            <div class="select">
+                                                                <select name="gender" id="gender" class="wizard-required">
+                                                                    <option selected="" disabled="">Genre</option>
+                                                                    <option value="male">Homme</option>
+                                                                    <option value="female">Femme</option>
+                                                                    <option value="other">Autre</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="wizard-form-error"></div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="col-sm-5 mb-40">
+                                                        <input type="text" class="form-control wizard-required" id="first-name" name="first-name" placeholder="Prénom">
+                                                            <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <div class="col-sm-4 mb-40">
+                                                        <input type="text" class="form-control wizard-required" id="last-name" name="last-name" placeholder="Nom de famille">
+                                                            <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-40">
+                                                        <input type="email" class="form-control wizard-required" id="email" name="email" placeholder="E-mail">
+                                                            <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-40">
+                                                        <div class="gender-select">
+                                                            <div class="select">
+                                                                <select name="nationality" id="nationality" class="wizard-required">
+                                                                    <option selected="" disabled="">Ville / Quartier</option>
+                                                                    <option value="brazzaville">Brazzaville</option>
+                                                                    <option value="pointe-noire">Pointe-Noire</option>
+                                                                    <option value="dolisie">Dolisie</option>
+                                                                    <option value="nkayi">Nkayi</option>
+                                                                    <option value="owando">Owando</option>
+                                                                </select>
+                                                                <div class="wizard-form-error"></div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-40">
+                                                        <input type="tel" class="form-control wizard-required" id="phone" name="phone" placeholder="Votre numéro">
+                                                                <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-40">
+                                                        <div class="input-date-picker">
+                                                            <input type="text" class="sel-input date_from form-control wizard-required" id="flightDep" placeholder="Date souhaitée">
+                                                                <div class="wizard-form-error"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-sm-0 mb-40">
+                                                        <input type="text" class="form-control wizard-required" id="post_code" name="code" placeholder="Adresse précise">
+                                                                <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control wizard-required" id="f_number" name="f_number" placeholder="Description du besoin">
+                                                                <div class="wizard-form-error"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="detail-form term_conditions mb-32">
+                                                <h4 class="black p-0 mb-8">Enregistrez vos détails !</h4>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <p class="dark-gray mb-24 fw-400">Utilisez vos coordonnées pour créer un compte et accélérer vos futures réservations. (Nous n'enregistrerons pas vos informations de paiement.)</p>
+                                                        <div class="filter-checkbox mb-24">
+                                                            <input type="checkbox" id="save" class="wizard-required">
+                                                            <label for="save" class="dark-gray fw-400">Enregistrer mes détails pour réserver plus rapidement la prochaine fois.</label>
+                                                        </div>
+                                                        <p class="dark-gray fw-400">En vous connectant ou en créant un compte, vous acceptez nos <a href="privacy-policy.html" class="color-primary"> Conditions générales</a></p>
+                                                        <div class="wizard-form-error"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="detail-form extra-item p-24 mb-32">
+                                                <h4 class="black p-0 mb-24">Détails supplémentaires</h4>
+                                                <div class="col-sm-12 mb-24">
+                                                    <div class="select-1">
+                                                        <select name="format" id="format" class="wizard-required">
+                                                            <option selected="" disabled="">Niveau d'urgence</option>
+                                                            <option value="normal">Normale</option>
+                                                            <option value="urgent">Urgente</option>
+                                                            <option value="immediate">Immédiate</option>
+                                                        </select>
+                                                        <div class="wizard-form-error"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="select-2">
+                                                        <select name="format-2" id="format-2" class="wizard-required">
+                                                            <option selected="" disabled="">Besoin d'inspection préalable ?</option>
+                                                            <option value="yes">Oui</option>
+                                                            <option value="no">Non</option>
+                                                        </select>
+                                                        <div class="wizard-form-error"></div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-24">
+                                            <a href="javascript:;" class="form-wizard-next-btn cus-btn w-100">
+                                                Suivant
+                                            </a>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset id="step-3" class="tab-pane wizard-fieldset p-0">
+                                        <!-- <form action="flight-booking.html" method="post" class="contact-form"> -->
+                                        <div class="detail-form mb-32">
+                                            <h4 class="black p-0 mb-24">Quand souhaitez-vous payer ?</h4>
+                                            <div class="custom-control">
+                                                <div class="radio-button mb-24">
+                                                    <input type="radio" name="payment" class="custom-control-input input-control" id="later">
+                                                    <!-- <div class="wizard-form-error"></div> -->
+                                                    <label class="custom-control-label paynow color-black" for="later">Payer plus tard</label>
+                                                    <p class="dark-gray pl-36">Lorem ipsum dolor sit amet consectetur. Orci elementum egestas blandit a. Elementum blandit sit egestas urna.</p>
+                                                </div>
+                                                <div class="radio-button">
+                                                    <input type="radio" name="payment" class="custom-control-input input-control" id="now">
+                                                    <!-- <div class="wizard-form-error"></div> -->
+                                                    <label class="custom-control-label paynow color-black" for="now">Payer maintenant</label>
+                                                    <p class="dark-gray pl-36">Lorem ipsum dolor sit amet consectetur. Orci elementum egestas blandit a. Elementum blandit sit egestas urna.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="detail-form v-2">
+                                            <h4 class="black p-0 mb-24">Comment souhaitez-vous payer ?</h4>
+                                            <div class="content-block mb-32">
+                                                <div class="radio-tile-group sidebar d-block">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="input-container">
+                                                                <input id="payment" class="radio-button wizard-required" type="radio" name="radio" value="payment">
+                                                                <div class="wizard-form-error"></div>
+                                                                <div class="radio-tile wizard-page">
+                                                                    <label for="payment" class="radio-tile-label wizard-label"><i class="fal fa-credit-card-front"></i>&nbsp;&nbsp;Nouvelle carte</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="input-container">
+                                                                <input id="g-pay" class="radio-button wizard-required" type="radio" name="radio" value="g-pay">
+                                                                <div class="wizard-form-error"></div>
+                                                                <div class="radio-tile wizard-page">
+                                                                    <label for="g-pay" class="radio-tile-label wizard-label"><img src="assets/media/icons/google.png" alt="">&nbsp;&nbsp;Google Pay</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h4 class="black p-0 mb-24">Détails du titulaire du compte</h4>
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-24">
+                                                    <input type="text" class="form-control wizard-required" name="name" id="holder-name" placeholder="Nom du titulaire de la carte">
+                                                    <div class="wizard-form-error"></div>
+                                                </div>
+                                                <div class="col-sm-6 mb-24">
+                                                    <input type="text" class="form-control wizard-required" name="number" id="card-name" placeholder="Numéro de carte">
+                                                    <div class="wizard-form-error"></div>
+                                                </div>
+                                                <div class="col-sm-6 mb-24">
+                                                    <!-- <input type="text" class="form-control " name="date" id="exp-date" placeholder="Expiry Date"> -->
+                                                    <div class="wizard-form-error"></div>
+                                                    <div class="input-date-picker">
+                                                        <input type="text" class="sel-input date_from form-control wizard-required " name="date" id="exp-date" placeholder="Date d'expiration">
+                                                        <div class="wizard-form-error"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-24">
+                                                    <input type="text" class="form-control wizard-required" name="cvc" id="cVc" placeholder="CVC">
+                                                    <div class="wizard-form-error"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- </form> -->
+                                        <div class="d-flex gap-24 mt-24">
+                                            <a href="javascript:;" class="form-wizard-previous-btn cus-btn btn-sec w-100">
+                                                Retour
+                                            </a>
+                                            <a href="javascript:void(0);" class="whatsapp-submit-btn cus-btn w-100" style="text-align: center;">
+                                                Soumettre
+                                            </a>
+                                        </div>
+                                    </fieldset>
+                                    
+                                </div>
+                                <!-- <h6><a href="#step-2" class="cus-btn float-end btn"><span class="icon"><img src="assets/media/icons/orange-cart.png" alt=""></span>Continue</a></h6> -->
+                                <!-- <div class="sw-toolbar-elm toolbar toolbar-bottom" role="toolbar">
+                                    <button class="btn sw-btn-prev sw-btn" type="button">Continue</button>
+                                    <button class="btn sw-btn-next sw-btn" type="button">Continue</button>
+                                </div> -->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 mb-lg-0 mb-32">
+                        <div class="flight-booking-detail light-shadow mb-32">
+                            <div class="flight-title">
+                                <h4 class="color-black">Détails de la demande</h4>
+                            </div>
+                            <div class="box bg-white p-24">
+                                <div class="flight-detail mb-32">
+                                    <div class="flight-departure">
+                                        <h5 class="color-black" id="summary-start">--:--</h5>
+                                        <h5 class="dark-gray text-end" id="summary-city">Ville</h5>
+                                    </div>
+                                    <div class="d-inline-flex align-items-center gap-8">
+                                        <span class="">Lieu</span>
+                                        <div class="from-to text-center">
+                                            <h5 class="dark-gray" id="summary-duration">--</h5>
+                                            <i class="fal fa-tools color-primary" style="font-size: 20px;"></i>
+                                            <h6 class="color-black" id="summary-service-type">Standard</h6>
+                                        </div>
+                                        <span class="">Dest.</span>
+                                    </div>
+                                    <div class="flight-departure">
+                                        <h5 class="color-black" id="summary-end">--:--</h5>
+                                        <h5 class="dark-gray" id="summary-zone">Zone</h5>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-around mb-32">
+                                    <div class="flight-departure">
+                                        <h6 class="dark-gray">Date souhaitée</h6>
+                                        <h5 class="color-black" id="summary-date-start">--/--/----</h5>
+                                    </div>
+                                    <div class="vr-line"></div>
+                                    <div class="flight-departure">
+                                        <h6 class="dark-gray">Urgence</h6>
+                                        <h5 class="color-black" id="summary-urgency">Normale</h5>
+                                    </div>
+                                </div>
+                                <hr class="bg-medium-gray mb-32">
+                                <div class="text">
+                                    <h6 class="color-medium-gray" id="summary-description">Description du service...</h6>
+                                    <h6 class="color-medium-gray">Prestataire : Moko</h6>
+                                    <h6 class="color-medium-gray" id="summary-inspection">Inspection : Non définie</h6>
+                                    <h6 class="color-medium-gray">Client : <span id="summary-client-name">--</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight-booking-detail light-shadow">
+                            <div class="flight-title">
+                                <h4 class="color-black">Estimation des coûts</h4>
+                            </div>
+                            <div class="box bg-white p-24">
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Frais de base</h5>
+                                        <p class="dark-gray">Estimation initiale</p>
+                                    </div>
+                                    <h5 class="color-black">$540</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Déplacement</h5>
+                                        <p class="dark-gray">Frais de transport</p>
+                                    </div>
+                                    <h5 class="color-black">$50</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Matériel</h5>
+                                        <p class="dark-gray">Usage équipement</p>
+                                    </div>
+                                    <h5 class="color-black">$30</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Frais de gestion</h5>
+                                        <p class="dark-gray">Service client</p>
+                                    </div>
+                                    <h5 class="color-black">$20</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Sous-total</h5>
+                                        <p class="dark-gray">Avant remise</p>
+                                    </div>
+                                    <h5 class="color-black">$640</h5>
+                                </div>
+                                <hr class="bg-medium-gray mb-24">
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h4 class="color-black">Remise</h4>
+                                    </div>
+                                    <h4 class="color-black">$40</h4>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h4 class="color-black">Total estimé</h4>
+                                    </div>
+                                    <h4 class="color-black">$600</h4>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Flight-Booking End -->
+
+        </div>
+        <!-- Main Content End -->
+
+        <!-- Footer Start -->
+        <footer class="bg-white p-40" data-sal="slide-down" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-lg-0 mb-32 ">
+                        <a href=""><img src="assets/media/logo moko (2).png" alt="" class="mb-16"></a>
+                        <p class="dark-gray mb-16">Nous nous engageons à rendre votre quotidien plus simple avec les meilleurs services et offres.</p>
+                        <h6 class="lightest-black mb-8">Abonnez-vous à nos offres spéciales</h6>
+                        <form action="index.html" method="post">
+                            <input type="email" class="form-control" placeholder="Adresse e-mail" name="email">
+                            <button type="submit" class="subscribe">S'abonner</button>
+                        </form>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-lg-0 mb-32">
+                        <h4 class="light-black mb-24">Services</h4>
+                        <div class="our-links">
+                            <ul class="unstyled">
+                                <li class="mb-16"><a href="flight-booking.html" class="light-black">Commander un service</a>
+                                </li>
+                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Services de voyage</a>
+                                </li>
+                                <li class="mb-16"><a href="car-booking.html" class="light-black">Transport</a></li>
+                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Planifier un projet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-lg-0 mb-32">
+                        <h4 class="light-black mb-24">Liens utiles</h4>
+                        <div class="our-links">
+                            <ul class="unstyled">
+                                <li class="mb-16"><a href="https://www.facebook.com/share/1BywNXQQiW/?mibextid=wwXIfr" target="_blank" class="light-black">Facebook</a></li>
+                                <li class="mb-16"><a href="https://www.tiktok.com/@mokomoko2683?_r=1&_t=ZM-92Z6D5zlaMl" target="_blank" class="light-black">TikTok</a></li>
+                                <li class="mb-16"><a href="https://www.linkedin.com/in/moko-officiel-79344a3a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="light-black">LinkedIn</a></li>
+                                <li class="mb-16"><a href="https://pin.it/2y4Vupj5b" target="_blank" class="light-black">Pinterest</a></li>
+                                <li class="mb-16"><a href="https://youtube.com/@mokoofficiel242?si=4KYeySqr2LvMqQGu" target="_blank" class="light-black">YouTube</a></li>
+                                <li class="mb-16"><a href="mailto:mokocg242@gmail.com" class="light-black">Gmail</a></li>
+                                <li class="mb-16"><a href="https://whatsapp.com/channel/0029Vb7IiqQIt5s4d8aj280e" target="_blank" class="light-black">Chaîne WhatsApp</a></li>
+                                <li class="mb-16"><a href="https://wa.me/36203630726" target="_blank" class="light-black">Message WhatsApp</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-md-0 mb-32">
+                        <h4 class="light-black mb-24">Gérer</h4>
+                        <div class="our-links">
+                            <ul class="unstyled">
+                                <li class="mb-16"><a href="flight-booking.html" class="light-black">Mon Compte</a></li>
+                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Suivre ma commande</a></li>
+                                <li class="mb-16"><a href="car-listing.html" class="light-black">Chauffeur privé</a>
+                                </li>
+                                <li class="mb-16"><a href="flight-listing.html" class="light-black">Support Client</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <h4 class="light-black mb-16">Contactez-nous</h4>
+                        <div class="follow-us">
+                            <ul class="unstyled">
+                                <li class="mb-8"><img src="assets/media/icons/location-bk.png" alt="">&nbsp;&nbsp;Brazzaville, République du Congo.</li>
+                                <li class="mb-8 h4 color-primary"><img src="assets/media/icons/telephone.png" alt="">&nbsp;&nbsp;+242 06 950 87 90</li>
+                                <li class="mb-24"><a href="mailto:contact@moko.cg"><img src="assets/media/icons/mail.png" alt="">&nbsp;&nbsp;contact@moko.cg</a></li>
+                            </ul>
+                        </div>
+                        <div class="social-link mb-32">
+                            <h6 class="light-black mb-8">Suivez-nous !</h6>
+                            <ul class="unstyled">
+                                <li><a href="https://www.linkedin.com/in/moko-officiel-79344a3a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="assets/media/icons/linkedin.png" alt=""></a></li>
+                                <li><a href="https://youtube.com/@mokoofficiel242?si=4KYeySqr2LvMqQGu"><i class="fab fa-youtube" style="color: white; font-size: 24px;"></i></a></li>
+                                <li><a href="https://chat.whatsapp.com/IFUQqjmJG1h42TijC7f4KF"><i class="fab fa-whatsapp" style="color: white; font-size: 24px;"></i></a></li>
+                                <li><a href="https://www.instagram.com/moko.242/?utm_source=ig_web_button_share_sheet"><img src="assets/media/icons/instagram.png" alt=""></a></li>
+                                <li><a href="https://whatsapp.com/channel/0029Vb7IiqQIt5s4d8aj280e"><i class="fab fa-whatsapp" style="color: white; font-size: 24px;"></i></a></li>
+                                <li><a href="https://wa.me/36203630726"><i class="fab fa-whatsapp" style="color: white; font-size: 24px;"></i></a></li>
+                            </ul>
+                        </div>
+                        <p class="light-black">©2025 MOKO Tous droits réservés.</p>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Area End  -->
+
+        <!-- modal-popup area Start  -->
+        <div class="search-popup">
+            <div class="search-popup__overlay search-toggler"></div>
+            <div class="search-popup__content">
+                <form role="search" method="get" class="search-popup__form" action="index.html">
+                    <input type="text" id="search" placeholder="Rechercher ici...">
+                    <button type="submit"><i class="fal fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <!-- search-popup end-->
+    </div>
+
+
+    <!-- Mobile Menu Start -->
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"></span>
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image"><img src="assets/media/logo moko (2).png" alt="" class="invisible"></a>
+            </div>
+            <div class="mobile-nav__container"></div>
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:example@company.com">example@company.com</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:+12345678">+123 (4567) -890</a>
+                </li>
+            </ul>
+            <!-- <div class="mobile-nav__social">
+        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+      </div> -->
+        </div>
+    </div>
+    <!-- Mobile Menu End -->
+
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/jquery-appear.js"></script>
+    <script src="assets/js/vendor/jquery-validator.js"></script>
+    <script src="assets/js/vendor/jquery.smartWizard.min.js"></script>
+    <script src="assets/js/vendor/calendar/picker.js"></script>
+    <script src="assets/js/vendor/calendar/picker.date.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <script src="assets/js/vendor/wizard.js"></script>
+    
+    <!-- Site Scripts -->
+    <script src="assets/js/date.js"></script>
+    <script src="assets/js/whatsapp-booking.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Fonction pour mettre à jour le résumé
+            function updateSummary() {
+                // Ville / Quartier (Nationalité)
+                const city = $('#nationality option:selected').text();
+                if (city && city !== "Ville / Quartier") {
+                    $('#summary-city').text(city);
+                    $('#summary-zone').text(city);
+                } else {
+                    $('#summary-city').text("Ville");
+                    $('#summary-zone').text("Zone");
+                }
+
+                // Date souhaitée (flightDep)
+                const date = $('#flightDep').val();
+                if (date) {
+                    $('#summary-date-start').text(date);
+                } else {
+                    $('#summary-date-start').text("--/--/----");
+                }
+
+                // Description du besoin (f_number)
+                const description = $('#f_number').val();
+                if (description) {
+                    // Tronquer si trop long
+                    const shortDesc = description.length > 30 ? description.substring(0, 30) + '...' : description;
+                    $('#summary-description').text(shortDesc);
+                    $('#summary-service-type').text(shortDesc);
+                } else {
+                    $('#summary-description').text("Description du service...");
+                    $('#summary-service-type').text("Standard");
+                }
+
+                // Niveau d'urgence (format)
+                const urgency = $('#format option:selected').text();
+                if (urgency && urgency !== "Niveau d'urgence") {
+                    $('#summary-urgency').text(urgency);
+                } else {
+                    $('#summary-urgency').text("Normale");
+                }
+
+                // Inspection (format-2)
+                const inspection = $('#format-2 option:selected').text();
+                if (inspection && inspection !== "Besoin d'inspection préalable ?") {
+                    $('#summary-inspection').text("Inspection : " + inspection);
+                } else {
+                    $('#summary-inspection').text("Inspection : Non définie");
+                }
+
+                // Nom du client (first-name + last-name)
+                const firstName = $('#first-name').val();
+                const lastName = $('#last-name').val();
+                if (firstName || lastName) {
+                    $('#summary-client-name').text((firstName + " " + lastName).trim());
+                } else {
+                    $('#summary-client-name').text("--");
+                }
+            }
+
+            // Écouteurs d'événements pour les changements
+            $('#nationality, #format, #format-2').on('change', updateSummary);
+            $('#flightDep, #f_number, #first-name, #last-name').on('input change blur', updateSummary);
+            
+            // Initialiser au chargement
+            updateSummary();
+        });
+    </script>
+</body>
+
+</html>

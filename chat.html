@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MOKO | Chat</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/mobile-design.css">
+</head>
+<body style="background-color: #f5f5f5;">
+    <div id="main-wrapper" class="main-wrapper">
+        
+        <!-- MOBILE APP VIEW -->
+        <div class="mobile-app-view p-0">
+            
+            <!-- Header (Green -> Red MOKO) -->
+            <div class="chat-header">
+                <h2 class="header-title">Chats</h2>
+                <div class="header-actions">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="chat-search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Rechercher">
+                </div>
+            </div>
+
+            <div class="chat-list-container">
+                
+                <!-- Chat Item: Visa (Active) -->
+                <div class="chat-item active-bg">
+                    <div class="chat-icon-box">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">Demande de Visa ✈️ <span class="badge-status">En cours</span></h4>
+                            <span class="chat-time">09:15</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview">Votre demande est en cours de traitement...</p>
+                            <i class="fas fa-chevron-right ms-auto text-muted" style="font-size: 10px;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item: Diagnostika -->
+                <div class="chat-item">
+                    <div class="chat-img-box red-bg">
+                        <i class="fas fa-plus-square text-white" style="font-size: 24px;"></i>
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">Diagnostika</h4>
+                            <span class="chat-time">09:15</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview">Visa partenaire accepté !</p>
+                            <span class="unread-badge">2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item: Gina (Moko Advisor) -->
+                <div class="chat-item">
+                    <div class="chat-img-wrapper">
+                        <img src="assets/media/user/user-2.png" alt="Gina">
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">Gina, Conseillère MoKo</h4>
+                            <span class="chat-time">09:10</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview highlight-green">En ligne • Répond sous 5 min</p>
+                            <span class="unread-badge">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item: Jules -->
+                <div class="chat-item">
+                    <div class="chat-img-wrapper">
+                        <img src="assets/media/user/user-3.png" alt="Jules">
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">Jules</h4>
+                            <span class="chat-time">Hier</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview">Super, merci à toi 👍</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item: Orange Money -->
+                <div class="chat-item">
+                    <div class="chat-img-box black-bg">
+                        <img src="assets/media/icons/orange-money.png" alt="OM" style="width: 24px;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg'">
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">Orange Money</h4>
+                            <span class="chat-time">Hier</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview">Retrait réussi de 25000 CFA</p>
+                            <span class="unread-badge">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item: MoKo Pay -->
+                <div class="chat-item">
+                    <div class="chat-img-box green-bg">
+                        <i class="fas fa-wallet text-white"></i>
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">MoKo Pay</h4>
+                            <span class="chat-time">3hr</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview">Votre portefeuille a été rechargé.</p>
+                            <span class="unread-badge">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item: Groupe Business -->
+                <div class="chat-item">
+                    <div class="chat-img-wrapper group-img">
+                        <img src="assets/media/user/user-1.png" alt="Group">
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">Groupe Business</h4>
+                            <span class="chat-time">Lun.</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview">Olivia : On se retrouve demain 9h</p>
+                            <span class="unread-badge">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Chat Item: Notifications -->
+                 <div class="chat-item">
+                    <div class="chat-img-box blue-bg">
+                        <i class="fas fa-bell text-white"></i>
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">Notifications Importa...</h4>
+                            <span class="chat-time">:)</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview">N'oubliez pas : -30%</p>
+                            <span class="unread-badge">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Chat Item: Jules (Repeat) -->
+                 <div class="chat-item">
+                    <div class="chat-img-wrapper">
+                        <img src="assets/media/user/user-2.png" alt="Jules">
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-top">
+                            <h4 class="chat-name">Jules</h4>
+                            <span class="chat-time">Hier</span>
+                        </div>
+                        <div class="chat-bottom">
+                            <p class="chat-preview">Retrait réussi de 25000 CFA</p>
+                            <i class="fas fa-chevron-right ms-auto text-muted" style="font-size: 10px;"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="mobile-bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="flight-listing.html" class="nav-item">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="flight-booking.html" class="nav-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Réserver</span>
+                </a>
+                <a href="chat.html" class="nav-item active">
+                    <i class="far fa-comment-dots"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="far fa-user"></i>
+                    <span>Profil</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+</body>
+</html>
