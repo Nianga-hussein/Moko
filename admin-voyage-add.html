@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer Dossier Visa | Admin MoKo</title>
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/admin-design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+                <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-voyage.html" class="active"><i class="fa fa-plane"></i> Voyage & Visas</a></li>
+                <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-service.html"><i class="fa fa-concierge-bell"></i> Services & Quotidien</a></li>
+                <li><a href="admin-chat.html"><i class="fa fa-comments"></i> Messagerie</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <div class="header-title">Créer un dossier Visa</div>
+                </div>
+                <div class="header-profile">
+                    <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <div class="page-header">
+                    <a href="admin-voyage.html" class="btn-secondary"><i class="fa fa-arrow-left"></i> Retour</a>
+                </div>
+
+                <div class="form-container">
+                    <h2 style="margin-bottom: 20px;">Informations du dossier</h2>
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">Client (Demandeur)</label>
+                            <input type="text" class="form-control" placeholder="Rechercher un utilisateur...">
+                        </div>
+
+                        <div style="display: flex; gap: 20px;">
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">Pays de destination</label>
+                                <select class="form-control">
+                                    <option>France</option>
+                                    <option>Canada</option>
+                                    <option>États-Unis</option>
+                                    <option>Chine</option>
+                                    <option>Dubaï (EAU)</option>
+                                    <option>Turquie</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">Type de Visa</label>
+                                <select class="form-control">
+                                    <option>Tourisme</option>
+                                    <option>Études</option>
+                                    <option>Travail</option>
+                                    <option>Affaires</option>
+                                    <option>Médical</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Numéro de Passeport</label>
+                            <input type="text" class="form-control" placeholder="XX1234567">
+                        </div>
+
+                        <div style="display: flex; gap: 20px;">
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">Date de dépôt</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">Date de rendez-vous (Optionnel)</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Documents reçus</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" id="doc1" style="margin-right: 8px;">
+                                    <label for="doc1">Passeport</label>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" id="doc2" style="margin-right: 8px;">
+                                    <label for="doc2">Photo d'identité</label>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" id="doc3" style="margin-right: 8px;">
+                                    <label for="doc3">Relevés bancaires</label>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" id="doc4" style="margin-right: 8px;">
+                                    <label for="doc4">Lettre d'invitation</label>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" id="doc5" style="margin-right: 8px;">
+                                    <label for="doc5">Assurance voyage</label>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" id="doc6" style="margin-right: 8px;">
+                                    <label for="doc6">Réservation hôtel/billet</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Notes internes</label>
+                            <textarea class="form-control" rows="3" placeholder="Notes sur le dossier..."></textarea>
+                        </div>
+
+                        <div style="margin-top: 30px; text-align: right;">
+                            <button type="button" class="btn-secondary">Annuler</button>
+                            <button type="submit" class="btn-primary">Créer le dossier</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

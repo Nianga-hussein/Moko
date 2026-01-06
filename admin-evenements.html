@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Événements & Loisirs | MoKo</title>
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/admin-design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+                <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-evenements.html" class="active"><i class="fa fa-calendar"></i> Événements & Loisirs</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <div class="header-search">
+                        <i class="fa fa-search"></i>
+                        <input type="text" placeholder="Rechercher événement, organisateur...">
+                    </div>
+                </div>
+                
+                <div class="header-profile">
+                    <div class="profile-info">
+                        <span class="profile-name">Admin Principal</span>
+                        <span class="profile-role">Super Admin</span>
+                    </div>
+                    <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <i class="fa fa-calendar" style="color: var(--admin-primary);"></i>
+                        Événements & Loisirs
+                    </div>
+                    <a href="admin-evenements-add.html" class="btn-primary">
+                        <i class="fa fa-plus"></i> Ajouter un événement
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>32</h3>
+                            <p>Événements Actifs</p>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fa fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>2,175</h3>
+                            <p>Tickets Vendus</p>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fa fa-ticket-alt"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>3.8M FCFA</h3>
+                            <p>Recettes (30j)</p>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fa fa-money-bill"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>83%</h3>
+                            <p>Taux de remplissage</p>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Événements à venir</h3>
+                        <div class="table-actions">
+                            <button class="btn-secondary"><i class="fa fa-filter"></i> Filtrer</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Événement</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Lieu</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
+                                            <strong>Afrobeat Music Festival</strong>
+                                        </div>
+                                    </td>
+                                    <td>Concert</td>
+                                    <td>24 Juin 2024</td>
+                                    <td>Stade Martyrs</td>
+                                    <td><span class="status-badge status-active">En vente</span></td>
+                                    <td>
+                                        <a href="admin-evenements-details.html" class="action-btn btn-view">Voir</a>
+                                        <button class="action-btn btn-edit">Modifier</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
+                                            <strong>Tech & Innovation Conf</strong>
+                                        </div>
+                                    </td>
+                                    <td>Conférence</td>
+                                    <td>12 Juil 2024</td>
+                                    <td>Pullman Hotel</td>
+                                    <td><span class="status-badge status-active">En vente</span></td>
+                                    <td>
+                                        <a href="admin-evenements-details.html" class="action-btn btn-view">Voir</a>
+                                        <button class="action-btn btn-edit">Modifier</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
+                                            <strong>Marathon de Douala</strong>
+                                        </div>
+                                    </td>
+                                    <td>Sport</td>
+                                    <td>15 Aout 2024</td>
+                                    <td>Centre Ville</td>
+                                    <td><span class="status-badge status-pending">Bientôt</span></td>
+                                    <td>
+                                        <a href="admin-evenements-details.html" class="action-btn btn-view">Voir</a>
+                                        <button class="action-btn btn-edit">Modifier</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

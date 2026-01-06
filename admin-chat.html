@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie | Admin MoKo</title>
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/admin-design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+                <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-voyage.html"><i class="fa fa-plane"></i> Voyage & Visas</a></li>
+                <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-service.html"><i class="fa fa-concierge-bell"></i> Services & Quotidien</a></li>
+                <li><a href="admin-chat.html" class="active"><i class="fa fa-comments"></i> Messagerie</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <div class="header-title">Messagerie Support</div>
+                </div>
+                <div class="header-profile">
+                    <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <div class="chat-container">
+                    <!-- Chat Sidebar -->
+                    <div class="chat-sidebar">
+                        <div class="chat-search">
+                            <input type="text" class="form-control" placeholder="Rechercher...">
+                        </div>
+                        <ul class="chat-list">
+                            <li class="chat-item active">
+                                <div class="chat-avatar">
+                                    <img src="https://via.placeholder.com/40">
+                                    <span class="chat-status status-online"></span>
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">
+                                        Sara Sow
+                                        <span style="font-size: 10px; color: #888; font-weight: 400;">12:30</span>
+                                    </div>
+                                    <div class="chat-preview">Bonjour, concernant ma demande de Visa...</div>
+                                </div>
+                            </li>
+                            <li class="chat-item">
+                                <div class="chat-avatar">
+                                    <img src="https://via.placeholder.com/40">
+                                    <span class="chat-status status-offline"></span>
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">
+                                        Bernad Mansaré
+                                        <span style="font-size: 10px; color: #888; font-weight: 400;">Hier</span>
+                                    </div>
+                                    <div class="chat-preview">Merci pour votre aide !</div>
+                                </div>
+                            </li>
+                            <li class="chat-item">
+                                <div class="chat-avatar">
+                                    <img src="https://via.placeholder.com/40">
+                                    <span class="chat-status status-online"></span>
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">
+                                        Karine Doumbia
+                                        <span style="font-size: 10px; color: #888; font-weight: 400;">Hier</span>
+                                    </div>
+                                    <div class="chat-preview">Dossier de diplôme envoyé.</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Chat Main -->
+                    <div class="chat-main">
+                        <div class="chat-header">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="https://via.placeholder.com/40" style="border-radius: 50%; width: 35px; height: 35px;">
+                                <div>
+                                    <div style="font-weight: 600;">Sara Sow</div>
+                                    <div style="font-size: 12px; color: #28a745;">En ligne</div>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn-secondary" style="padding: 6px 12px;"><i class="fa fa-phone"></i></button>
+                                <button class="btn-secondary" style="padding: 6px 12px;"><i class="fa fa-video"></i></button>
+                                <button class="btn-secondary" style="padding: 6px 12px;"><i class="fa fa-info-circle"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages">
+                            <div class="message received">
+                                <div>
+                                    <div class="message-content">
+                                        Bonjour, je voudrais savoir où en est ma demande de Visa pour la France ?
+                                    </div>
+                                    <div class="message-time">12:30</div>
+                                </div>
+                            </div>
+                            <div class="message sent">
+                                <div>
+                                    <div class="message-content">
+                                        Bonjour Sara ! Laissez-moi vérifier cela pour vous. Votre dossier est en cours d'examen par nos agents.
+                                    </div>
+                                    <div class="message-time">12:32</div>
+                                </div>
+                            </div>
+                            <div class="message received">
+                                <div>
+                                    <div class="message-content">
+                                        D'accord, merci. J'ai aussi envoyé les documents manquants hier soir.
+                                    </div>
+                                    <div class="message-time">12:33</div>
+                                </div>
+                            </div>
+                            <div class="message sent">
+                                <div>
+                                    <div class="message-content">
+                                        Bien reçu. Nous vous tiendrons informée dès qu'il y a du nouveau. N'hésitez pas si vous avez d'autres questions.
+                                    </div>
+                                    <div class="message-time">12:35</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input">
+                            <button class="btn-secondary" style="border: none; background: none; font-size: 18px; color: #888;"><i class="fa fa-paperclip"></i></button>
+                            <input type="text" class="form-control" placeholder="Écrivez votre message..." style="border: none; background: #f5f5f5;">
+                            <button class="btn-primary" style="padding: 8px 15px;"><i class="fa fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

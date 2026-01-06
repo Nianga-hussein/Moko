@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails Événement | Admin MoKo</title>
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/admin-design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+                <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-evenements.html" class="active"><i class="fa fa-calendar"></i> Événements & Loisirs</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <div class="header-title">Détails de l'événement</div>
+                </div>
+                <div class="header-profile">
+                    <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <div class="page-header">
+                    <a href="admin-evenements.html" class="btn-secondary"><i class="fa fa-arrow-left"></i> Retour</a>
+                    <div>
+                        <button class="btn-primary">Modifier</button>
+                        <button class="btn-delete" style="border:none; padding: 12px 24px; border-radius: 8px; margin-left: 10px; cursor: pointer;">Annuler</button>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                    <!-- Event Info -->
+                    <div class="stat-card" style="display: block;">
+                        <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                            <img src="https://via.placeholder.com/150" style="border-radius: 8px; width: 150px; height: 100px; object-fit: cover;">
+                            <div>
+                                <h2>Afrobeat Music Festival</h2>
+                                <p style="color: #888; margin-top: 5px;"><i class="fa fa-map-marker-alt"></i> Stade des Martyrs, Kinshasa</p>
+                                <p style="color: #888; margin-top: 5px;"><i class="fa fa-calendar-alt"></i> 24 Juin 2024 - 18:00</p>
+                            </div>
+                        </div>
+                        
+                        <div style="border-top: 1px solid var(--admin-border); padding-top: 20px;">
+                            <h4>Aperçu</h4>
+                            <p style="margin-top: 10px; line-height: 1.6; color: #555;">
+                                Le plus grand festival de musique de l'année regroupant les meilleurs artistes du continent.
+                                Une expérience inoubliable avec 3 scènes, des stands de nourriture et des activités culturelles.
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <h4>Billetterie</h4>
+                            <table class="admin-table" style="margin-top: 15px;">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Prix</th>
+                                        <th>Vendus</th>
+                                        <th>Restants</th>
+                                        <th>Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Standard</td>
+                                        <td>5,000 FCFA</td>
+                                        <td>1,200</td>
+                                        <td>300</td>
+                                        <td><span class="status-badge status-active">En vente</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>VIP</td>
+                                        <td>50,000 FCFA</td>
+                                        <td>200</td>
+                                        <td>50</td>
+                                        <td><span class="status-badge status-active">En vente</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Early Bird</td>
+                                        <td>3,000 FCFA</td>
+                                        <td>500</td>
+                                        <td>0</td>
+                                        <td><span class="status-badge status-inactive">Épuisé</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Organizers Info -->
+                    <div class="stat-card" style="display: block;">
+                        <h3>Organisateurs</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <img src="https://via.placeholder.com/40" style="border-radius: 50%; margin-right: 15px;">
+                                <div>
+                                    <div style="font-weight: 500;">Jean Boama</div>
+                                    <div style="font-size: 12px; color: #888;">Producteur Principal</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <img src="https://via.placeholder.com/40" style="border-radius: 50%; margin-right: 15px;">
+                                <div>
+                                    <div style="font-weight: 500;">Aziza Soumare</div>
+                                    <div style="font-size: 12px; color: #888;">Responsable Marketing</div>
+                                </div>
+                            </div>
+                            
+                            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+                            
+                            <h4>Contact Support</h4>
+                            <p style="margin-top: 10px; font-size: 13px;">
+                                <i class="fa fa-envelope"></i> support@afrobeat.com<br>
+                                <i class="fa fa-phone" style="margin-top: 5px; display: inline-block;"></i> +243 81 234 5678
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

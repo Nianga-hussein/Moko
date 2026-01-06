@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails Établissement | Admin MoKo</title>
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/admin-design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+                <li><a href="admin-education.html" class="active"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-evenements.html"><i class="fa fa-calendar"></i> Événements & Loisirs</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <div class="header-title">Détails de l'établissement</div>
+                </div>
+                <div class="header-profile">
+                    <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <div class="page-header">
+                    <a href="admin-education.html" class="btn-secondary"><i class="fa fa-arrow-left"></i> Retour</a>
+                    <div>
+                        <button class="btn-primary">Modifier</button>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <!-- Info Card -->
+                    <div class="stat-card" style="display: block;">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <img src="https://via.placeholder.com/100" style="border-radius: 50%; margin-bottom: 10px;">
+                            <h2>Université de Kinshasa</h2>
+                            <span class="status-badge status-active">Actif</span>
+                        </div>
+                        <div style="border-top: 1px solid var(--admin-border); padding-top: 20px;">
+                            <p><strong>Type:</strong> Université Publique</p>
+                            <p><strong>Email:</strong> info@unikin.cd</p>
+                            <p><strong>Site Web:</strong> www.unikin.cd</p>
+                            <p><strong>Ville:</strong> Kinshasa, Lemba</p>
+                        </div>
+                    </div>
+
+                    <!-- Stats Card -->
+                    <div class="stat-card" style="display: block;">
+                        <h3>Statistiques Académiques</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span>Total Facultés</span>
+                                <strong>12</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span>Programmes Offerts</span>
+                                <strong>120</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span>Étudiants Inscrits (via MoKo)</span>
+                                <strong>450</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container" style="margin-top: 30px;">
+                    <div class="table-header">
+                        <h3>Programmes Disponibles</h3>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Programme</th>
+                                <th>Niveau</th>
+                                <th>Durée</th>
+                                <th>Frais</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Licence en Informatique</td>
+                                <td>Bac+3</td>
+                                <td>3 ans</td>
+                                <td>300 USD / an</td>
+                                <td><span class="status-badge status-active">Ouvert</span></td>
+                            </tr>
+                            <tr>
+                                <td>Master en Droit</td>
+                                <td>Bac+5</td>
+                                <td>2 ans</td>
+                                <td>500 USD / an</td>
+                                <td><span class="status-badge status-active">Ouvert</span></td>
+                            </tr>
+                            <tr>
+                                <td>Médecine</td>
+                                <td>Doctorat</td>
+                                <td>7 ans</td>
+                                <td>400 USD / an</td>
+                                <td><span class="status-badge status-pending">Clôturé</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

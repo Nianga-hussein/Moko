@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails Bien | Admin MoKo</title>
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/admin-design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-immobilier.html" class="active"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+                <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-evenements.html"><i class="fa fa-calendar"></i> Événements & Loisirs</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <div class="header-title">Détails du bien</div>
+                </div>
+                <div class="header-profile">
+                    <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <div class="page-header">
+                    <a href="admin-immobilier.html" class="btn-secondary"><i class="fa fa-arrow-left"></i> Retour</a>
+                    <div>
+                        <button class="btn-primary">Modifier</button>
+                        <button class="btn-delete" style="border:none; padding: 12px 24px; border-radius: 8px; margin-left: 10px; cursor: pointer;">Retirer</button>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                    <!-- Property Info -->
+                    <div class="stat-card" style="display: block;">
+                        <div style="position: relative; margin-bottom: 20px;">
+                            <img src="https://via.placeholder.com/800x400" style="width: 100%; border-radius: 8px; max-height: 300px; object-fit: cover;">
+                            <span class="status-badge status-disponible" style="position: absolute; top: 10px; right: 10px;">Disponible</span>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div>
+                                <h2>Appartement Quartier Plateau</h2>
+                                <p style="color: #888; margin-top: 5px;"><i class="fa fa-map-marker-alt"></i> Av. de la Justice, Gombe</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <h3 style="color: var(--admin-primary);">450,000 FCFA</h3>
+                                <p style="font-size: 13px; color: #888;">/ mois</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 30px; margin: 20px 0; border-bottom: 1px solid var(--admin-border); padding-bottom: 20px;">
+                            <span><i class="fa fa-bed"></i> 3 Chambres</span>
+                            <span><i class="fa fa-bath"></i> 2 Salles de bain</span>
+                            <span><i class="fa fa-ruler-combined"></i> 120 m²</span>
+                        </div>
+                        
+                        <div>
+                            <h4>Description</h4>
+                            <p style="margin-top: 10px; line-height: 1.6; color: #555;">
+                                Bel appartement moderne situé en plein centre-ville. 
+                                Sécurisé, climatisé, avec groupe électrogène et réserve d'eau.
+                                Proche de toutes commodités.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Requests Info -->
+                    <div class="stat-card" style="display: block;">
+                        <h3>Demandes de visite</h3>
+                        <div style="margin-top: 20px;">
+                            <ul style="list-style: none;">
+                                <li style="padding: 15px 0; border-bottom: 1px solid #eee;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                        <strong>Aissatou Traoré</strong>
+                                        <span style="font-size: 12px; color: #888;">Aujourd'hui</span>
+                                    </div>
+                                    <p style="font-size: 13px; color: #555;">Souhaite visiter ce week-end.</p>
+                                    <div style="margin-top: 10px;">
+                                        <button class="btn-secondary" style="padding: 4px 8px; font-size: 11px;">Répondre</button>
+                                    </div>
+                                </li>
+                                <li style="padding: 15px 0; border-bottom: 1px solid #eee;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                        <strong>Paul Kabongo</strong>
+                                        <span style="font-size: 12px; color: #888;">Hier</span>
+                                    </div>
+                                    <p style="font-size: 13px; color: #555;">Est-ce que le prix est négociable ?</p>
+                                    <div style="margin-top: 10px;">
+                                        <button class="btn-secondary" style="padding: 4px 8px; font-size: 11px;">Répondre</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

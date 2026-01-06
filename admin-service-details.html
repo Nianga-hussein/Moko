@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails Prestataire | Admin MoKo</title>
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/admin-design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+                <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-voyage.html"><i class="fa fa-plane"></i> Voyage & Visas</a></li>
+                <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-service.html" class="active"><i class="fa fa-concierge-bell"></i> Services & Quotidien</a></li>
+                <li><a href="admin-chat.html"><i class="fa fa-comments"></i> Messagerie</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <div class="header-title">Détails du prestataire</div>
+                </div>
+                <div class="header-profile">
+                    <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <div class="page-header">
+                    <a href="admin-service.html" class="btn-secondary"><i class="fa fa-arrow-left"></i> Retour</a>
+                    <div>
+                        <button class="btn-primary">Modifier</button>
+                        <button class="btn-delete" style="border:none; padding: 12px 24px; border-radius: 8px; margin-left: 10px; cursor: pointer;">Suspendre</button>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px;">
+                    <!-- Profile Card -->
+                    <div class="stat-card" style="display: block; text-align: center;">
+                        <img src="https://via.placeholder.com/120" style="border-radius: 50%; margin-bottom: 20px;">
+                        <h2>Allain Kumbu</h2>
+                        <p style="color: var(--admin-primary); margin-bottom: 10px;">Plomberie</p>
+                        <div style="margin-bottom: 20px;">
+                            ⭐⭐⭐⭐⭐ (4.8)
+                        </div>
+                        <span class="status-badge status-disponible">Disponible</span>
+                        
+                        <div style="text-align: left; margin-top: 30px; border-top: 1px solid var(--admin-border); padding-top: 20px;">
+                            <p style="margin-bottom: 10px;"><i class="fa fa-map-marker-alt" style="width: 20px; text-align: center;"></i> Douala, Cameroun</p>
+                            <p style="margin-bottom: 10px;"><i class="fa fa-phone" style="width: 20px; text-align: center;"></i> +237 6 00 00 00 00</p>
+                            <p style="margin-bottom: 10px;"><i class="fa fa-envelope" style="width: 20px; text-align: center;"></i> allain.k@email.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div style="display: flex; flex-direction: column; gap: 30px;">
+                        <!-- Stats -->
+                        <div class="stat-card" style="display: flex; justify-content: space-around;">
+                            <div style="text-align: center;">
+                                <h3>45</h3>
+                                <p style="font-size: 12px; color: #888;">Interventions</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <h3>98%</h3>
+                                <p style="font-size: 12px; color: #888;">Taux de succès</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <h3>2 ans</h3>
+                                <p style="font-size: 12px; color: #888;">Ancienneté</p>
+                            </div>
+                        </div>
+
+                        <!-- Reservations -->
+                        <div class="table-container">
+                            <div class="table-header">
+                                <h3>Dernières Réservations</h3>
+                            </div>
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Client</th>
+                                        <th>Date</th>
+                                        <th>Statut</th>
+                                        <th>Montant</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mariam Touré</td>
+                                        <td>21 Jan 2024</td>
+                                        <td><span class="status-badge status-active">Terminée</span></td>
+                                        <td>15,000 FCFA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jean Paul</td>
+                                        <td>23 Jan 2024</td>
+                                        <td><span class="status-badge status-pending">En cours</span></td>
+                                        <td>--</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

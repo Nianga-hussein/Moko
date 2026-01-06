@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Prestataire | Admin MoKo</title>
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/admin-design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+                <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-voyage.html"><i class="fa fa-plane"></i> Voyage & Visas</a></li>
+                <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-service.html" class="active"><i class="fa fa-concierge-bell"></i> Services & Quotidien</a></li>
+                <li><a href="admin-chat.html"><i class="fa fa-comments"></i> Messagerie</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <div class="header-title">Ajouter un prestataire</div>
+                </div>
+                <div class="header-profile">
+                    <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <div class="page-header">
+                    <a href="admin-service.html" class="btn-secondary"><i class="fa fa-arrow-left"></i> Retour</a>
+                </div>
+
+                <div class="form-container">
+                    <h2 style="margin-bottom: 20px;">Informations du prestataire</h2>
+                    <form>
+                        <div style="display: flex; gap: 20px;">
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">Nom</label>
+                                <input type="text" class="form-control" placeholder="Nom">
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">Prénom</label>
+                                <input type="text" class="form-control" placeholder="Prénom">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Catégorie de Service</label>
+                            <select class="form-control">
+                                <option>Plomberie</option>
+                                <option>Électricité</option>
+                                <option>Mécanique</option>
+                                <option>Ménage</option>
+                                <option>Coiffure & Beauté</option>
+                                <option>Jardinage</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ville / Zone d'intervention</label>
+                            <input type="text" class="form-control" placeholder="Ex: Douala, Bonanjo">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Numéro de téléphone</label>
+                            <input type="tel" class="form-control" placeholder="+237 ...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Description / Compétences</label>
+                            <textarea class="form-control" rows="4" placeholder="Description des services offerts..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Tarif horaire moyen (Optionnel)</label>
+                            <input type="text" class="form-control" placeholder="Ex: 5,000 FCFA / h">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Photo de profil</label>
+                            <input type="file" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Documents de vérification (CNI, etc.)</label>
+                            <input type="file" class="form-control" multiple>
+                        </div>
+
+                        <div style="margin-top: 30px; text-align: right;">
+                            <button type="button" class="btn-secondary">Annuler</button>
+                            <button type="submit" class="btn-primary">Ajouter le prestataire</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
