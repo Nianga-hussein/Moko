@@ -3,10 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Immobilier & Logement | MoKo</title>
+    <title>Immobilier & Logement | Admin MoKo</title>
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="assets/css/admin-design.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific Styles for Immobilier Page */
+        .immo-tabs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .tab-pill {
+            font-size: 13px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+            background: #fff;
+            border: 1px solid var(--admin-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-pill.active {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 600;
+            border-color: #cbd5e1;
+        }
+        
+        .tab-pill i { color: #2d7d63; }
+
+        .btn-green-solid {
+            background-color: #2d7d63; /* Moko Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Custom Table Styling */
+        .custom-table th { background: #f8fafc; text-transform: none; font-size: 12px; color: #64748b; font-weight: 600; }
+        .custom-table td { vertical-align: middle; padding: 12px 16px; font-size: 13px; }
+        
+        .property-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .status-badge-outline {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            border: 1px solid;
+            font-weight: 500;
+        }
+        .status-badge-outline.available { border-color: #2d7d63; color: #2d7d63; background: #ecfdf5; }
+        .status-badge-outline.unavailable { border-color: #ef4444; color: #ef4444; background: #fef2f2; }
+        
+        .room-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #94a3b8;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+
+        /* Preview Card */
+        .preview-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--admin-border);
+        }
+        .preview-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .preview-content { padding: 20px; }
+        .preview-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .preview-address { color: #2d7d63; font-size: 12px; margin-bottom: 12px; display: block; }
+        .preview-desc { font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 16px; }
+        .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .feature-item { font-size: 12px; color: #475569; display: flex; align-items: center; gap: 6px; }
+
+        /* Bottom Tables */
+        .agent-row, .visit-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .agent-row:last-child, .visit-row:last-child { border-bottom: none; }
+        
+        .user-info { display: flex; align-items: center; gap: 10px; }
+        .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        
+        .status-pill {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .pill-green { background: #dcfce7; color: #166534; }
+        .pill-gray { background: #f1f5f9; color: #64748b; }
+        .pill-yellow { background: #fef3c7; color: #92400e; }
+
+        @media (max-width: 991px) {
+            .main-grid, .bottom-grid { grid-template-columns: 1fr; }
+            .preview-card { order: -1; margin-bottom: 24px; } /* Show preview first on mobile if needed, or remove order to show below */
+        }
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -14,7 +153,7 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
-                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+                <span class="sidebar-brand">Admin</span>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
@@ -35,18 +174,18 @@
         <main class="admin-main">
             <!-- Header -->
             <header class="admin-header">
-                <div style="display: flex; align-items: center;">
+                <div class="header-left">
                     <button class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <div class="header-search">
                         <i class="fa fa-search"></i>
-                        <input type="text" placeholder="Rechercher bien, propriétaire, locataire...">
+                        <input type="text" placeholder="Rechercher boutique, client, dossier...">
                     </div>
                 </div>
                 
                 <div class="header-profile">
                     <div class="profile-info">
                         <span class="profile-name">Admin Principal</span>
-                        <span class="profile-role">Super Admin</span>
+                        <span class="profile-role">Super Administrateur</span>
                     </div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
                 </div>
@@ -54,132 +193,289 @@
 
             <!-- Content -->
             <div class="admin-content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <i class="fa fa-building" style="color: var(--admin-primary);"></i>
+                <!-- Page Title & Tabs -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
+                    <h2 style="font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                        <span style="background: #2d7d63; color: white; padding: 6px; border-radius: 6px; font-size: 14px;"><i class="fa fa-building"></i></span>
                         Immobilier & Logement
+                    </h2>
+                    
+                    <div class="immo-tabs">
+                        <a href="#" class="tab-pill active"><i class="fa fa-home"></i> Biens actifs</a>
+                        <a href="#" class="tab-pill">499 Biens loués / vendus</a>
+                        <a href="#" class="tab-pill"><i class="fa fa-calendar"></i> Visites programmées</a>
+                        <a href="#" class="tab-pill"><i class="fa fa-money"></i> 316.20 fcfa</a>
                     </div>
-                    <a href="admin-immobilier-add.html" class="btn-primary">
+                </div>
+
+                <!-- Action Bar -->
+                <div style="margin-bottom: 24px; display: flex; justify-content: space-between;">
+                    <a href="admin-immobilier-add.html" class="btn-green-solid">
                         <i class="fa fa-plus"></i> Ajouter un bien immobilier
                     </a>
-                </div>
-
-                <!-- Stats -->
-                <div class="stats-cards">
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>450</h3>
-                            <p>Biens Actifs</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-home"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>45</h3>
-                            <p>Biens Loués / Vendus</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-key"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>120</h3>
-                            <p>Visites programmées</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-calendar-check"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>316M FCFA</h3>
-                            <p>Volume Transactions</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-chart-bar"></i>
-                        </div>
+                    
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" style="font-size: 13px;"><i class="fa fa-search"></i></button>
+                        <button class="btn-secondary" style="font-size: 13px;">Sort: Succès au 30 jrs <i class="fa fa-chevron-down"></i></button>
                     </div>
                 </div>
 
-                <!-- Table -->
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3>Biens Immobiliers Récents</h3>
-                        <div class="table-actions">
-                            <button class="btn-secondary"><i class="fa fa-filter"></i> Filtrer</button>
+                <!-- Main Grid -->
+                <div class="main-grid">
+                    <!-- Left: Property List -->
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="table-responsive">
+                            <table class="admin-table custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nom du bien</th>
+                                        <th>Type</th>
+                                        <th>Bedrooms</th>
+                                        <th>Prix</th>
+                                        <th>Statut</th>
+                                        <th>Détails</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/40" class="property-img">
+                                                <strong>Quartier Plateau</strong>
+                                            </div>
+                                        </td>
+                                        <td>Appartement</td>
+                                        <td>
+                                            <span class="room-icon"><i class="fa fa-bed"></i> 3</span>
+                                            <span class="room-icon"><i class="fa fa-bath"></i> 2</span>
+                                        </td>
+                                        <td><strong>450,000 FCFA</strong></td>
+                                        <td><span class="status-badge-outline available">Disponible</span></td>
+                                        <td><a href="admin-immobilier-details.html" class="btn-secondary" style="padding: 4px 8px; font-size: 12px;"><i class="fa fa-chevron-down"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/40" class="property-img">
+                                                <strong>Bacongo</strong>
+                                            </div>
+                                        </td>
+                                        <td>Maison</td>
+                                        <td>
+                                            <span class="room-icon"><i class="fa fa-bed"></i> 2</span>
+                                            <span class="room-icon"><i class="fa fa-bath"></i> 1</span>
+                                        </td>
+                                        <td><strong>51,000,000 FCFA</strong></td>
+                                        <td><span class="status-badge-outline available">Disponible</span></td>
+                                        <td><a href="admin-immobilier-details.html" class="btn-secondary" style="padding: 4px 8px; font-size: 12px;"><i class="fa fa-chevron-down"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/40" class="property-img">
+                                                <strong>Ottawa Sud</strong>
+                                            </div>
+                                        </td>
+                                        <td>Appartement</td>
+                                        <td>
+                                            <span class="room-icon"><i class="fa fa-bed"></i> 1</span>
+                                            <span class="room-icon"><i class="fa fa-bath"></i> 1</span>
+                                        </td>
+                                        <td><strong>250,000 FCFA</strong></td>
+                                        <td><span class="status-badge-outline unavailable">Indisponible</span></td>
+                                        <td><a href="admin-immobilier-details.html" class="btn-secondary" style="padding: 4px 8px; font-size: 12px;"><i class="fa fa-chevron-down"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/40" class="property-img">
+                                                <strong>Quartier Gombe</strong>
+                                            </div>
+                                        </td>
+                                        <td>Studio</td>
+                                        <td>
+                                            <span class="room-icon"><i class="fa fa-bed"></i> 2</span>
+                                            <span class="room-icon"><i class="fa fa-bath"></i> 1</span>
+                                        </td>
+                                        <td><strong>180,000 FCFA</strong></td>
+                                        <td><span class="status-badge-outline unavailable">Indisponible</span></td>
+                                        <td><a href="admin-immobilier-details.html" class="btn-secondary" style="padding: 4px 8px; font-size: 12px;"><i class="fa fa-chevron-down"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/40" class="property-img">
+                                                <strong>Maison Kabinda</strong>
+                                            </div>
+                                        </td>
+                                        <td>Maison</td>
+                                        <td>
+                                            <span class="room-icon"><i class="fa fa-bed"></i> 2</span>
+                                            <span class="room-icon"><i class="fa fa-bath"></i> 1</span>
+                                        </td>
+                                        <td><strong>350,000 FCFA</strong></td>
+                                        <td><span class="status-badge-outline unavailable">Indisponible</span></td>
+                                        <td><a href="admin-immobilier-details.html" class="btn-secondary" style="padding: 4px 8px; font-size: 12px;"><i class="fa fa-chevron-down"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/40" class="property-img">
+                                                <strong>Maison Residence</strong>
+                                            </div>
+                                        </td>
+                                        <td>Studio</td>
+                                        <td>
+                                            <span class="room-icon"><i class="fa fa-bed"></i> 2</span>
+                                            <span class="room-icon"><i class="fa fa-bath"></i> 1</span>
+                                        </td>
+                                        <td><strong>250,000 FCFA</strong></td>
+                                        <td><span class="status-badge-outline unavailable">Indisponible</span></td>
+                                        <td><a href="admin-immobilier-details.html" class="btn-secondary" style="padding: 4px 8px; font-size: 12px;"><i class="fa fa-chevron-down"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>Nom du bien</th>
-                                    <th>Type</th>
-                                    <th>Chambres</th>
-                                    <th>Prix</th>
-                                    <th>Statut</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Appartement Quartier Plateau</strong>
-                                        </div>
-                                    </td>
-                                    <td>Appartement</td>
-                                    <td>3</td>
-                                    <td>450,000 FCFA/mois</td>
-                                    <td><span class="status-badge status-disponible">Disponible</span></td>
-                                    <td>
-                                        <a href="admin-immobilier-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Villa Bacongo</strong>
-                                        </div>
-                                    </td>
-                                    <td>Maison</td>
-                                    <td>5</td>
-                                    <td>51,000,000 FCFA</td>
-                                    <td><span class="status-badge status-disponible">Disponible</span></td>
-                                    <td>
-                                        <a href="admin-immobilier-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Studio Ottawa Sud</strong>
-                                        </div>
-                                    </td>
-                                    <td>Appartement</td>
-                                    <td>1</td>
-                                    <td>250,000 FCFA/mois</td>
-                                    <td><span class="status-badge status-indisponible">Loué</span></td>
-                                    <td>
-                                        <a href="admin-immobilier-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                    <!-- Right: Preview Card -->
+                    <div class="preview-card">
+                        <img src="https://via.placeholder.com/400x300" class="preview-img">
+                        <div class="preview-content">
+                            <h3 class="preview-title">Limete Résidentiel</h3>
+                            <span class="preview-address">14, Rue de Lumumba, Studio</span>
+                            
+                            <p class="preview-desc">
+                                14. Studio de meublé, résidence, Draaj ant bright living room 60m² équipé air conditionné.
+                            </p>
+                            
+                            <div class="feature-list">
+                                <div class="feature-item"><i class="fa fa-check-square" style="color: #2d7d63;"></i> 1 bedroom</div>
+                                <div class="feature-item"><i class="fa fa-check-square" style="color: #2d7d63;"></i> 1 bathroom</div>
+                                <div class="feature-item"><i class="fa fa-check-square" style="color: #2d7d63;"></i> Short term</div>
+                                <div class="feature-item"><i class="fa fa-check-square" style="color: #2d7d63;"></i> Standby Power</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Bottom Grid -->
+                <div class="bottom-grid">
+                    <!-- Demandes de visite -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Demandes de visite</h3>
+                        </div>
+                        <div style="padding: 0 20px;">
+                            <table class="admin-table custom-table" style="border: none;">
+                                <thead>
+                                    <tr>
+                                        <th style="background: white; padding-left: 0;">Clients</th>
+                                        <th style="background: white;">Tour</th>
+                                        <th style="background: white;">Date</th>
+                                        <th style="background: white;">Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding-left: 0;">
+                                            <div class="user-info">
+                                                <img src="https://via.placeholder.com/32" class="user-avatar">
+                                                <strong>Aissatou Traoré</strong>
+                                            </div>
+                                        </td>
+                                        <td>Quartier Plateau</td>
+                                        <td>Avril 2024</td>
+                                        <td><span class="status-pill pill-green">Confirmé</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 0;">
+                                            <div class="user-info">
+                                                <img src="https://via.placeholder.com/32" class="user-avatar">
+                                                <strong>Patticie Laminé</strong>
+                                            </div>
+                                        </td>
+                                        <td>Ottawa Sud</td>
+                                        <td>25 Avril</td>
+                                        <td><span class="status-pill pill-green">Confirmé</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Agents -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Agents immobiliers</h3>
+                            <button class="btn-secondary" style="font-size: 11px; padding: 4px 8px;">+ Assigner un agent</button>
+                        </div>
+                        <div style="padding: 0 20px;">
+                             <table class="admin-table custom-table" style="border: none;">
+                                <thead>
+                                    <tr>
+                                        <th style="background: white; padding-left: 0;">Assigner un agent</th>
+                                        <th style="background: white;">Plateau Commande</th>
+                                        <th style="background: white;">Sombe un gest</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding-left: 0;">
+                                            <div class="user-info">
+                                                <img src="https://via.placeholder.com/32" class="user-avatar">
+                                                <strong>Abou Touré</strong>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-pill pill-green">Nouvelle</span></td>
+                                        <td>
+                                            <select style="border: 1px solid #e2e8f0; border-radius: 4px; padding: 4px; font-size: 12px; color: #64748b;">
+                                                <option>Disponible</option>
+                                                <option>Occupé</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 0;">
+                                            <div class="user-info">
+                                                <img src="https://via.placeholder.com/32" class="user-avatar">
+                                                <strong>Célia Mahata</strong>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-pill pill-gray">Confirmé</span></td>
+                                        <td>
+                                            <select style="border: 1px solid #e2e8f0; border-radius: 4px; padding: 4px; font-size: 12px; color: #64748b;">
+                                                <option>Indisponible</option>
+                                                <option>Disponible</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-size: 13px; color: #64748b;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span><i class="fa fa-user"></i> 4 - Sur 380</span>
+                        <button class="btn-secondary" style="padding: 2px 8px;"><i class="fa fa-filter"></i></button>
+                    </div>
+                    
+                    <div style="display: flex; gap: 5px;">
+                        <button class="btn-secondary" style="padding: 4px 8px;"><i class="fa fa-angle-left"></i></button>
+                        <button class="btn-secondary" style="padding: 4px 10px;">1</button>
+                        <button class="btn-secondary" style="padding: 4px 8px;">1.9 suivante</button>
+                        <button class="btn-secondary" style="padding: 4px 8px;">1.1 Préparé</button>
+                        <button class="btn-secondary" style="padding: 4px 8px;"><i class="fa fa-angle-right"></i></button>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
+
     <script>
         // Simple Sidebar Toggle Script
         document.querySelector('.menu-toggle').addEventListener('click', function() {

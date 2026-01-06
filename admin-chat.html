@@ -14,7 +14,7 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
-                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+                <span class="sidebar-brand">Admin</span>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
@@ -35,127 +35,294 @@
         <main class="admin-main">
             <!-- Header -->
             <header class="admin-header">
-                <div style="display: flex; align-items: center;">
+                <div class="header-left">
                     <button class="menu-toggle"><i class="fa fa-bars"></i></button>
-                    <div class="header-title">Messagerie Support</div>
+                    <div class="header-search">
+                        <i class="fa fa-search"></i>
+                        <input type="text" placeholder="Rechercher...">
+                    </div>
                 </div>
+                
                 <div class="header-profile">
+                    <div class="profile-info">
+                        <span class="profile-name">Admin Principal</span>
+                        <span class="profile-role">Super Administrateur</span>
+                    </div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
                 </div>
             </header>
 
             <!-- Content -->
-            <div class="admin-content">
-                <div class="chat-container">
-                    <!-- Chat Sidebar -->
-                    <div class="chat-sidebar">
-                        <div class="chat-search">
-                            <input type="text" class="form-control" placeholder="Rechercher...">
+            <div class="admin-content chat-page-content">
+                <div class="chat-layout">
+                    <!-- 1. Left Sidebar: User List -->
+                    <div class="chat-list-panel">
+                        <div class="chat-list-header">
+                            <div class="dropdown-modules">
+                                <span>Tous les modules</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </div>
+                            <div class="chat-search-bar">
+                                <i class="fa fa-search"></i>
+                                <input type="text" placeholder="Rechercher...">
+                            </div>
                         </div>
-                        <ul class="chat-list">
-                            <li class="chat-item active">
-                                <div class="chat-avatar">
-                                    <img src="https://via.placeholder.com/40">
-                                    <span class="chat-status status-online"></span>
+                        <ul class="chat-users-list">
+                            <li class="chat-user-item active">
+                                <div class="user-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="Sara">
+                                    <span class="status-dot online"></span>
                                 </div>
-                                <div class="chat-info">
-                                    <div class="chat-name">
-                                        Sara Sow
-                                        <span style="font-size: 10px; color: #888; font-weight: 400;">12:30</span>
+                                <div class="user-info">
+                                    <div class="user-top">
+                                        <span class="user-name">Sara Sow</span>
+                                        <span class="msg-time">10:30</span>
                                     </div>
-                                    <div class="chat-preview">Bonjour, concernant ma demande de Visa...</div>
+                                    <div class="user-msg-preview">Bonjour, concernant le visa...</div>
+                                    <div class="msg-meta">
+                                        <span class="module-tag">Visa</span>
+                                        <span class="unread-count">2</span>
+                                    </div>
                                 </div>
                             </li>
-                            <li class="chat-item">
-                                <div class="chat-avatar">
-                                    <img src="https://via.placeholder.com/40">
-                                    <span class="chat-status status-offline"></span>
+                            <li class="chat-user-item">
+                                <div class="user-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="Paul">
+                                    <span class="status-dot offline"></span>
                                 </div>
-                                <div class="chat-info">
-                                    <div class="chat-name">
-                                        Bernad Mansaré
-                                        <span style="font-size: 10px; color: #888; font-weight: 400;">Hier</span>
+                                <div class="user-info">
+                                    <div class="user-top">
+                                        <span class="user-name">Paul Kabongo</span>
+                                        <span class="msg-time">Hier</span>
                                     </div>
-                                    <div class="chat-preview">Merci pour votre aide !</div>
+                                    <div class="user-msg-preview">Merci pour votre réponse rapide.</div>
+                                    <div class="msg-meta">
+                                        <span class="module-tag">Boutique</span>
+                                    </div>
                                 </div>
                             </li>
-                            <li class="chat-item">
-                                <div class="chat-avatar">
-                                    <img src="https://via.placeholder.com/40">
-                                    <span class="chat-status status-online"></span>
+                            <li class="chat-user-item">
+                                <div class="user-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="Alice">
+                                    <span class="status-dot online"></span>
                                 </div>
-                                <div class="chat-info">
-                                    <div class="chat-name">
-                                        Karine Doumbia
-                                        <span style="font-size: 10px; color: #888; font-weight: 400;">Hier</span>
+                                <div class="user-info">
+                                    <div class="user-top">
+                                        <span class="user-name">Alice M.</span>
+                                        <span class="msg-time">Hier</span>
                                     </div>
-                                    <div class="chat-preview">Dossier de diplôme envoyé.</div>
+                                    <div class="user-msg-preview">Le paiement a échoué.</div>
+                                    <div class="msg-meta">
+                                        <span class="module-tag">MoKo Pay</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="chat-user-item">
+                                <div class="user-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="Jean">
+                                </div>
+                                <div class="user-info">
+                                    <div class="user-top">
+                                        <span class="user-name">Jean K.</span>
+                                        <span class="msg-time">2 j</span>
+                                    </div>
+                                    <div class="user-msg-preview">Documents envoyés.</div>
+                                    <div class="msg-meta">
+                                        <span class="module-tag">Immo</span>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Chat Main -->
-                    <div class="chat-main">
-                        <div class="chat-header">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <img src="https://via.placeholder.com/40" style="border-radius: 50%; width: 35px; height: 35px;">
+                    <!-- 2. Middle: Chat Area -->
+                    <div class="chat-main-panel">
+                        <div class="chat-main-header">
+                            <div class="current-user">
+                                <img src="https://via.placeholder.com/40" class="header-avatar">
                                 <div>
-                                    <div style="font-weight: 600;">Sara Sow</div>
-                                    <div style="font-size: 12px; color: #28a745;">En ligne</div>
+                                    <h3>Sara Sow</h3>
+                                    <span class="status-text">En ligne</span>
                                 </div>
                             </div>
-                            <div>
-                                <button class="btn-secondary" style="padding: 6px 12px;"><i class="fa fa-phone"></i></button>
-                                <button class="btn-secondary" style="padding: 6px 12px;"><i class="fa fa-video"></i></button>
-                                <button class="btn-secondary" style="padding: 6px 12px;"><i class="fa fa-info-circle"></i></button>
+                            <div class="chat-actions">
+                                <button class="icon-btn"><i class="fa fa-phone"></i></button>
+                                <button class="icon-btn"><i class="fa fa-video"></i></button>
+                                <button class="icon-btn mobile-details-toggle"><i class="fa fa-info-circle"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages-area">
+                            <div class="date-divider"><span>Aujourd'hui</span></div>
+                            
+                            <!-- Received -->
+                            <div class="msg-row received">
+                                <img src="https://via.placeholder.com/30" class="msg-avatar">
+                                <div class="msg-bubble">
+                                    <div class="msg-text">Bonjour, je voudrais savoir si mon dossier Visa pour la France est complet ?</div>
+                                    <div class="msg-time">10:30</div>
+                                </div>
+                            </div>
+
+                            <!-- Sent -->
+                            <div class="msg-row sent">
+                                <div class="msg-bubble">
+                                    <div class="msg-text">Bonjour Sara ! Je vérifie cela tout de suite pour vous.</div>
+                                    <div class="msg-time">10:31</div>
+                                </div>
+                                <img src="https://via.placeholder.com/30" class="msg-avatar">
+                            </div>
+
+                            <!-- Received with attachment -->
+                            <div class="msg-row received">
+                                <img src="https://via.placeholder.com/30" class="msg-avatar">
+                                <div class="msg-bubble">
+                                    <div class="msg-text">J'ai ajouté le relevé bancaire manquant ce matin.</div>
+                                    <div class="msg-attachment">
+                                        <div class="file-icon"><i class="fa fa-file-pdf-o"></i></div>
+                                        <div class="file-info">
+                                            <span class="file-name">releve_bancaire.pdf</span>
+                                            <span class="file-size">1.2 MB</span>
+                                        </div>
+                                    </div>
+                                    <div class="msg-time">10:32</div>
+                                </div>
+                            </div>
+                            
+                            <!-- System Message -->
+                            <div class="system-message">
+                                <i class="fa fa-check-circle"></i> Dossier #8821 mis à jour par Admin
+                            </div>
+
+                            <!-- Sent -->
+                            <div class="msg-row sent">
+                                <div class="msg-bubble">
+                                    <div class="msg-text">Parfait, je le vois bien. Tout semble en ordre maintenant. Nous allons procéder à la validation.</div>
+                                    <div class="msg-time">10:35</div>
+                                </div>
+                                <img src="https://via.placeholder.com/30" class="msg-avatar">
                             </div>
                         </div>
 
-                        <div class="chat-messages">
-                            <div class="message received">
-                                <div>
-                                    <div class="message-content">
-                                        Bonjour, je voudrais savoir où en est ma demande de Visa pour la France ?
-                                    </div>
-                                    <div class="message-time">12:30</div>
-                                </div>
+                        <div class="chat-input-area">
+                            <div class="input-actions">
+                                <button><i class="fa fa-paperclip"></i></button>
+                                <button><i class="fa fa-image"></i></button>
                             </div>
-                            <div class="message sent">
-                                <div>
-                                    <div class="message-content">
-                                        Bonjour Sara ! Laissez-moi vérifier cela pour vous. Votre dossier est en cours d'examen par nos agents.
-                                    </div>
-                                    <div class="message-time">12:32</div>
-                                </div>
+                            <input type="text" placeholder="Écrivez votre message...">
+                            <button class="send-btn"><i class="fa fa-paper-plane"></i></button>
+                        </div>
+                        <div class="chat-footer-actions">
+                            <button class="action-pill resolve">Résoudre</button>
+                            <button class="action-pill escalate">Escalader</button>
+                            <button class="action-pill close">Clore</button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Right: Details Panel -->
+                    <div class="chat-details-panel">
+                        <div class="details-header">
+                            <div class="details-profile">
+                                <img src="https://via.placeholder.com/80" alt="Profile">
+                                <h2>Sara Sow</h2>
+                                <p>+221 77 123 45 67</p>
+                                <p class="location"><i class="fa fa-map-marker"></i> Dakar, Sénégal</p>
                             </div>
-                            <div class="message received">
-                                <div>
-                                    <div class="message-content">
-                                        D'accord, merci. J'ai aussi envoyé les documents manquants hier soir.
-                                    </div>
-                                    <div class="message-time">12:33</div>
-                                </div>
-                            </div>
-                            <div class="message sent">
-                                <div>
-                                    <div class="message-content">
-                                        Bien reçu. Nous vous tiendrons informée dès qu'il y a du nouveau. N'hésitez pas si vous avez d'autres questions.
-                                    </div>
-                                    <div class="message-time">12:35</div>
+                            <div class="user-rating">
+                                <span>Note Client</span>
+                                <div class="stars">
+                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="chat-input">
-                            <button class="btn-secondary" style="border: none; background: none; font-size: 18px; color: #888;"><i class="fa fa-paperclip"></i></button>
-                            <input type="text" class="form-control" placeholder="Écrivez votre message..." style="border: none; background: #f5f5f5;">
-                            <button class="btn-primary" style="padding: 8px 15px;"><i class="fa fa-paper-plane"></i></button>
+                        <div class="details-section">
+                            <div class="section-title">
+                                <span>Dossiers VISA</span>
+                                <span class="badge">1</span>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-row">
+                                    <span class="label">Type</span>
+                                    <span class="value">France - Tourisme</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Statut</span>
+                                    <span class="value status-pending">En cours</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Date</span>
+                                    <span class="value">05 Jan 2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <span>Commandes</span>
+                                <span class="badge">3</span>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-row">
+                                    <span class="label">Dernière</span>
+                                    <span class="value">#CMD-4920</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Montant</span>
+                                    <span class="value">45,000 FCFA</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Statut</span>
+                                    <span class="value status-validee">Livrée</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <span>MoKo Pay</span>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-row">
+                                    <span class="label">Solde</span>
+                                    <span class="value">12,500 FCFA</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <span>Assigné à</span>
+                            </div>
+                            <div class="assignee-card">
+                                <img src="https://via.placeholder.com/30" class="assignee-avatar">
+                                <div class="assignee-info">
+                                    <span class="name">Antouine Tia</span>
+                                    <span class="role">Agent Visa</span>
+                                </div>
+                                <button class="btn-xs">Changer</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
+    <script>
+        // Simple Sidebar Toggle Script
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.admin-sidebar').classList.toggle('active');
+        });
+
+        // Mobile Details Toggle
+        const detailsToggle = document.querySelector('.mobile-details-toggle');
+        const detailsPanel = document.querySelector('.chat-details-panel');
+        if(detailsToggle && detailsPanel) {
+            detailsToggle.addEventListener('click', function() {
+                detailsPanel.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>

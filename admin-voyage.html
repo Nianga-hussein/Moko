@@ -3,10 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Voyage & Visas | MoKo</title>
+    <title>Voyage & Visas | Admin MoKo</title>
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="assets/css/admin-design.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific Styles for Voyage Page */
+        .voyage-tabs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .tab-pill {
+            font-size: 13px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+            background: #fff;
+            border: 1px solid var(--admin-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-pill.active {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 600;
+            border-color: #cbd5e1;
+        }
+        
+        .tab-pill i { color: #2d7d63; }
+
+        .btn-green-solid {
+            background-color: #2d7d63; /* Moko Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Custom Table Styling */
+        .custom-table th { background: #f8fafc; text-transform: none; font-size: 12px; color: #64748b; font-weight: 600; }
+        .custom-table td { vertical-align: middle; padding: 12px 16px; font-size: 13px; }
+        
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            object-fit: cover;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .btn-config {
+            background: white;
+            border: 1px solid var(--admin-border);
+            color: #64748b;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        /* Visa Types Grid */
+        .visa-type-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 13px;
+        }
+        .visa-type-row:last-child { border-bottom: none; }
+        
+        .visa-type-header {
+            background: #f8fafc;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 12px;
+            border-bottom: 1px solid var(--admin-border);
+        }
+
+        /* Right Panel: Dossier Preview */
+        .dossier-preview {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--admin-border);
+            padding: 20px;
+        }
+
+        .dossier-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .user-avatar-lg {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-details h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .user-details p { font-size: 12px; color: #64748b; }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 12px;
+        }
+        .checklist-item i { margin-right: 8px; color: #64748b; }
+        .checklist-item.checked i { color: #2d7d63; }
+
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .pill-green { background: #dcfce7; color: #166534; }
+        .pill-yellow { background: #fef3c7; color: #92400e; }
+        .pill-gray { background: #f1f5f9; color: #64748b; }
+
+        @media (max-width: 991px) {
+            .main-grid, .bottom-grid { grid-template-columns: 1fr; }
+            .visa-type-row { grid-template-columns: 1fr 1fr; gap: 10px; } /* Simplify grid on mobile */
+        }
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -14,7 +167,7 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
-                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+                <span class="sidebar-brand">Admin</span>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
@@ -35,18 +188,18 @@
         <main class="admin-main">
             <!-- Header -->
             <header class="admin-header">
-                <div style="display: flex; align-items: center;">
+                <div class="header-left">
                     <button class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <div class="header-search">
                         <i class="fa fa-search"></i>
-                        <input type="text" placeholder="Rechercher destination, dossier visa...">
+                        <input type="text" placeholder="Rechercher boutique, client, dossier...">
                     </div>
                 </div>
                 
                 <div class="header-profile">
                     <div class="profile-info">
                         <span class="profile-name">Admin Principal</span>
-                        <span class="profile-role">Super Admin</span>
+                        <span class="profile-role">Super Administrateur</span>
                     </div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
                 </div>
@@ -54,147 +207,281 @@
 
             <!-- Content -->
             <div class="admin-content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <i class="fa fa-plane" style="color: var(--admin-primary);"></i>
+                <!-- Page Title & Tabs -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
+                    <h2 style="font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                        <span style="background: #2d7d63; color: white; padding: 6px; border-radius: 6px; font-size: 14px;"><i class="fa fa-plane"></i></span>
                         Voyage & Visas
-                    </div>
-                    <a href="admin-voyage-add.html" class="btn-primary">
-                        <i class="fa fa-plus"></i> Créer un dossier
-                    </a>
-                </div>
-
-                <!-- Stats -->
-                <div class="stats-cards">
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>187</h3>
-                            <p>Dossiers Validés</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-check-double"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>42</h3>
-                            <p>Dossiers en cours</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-spinner"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>76%</h3>
-                            <p>Taux de succès</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-chart-pie"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>11</h3>
-                            <p>Délai moyen (jours)</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-clock"></i>
-                        </div>
+                    </h2>
+                    
+                    <div class="voyage-tabs">
+                        <a href="#" class="tab-pill active"><i class="fa fa-folder-open"></i> Dossiers en cours</a>
+                        <a href="#" class="tab-pill">187 Dossiers validés</a>
+                        <a href="#" class="tab-pill"><i class="fa fa-chart-line"></i> 76% Taux de succès</a>
+                        <a href="#" class="tab-pill">11 Délai moyen</a>
                     </div>
                 </div>
 
-                <!-- Table -->
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3>Dossiers de Visa Récents</h3>
-                        <div class="table-actions">
-                            <button class="btn-secondary"><i class="fa fa-filter"></i> Filtrer</button>
+                <!-- Destinations Table -->
+                <div class="main-grid">
+                    <div class="left-column">
+                        <div class="card" style="margin-bottom: 24px;">
+                            <div class="card-header">
+                                <h3>Destinations</h3>
+                                <div style="display: flex; gap: 10px;">
+                                    <button class="btn-secondary" style="font-size: 11px;">Visa Type <i class="fa fa-chevron-down"></i></button>
+                                    <button class="btn-secondary" style="font-size: 11px;">Status en cours <i class="fa fa-chevron-down"></i></button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="admin-table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Pays</th>
+                                            <th>Types</th>
+                                            <th>Délai estimé</th>
+                                            <th>Travail</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <img src="https://flagcdn.com/w40/cn.png" class="flag-icon">
+                                                    <strong>Chine</strong>
+                                                </div>
+                                            </td>
+                                            <td>Visa Tourisme, Études</td>
+                                            <td>15 jours</td>
+                                            <td>35 jours</td>
+                                            <td><button class="btn-config">Configurer</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <img src="https://flagcdn.com/w40/fr.png" class="flag-icon">
+                                                    <strong>France</strong>
+                                                </div>
+                                            </td>
+                                            <td>Visa Tourisme, Schengen</td>
+                                            <td>30 jours</td>
+                                            <td>30 jours</td>
+                                            <td><button class="btn-config">Configurer</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <img src="https://flagcdn.com/w40/ca.png" class="flag-icon">
+                                                    <strong>Canada</strong>
+                                                </div>
+                                            </td>
+                                            <td>Visa Tourisme, Travail</td>
+                                            <td>21 jours</td>
+                                            <td>21 jours</td>
+                                            <td><button class="btn-config">Configurer</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <img src="https://flagcdn.com/w40/us.png" class="flag-icon">
+                                                    <strong>États-Unis</strong>
+                                                </div>
+                                            </td>
+                                            <td>Visa Tourisme, Travail</td>
+                                            <td>21 jours</td>
+                                            <td>35 jours</td>
+                                            <td><button class="btn-config">Configurer</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Types de Visas -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Types de visas</h3>
+                                <button class="btn-secondary" style="font-size: 11px;"><i class="fa fa-bars"></i> Traitement</button>
+                            </div>
+                            <div class="visa-types-list">
+                                <div class="visa-type-row visa-type-header">
+                                    <div>Visa Tourisme</div>
+                                    <div>Type</div>
+                                    <div>Coûts Requis</div>
+                                    <div>Quota</div>
+                                    <div>Statut</div>
+                                </div>
+                                <div class="visa-type-row">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <div style="width: 4px; height: 16px; background: #d32f2f;"></div>
+                                        <strong>Visa Tourisme</strong>
+                                    </div>
+                                    <td><i class="fa fa-check-circle" style="color: #2d7d63;"></i> Visa Tourisme</td>
+                                    <td>12 jours / 85,000</td>
+                                    <td>85,000</td>
+                                    <td><span class="status-pill pill-green">Traitement</span></td>
+                                </div>
+                                <div class="visa-type-row">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <div style="width: 4px; height: 16px; background: #1976d2;"></div>
+                                        <strong>Visa Études</strong>
+                                    </div>
+                                    <td><i class="fa fa-check-circle" style="color: #2d7d63;"></i> Visa Études</td>
+                                    <td>90 jours / 191,000</td>
+                                    <td>191,000</td>
+                                    <td><span class="status-pill pill-green">Traitement</span></td>
+                                </div>
+                                <div class="visa-type-row">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <div style="width: 4px; height: 16px; background: #fbc02d;"></div>
+                                        <strong>Visa Travail</strong>
+                                    </div>
+                                    <td><i class="fa fa-check-circle" style="color: #2d7d63;"></i> Visa Travail</td>
+                                    <td>20 jours / 45,000</td>
+                                    <td>45 jours</td>
+                                    <td><span class="status-pill pill-gray">Soumis</span></td>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Dossiers Clients (Bottom) -->
+                        <div class="card" style="margin-top: 24px;">
+                            <div class="card-header">
+                                <h3>Dossiers clients</h3>
+                                <button class="btn-secondary" style="font-size: 11px;">Dossiers de A-Z <i class="fa fa-chevron-down"></i></button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="admin-table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Client</th>
+                                            <th>Pays</th>
+                                            <th>Type</th>
+                                            <th>Délai estimé</th>
+                                            <th>Statut</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <img src="https://via.placeholder.com/24" style="border-radius: 50%;">
+                                                    <strong>Jules Ekombo</strong>
+                                                </div>
+                                            </td>
+                                            <td><span style="font-size: 11px;"><i class="fa fa-flag" style="color: #1976d2;"></i> France</span></td>
+                                            <td>Visa Études</td>
+                                            <td>100,000 FCFA</td>
+                                            <td><span class="status-pill pill-green"><i class="fa fa-check"></i> Validé</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <img src="https://via.placeholder.com/24" style="border-radius: 50%;">
+                                                    <strong>Karimu Mfue</strong>
+                                                </div>
+                                            </td>
+                                            <td><span style="font-size: 11px;"><i class="fa fa-flag" style="color: #d32f2f;"></i> Canada</span></td>
+                                            <td>Visa Travail</td>
+                                            <td>0.10 par jour</td>
+                                            <td><span class="status-pill pill-gray">X</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>Pays</th>
-                                    <th>Type Visa</th>
-                                    <th>Demandeur</th>
-                                    <th>Délai estimé</th>
-                                    <th>Statut</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <i class="fa fa-flag" style="color: #d32f2f;"></i>
-                                            <strong>Chine</strong>
-                                        </div>
-                                    </td>
-                                    <td>Tourisme, Études</td>
-                                    <td>Jules Ekombo</td>
-                                    <td>15 jours</td>
-                                    <td><span class="status-badge status-pending">En cours</span></td>
-                                    <td>
-                                        <a href="admin-voyage-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Traiter</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <i class="fa fa-flag" style="color: #1976d2;"></i>
-                                            <strong>France</strong>
-                                        </div>
-                                    </td>
-                                    <td>Schengen, Travail</td>
-                                    <td>Sara Sow</td>
-                                    <td>30 jours</td>
-                                    <td><span class="status-badge status-active">Validé</span></td>
-                                    <td>
-                                        <a href="admin-voyage-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <i class="fa fa-flag" style="color: #c62828;"></i>
-                                            <strong>Canada</strong>
-                                        </div>
-                                    </td>
-                                    <td>Tourisme, Travail</td>
-                                    <td>Karimu Mfue</td>
-                                    <td>21 jours</td>
-                                    <td><span class="status-badge status-pending">En attente</span></td>
-                                    <td>
-                                        <a href="admin-voyage-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Traiter</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <i class="fa fa-flag" style="color: #388e3c;"></i>
-                                            <strong>États-Unis</strong>
-                                        </div>
-                                    </td>
-                                    <td>Tourisme B1/B2</td>
-                                    <td>John Doe</td>
-                                    <td>35 jours</td>
-                                    <td><span class="status-badge status-inactive">Refusé</span></td>
-                                    <td>
-                                        <a href="admin-voyage-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Réviser</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                    <!-- Right Column: Dossier Details -->
+                    <div class="right-column">
+                        <div class="dossier-preview">
+                            <div class="dossier-header">
+                                <img src="https://via.placeholder.com/50" class="user-avatar-lg">
+                                <div class="user-details">
+                                    <h3>Jules Ekombo</h3>
+                                    <p>Phone: +242 06 244 5678</p>
+                                    <p>Email: jules.ekombo@email.com</p>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="font-size: 13px; margin-bottom: 10px; color: #333;">Phone Number:</h4>
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; color: #2d7d63;">
+                                    <span>+242 06 244 5678</span>
+                                    <span>PA 10</span>
+                                </div>
+                                <p style="font-size: 11px; color: #64748b; margin-top: 4px;">jules.ekombo@email.com</p>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="font-size: 13px; margin-bottom: 10px; color: #333;">Document Checklist:</h4>
+                                <div class="checklist-item checked">
+                                    <span><i class="fa fa-check-square"></i> Passeport</span>
+                                    <span style="color: #64748b;">Validé</span>
+                                </div>
+                                <div class="checklist-item checked">
+                                    <span><i class="fa fa-check-square"></i> Photo récente</span>
+                                    <span style="color: #64748b;">10 pour 1 2026</span>
+                                </div>
+                                <div class="checklist-item checked">
+                                    <span><i class="fa fa-check-square"></i> Certificat d'hébergement</span>
+                                    <span style="color: #64748b;">10 pour 1 2026</span>
+                                </div>
+                                <div class="checklist-item">
+                                    <span><i class="fa fa-square-o"></i> Lettre d'invitation</span>
+                                    <span style="color: #64748b;">15 pour 1 2026</span>
+                                </div>
+                                <div class="checklist-item checked">
+                                    <span><i class="fa fa-check-square"></i> Assurance santé</span>
+                                    <span style="color: #64748b;">20 pour 1 2026</span>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="font-size: 13px; margin-bottom: 10px; color: #333;">Lien dates</h4>
+                                <div class="checklist-item">
+                                    <span style="display: flex; align-items: center; gap: 6px;"><i class="fa fa-file-pdf-o" style="color: #d32f2f;"></i> Relevé bancaire.pdf</span>
+                                    <span style="font-size: 10px; color: #2d7d63;">1.2 Mo - 10 jan 2025</span>
+                                </div>
+                                <div class="checklist-item">
+                                    <span style="display: flex; align-items: center; gap: 6px;"><i class="fa fa-file-pdf-o" style="color: #d32f2f;"></i> Casier judiciaire.pdf</span>
+                                    <span style="font-size: 10px; color: #2d7d63;">2.4 Mo - 01 jan 2025</span>
+                                </div>
+                            </div>
+
+                            <button class="btn-secondary" style="width: 100%; margin-bottom: 10px;"><i class="fa fa-refresh"></i> Changer statut</button>
+                            
+                            <div style="border-top: 1px solid #f1f5f9; padding-top: 15px; margin-top: 15px;">
+                                <h4 style="font-size: 12px; color: #64748b; margin-bottom: 10px;">New dossier submitted by</h4>
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <img src="https://via.placeholder.com/30" style="border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 13px; font-weight: 600;">JP's Métay Jerome</div>
+                                        <div style="font-size: 11px; color: #64748b;">2.24 parle</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <img src="https://via.placeholder.com/30" style="border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 13px; font-weight: 600;">Karimu Mfue</div>
+                                        <div style="font-size: 11px; color: #64748b;">0.10 parle</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </main>
     </div>
+
+    <script>
+        // Simple Sidebar Toggle Script
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.admin-sidebar').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

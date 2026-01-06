@@ -7,6 +7,38 @@
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="assets/css/admin-design.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .staff-list {
+            list-style: none;
+        }
+        .staff-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .staff-item:last-child { border-bottom: none; }
+        .staff-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .staff-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .staff-btn {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            color: #475569;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -14,11 +46,16 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
-                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+                <span class="sidebar-brand">Admin</span>
+            </div>
+            <div style="padding: 0 24px; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px; color: #10b981; font-size: 12px; font-weight: 500;">
+                    <span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></span> En ligne 24/7
+                </div>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="admin-dashboard.html" class="active"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
-                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
+                <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Marketplace & Commerces</a></li>
                 <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
                 <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
                 <li><a href="admin-voyage.html"><i class="fa fa-plane"></i> Voyage & Visas</a></li>
@@ -35,18 +72,18 @@
         <main class="admin-main">
             <!-- Header -->
             <header class="admin-header">
-                <div style="display: flex; align-items: center;">
+                <div class="header-left">
                     <button class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <div class="header-search">
                         <i class="fa fa-search"></i>
-                        <input type="text" placeholder="Rechercher...">
+                        <input type="text" placeholder="Rechercher boutique, client, dossier...">
                     </div>
                 </div>
                 
                 <div class="header-profile">
                     <div class="profile-info">
                         <span class="profile-name">Admin Principal</span>
-                        <span class="profile-role">Super Admin</span>
+                        <span class="profile-role">Super Administrateur</span>
                     </div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
                 </div>
@@ -56,148 +93,282 @@
             <div class="admin-content">
                 <div class="page-header">
                     <div class="page-title">
-                        <i class="fa fa-th-large" style="color: var(--admin-primary);"></i>
-                        Tableau de bord
+                        <i class="fa fa-th-large" style="color: var(--admin-primary); margin-right: 10px;"></i>
+                        Mes Regards
                     </div>
                     <div style="display: flex; gap: 10px;">
-                        <span class="status-badge status-active"><i class="fa fa-circle" style="font-size: 8px;"></i> En ligne 24/7</span>
+                        <select class="form-control" style="padding: 6px 12px; font-size: 13px; width: auto;">
+                            <option>Lar v</option>
+                        </select>
                     </div>
                 </div>
 
-                <!-- Stats Overview -->
-                <div class="stats-cards">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-info">
+                            <p style="font-size: 12px; color: #64748b; margin-bottom: 4px;">MoKo Pay Transactions</p>
                             <h3>7.8 M FCFA</h3>
-                            <p>MoKo Pay Transactions</p>
-                            <span style="color: #28a745; font-size: 12px;"><i class="fa fa-arrow-up"></i> +5%</span>
+                            <span style="font-size: 11px; color: #94a3b8;">143, 16 M FCFA</span>
                         </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-wallet"></i>
+                        <div style="text-align: right;">
+                            <span class="stat-trend trend-up">+5%</span>
+                            <div style="margin-top: 10px; height: 30px; width: 60px; background: #e0f2fe; border-radius: 4px;"></div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-info">
+                            <p style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Marketplace</p>
                             <h3>3,182</h3>
-                            <p>Commandes Marketplace</p>
-                            <span style="color: #28a745; font-size: 12px;"><i class="fa fa-arrow-up"></i> +3%</span>
+                            <span style="font-size: 11px; color: #94a3b8;">Order MCTA</span>
                         </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-shopping-bag"></i>
+                        <div style="text-align: right;">
+                            <span class="stat-trend trend-up">+3%</span>
+                            <div style="margin-top: 10px; height: 30px; width: 60px; background: #dcfce7; border-radius: 4px;"></div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-info">
+                            <p style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Visa Expert</p>
                             <h3>831</h3>
-                            <p>Demandes de Visa</p>
-                            <span style="color: #28a745; font-size: 12px;"><i class="fa fa-arrow-up"></i> +4%</span>
+                            <span style="font-size: 11px; color: #94a3b8;">Visa les</span>
                         </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-passport"></i>
+                        <div style="text-align: right;">
+                            <span class="stat-trend trend-up">+4%</span>
+                            <div style="margin-top: 10px; height: 30px; width: 60px; background: #fce7f3; border-radius: 4px;"></div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-info">
+                            <p style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Foyer dinas estibres</p>
                             <h3>92</h3>
-                            <p>Nouveaux Utilisateurs</p>
-                            <span style="color: #28a745; font-size: 12px;"><i class="fa fa-arrow-up"></i> +46%</span>
+                            <span style="font-size: 11px; color: #94a3b8;">unregas clients</span>
                         </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-user-plus"></i>
+                        <div style="text-align: right;">
+                            <span class="stat-trend trend-up">+46%</span>
                         </div>
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
-                    <!-- Activities -->
-                    <div class="table-container">
-                        <div class="table-header">
-                            <h3>Activités Récentes</h3>
-                            <button class="btn-secondary" style="padding: 5px 10px; font-size: 12px;">Voir tout</button>
+                <!-- Middle Section: Orders & Progress -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                    <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 15px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span><input type="checkbox"> Loodset</span>
+                            <strong>331.39</strong>
+                            <span style="color: #64748b;">21%</span>
                         </div>
-                        <table class="admin-table">
-                            <tbody>
-                                <tr>
-                                    <td width="50"><div class="stat-icon" style="width: 35px; height: 35px; font-size: 16px; background: #e3f2fd; color: #1565c0;"><i class="fa fa-shopping-bag"></i></div></td>
-                                    <td>
-                                        <strong>Boutique Validée</strong><br>
-                                        <span style="font-size: 12px; color: #888;">Emmanuel Diop - AF Mobil Shop</span>
-                                    </td>
-                                    <td align="right"><span style="font-size: 12px; color: #888;">2 heures</span></td>
-                                </tr>
-                                <tr>
-                                    <td width="50"><div class="stat-icon" style="width: 35px; height: 35px; font-size: 16px; background: #e8f5e9; color: #2e7d32;"><i class="fa fa-plane"></i></div></td>
-                                    <td>
-                                        <strong>Visa Demandé</strong><br>
-                                        <span style="font-size: 12px; color: #888;">Nouveau dossier: Chine Tourisme</span>
-                                    </td>
-                                    <td align="right"><span style="font-size: 12px; color: #888;">4 heures</span></td>
-                                </tr>
-                                <tr>
-                                    <td width="50"><div class="stat-icon" style="width: 35px; height: 35px; font-size: 16px; background: #fff3e0; color: #ef6c00;"><i class="fa fa-exclamation-triangle"></i></div></td>
-                                    <td>
-                                        <strong>Signalement</strong><br>
-                                        <span style="font-size: 12px; color: #888;">Commentaire inapproprié détecté</span>
-                                    </td>
-                                    <td align="right"><span style="font-size: 12px; color: #888;">5 heures</span></td>
-                                </tr>
-                                <tr>
-                                    <td width="50"><div class="stat-icon" style="width: 35px; height: 35px; font-size: 16px; background: #e3f2fd; color: #1565c0;"><i class="fa fa-money-bill"></i></div></td>
-                                    <td>
-                                        <strong>Retrait Moko Pay</strong><br>
-                                        <span style="font-size: 12px; color: #888;">Demande de retrait: 500,000 FCFA</span>
-                                    </td>
-                                    <td align="right"><span style="font-size: 12px; color: #888;">Hier</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span><input type="checkbox" checked> Looast</span>
+                            <strong>1333.30</strong>
+                            <span style="color: #64748b;">23%</span>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <div style="font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between;"><span>Order 30 Vims</span> <span>:193.00.00 <i class="fa fa-chevron-down"></i></span></div>
+                            <div style="font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between;"><span>Order 00 Vims</span> <span>:333.00.00 <i class="fa fa-chevron-down"></i></span></div>
+                            <div style="font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between;"><span>Order 50 vims</span> <span>:139.00.00 <i class="fa fa-chevron-down"></i></span></div>
+                        </div>
+                        <div>
+                            <div style="font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between;"><span>Ordere</span> <span>13.00.0000 <i class="fa fa-chevron-down"></i></span></div>
+                            <div style="font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between;"><span>Progress</span> <span>19.00.0000 <i class="fa fa-chevron-down"></i></span></div>
+                            <div style="font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between;"><span>Crdare</span> <span>:3.00.0000 <i class="fa fa-chevron-down"></i></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Main Grid -->
+                <div class="dashboard-grid">
+                    <!-- Left Column: Activities -->
+                    <div class="dashboard-left">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Activités activités</h3>
+                            </div>
+                            <div style="padding: 0 20px;">
+                                <div style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #f1f5f9;">
+                                    <div style="width: 24px; height: 24px; background: #3b82f6; color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 12px;">D</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 13px; font-weight: 500;">Boutique : validée : Emmanuel Diop.</div>
+                                    </div>
+                                    <span style="font-size: 11px; color: #94a3b8;">2 hours ago <i class="fa fa-chevron-down"></i></span>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #f1f5f9;">
+                                    <div style="width: 24px; height: 24px; background: #10b981; color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 12px;">D</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 13px; font-weight: 500;">Boutique créée : Sengeé fourest</div>
+                                    </div>
+                                    <span style="font-size: 11px; color: #94a3b8;">4 hours ago <i class="fa fa-chevron-down"></i></span>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #f1f5f9;">
+                                    <div style="width: 24px; height: 24px; background: #f59e0b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 12px;"><i class="fa fa-user"></i></div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 13px; font-weight: 500;">Paiement : FID Services</div>
+                                        <div style="font-size: 11px; color: #94a3b8;">Good</div>
+                                    </div>
+                                    <span style="font-size: 11px; color: #94a3b8;">...attach</span>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 15px 0; border-bottom: none;">
+                                    <div style="width: 24px; height: 24px; background: #0f3d32; color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 12px;">D</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 13px; font-weight: 500;">Request MoKo Pay : Renehants : sursage</div>
+                                    </div>
+                                    <span style="font-size: 11px; color: #94a3b8;">Lucs ago</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Recent activés</h3>
+                                <span style="font-size: 11px; color: #64748b;">Accalaties Bosssmios <i class="fa fa-chevron-down"></i></span>
+                            </div>
+                            <div style="padding: 0 20px;">
+                                <div style="display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f1f5f9;">
+                                    <i class="fa fa-cog" style="margin-right: 10px; color: #64748b;"></i>
+                                    <span style="font-size: 12px; flex: 1;">Boutique validée : Emmanuel Diop</span>
+                                    <span style="font-size: 10px; background: #ecfdf5; color: #166534; padding: 2px 6px; border-radius: 4px;">B2 Services</span>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f1f5f9;">
+                                    <i class="fa fa-comments" style="margin-right: 10px; color: #64748b;"></i>
+                                    <span style="font-size: 12px; flex: 1;">Longue Média 203A1 Roud. Fessage brå</span>
+                                    <span style="font-size: 10px; background: #ecfdf5; color: #166534; padding: 2px 6px; border-radius: 4px;">B7 Services</span>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f1f5f9;">
+                                    <i class="fa fa-file-text-o" style="margin-right: 10px; color: #64748b;"></i>
+                                    <span style="font-size: 12px; flex: 1;">Fementenue reservation des Fappes : essaillage</span>
+                                    <span style="font-size: 10px; background: #fff7ed; color: #9a3412; padding: 2px 6px; border-radius: 4px;">76.00..00</span>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 12px 0; border-bottom: none;">
+                                    <i class="fa fa-money" style="margin-right: 10px; color: #64748b;"></i>
+                                    <span style="font-size: 12px; flex: 1;">Faseco ee Rog : Rellig icti KCFA</span>
+                                    <span style="font-size: 10px; background: #fef2f2; color: #991b1b; padding: 2px 6px; border-radius: 4px;">26.00..00</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Right Column Widgets -->
-                    <div style="display: flex; flex-direction: column; gap: 30px;">
+                    <!-- Right Column -->
+                    <div class="dashboard-right">
                         <!-- Alerts -->
-                        <div class="stat-card" style="display: block;">
-                            <h4 style="margin-bottom: 20px;">Alertes & Priorités</h4>
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <input type="checkbox" checked style="margin-right: 10px;">
-                                <span style="text-decoration: line-through; color: #888;">Vérifier dossiers Visa</span>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Alertus & priorités</h3>
                             </div>
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <input type="checkbox" style="margin-right: 10px;">
-                                <span>Valider 5 nouvelles boutiques</span>
-                            </div>
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <input type="checkbox" style="margin-right: 10px;">
-                                <span>Répondre au support (3 tickets)</span>
+                            <div style="padding: 0 20px 20px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <input type="checkbox" style="margin-right: 10px;">
+                                    <span style="font-size: 13px; font-weight: 500;">Targant visa dossiers</span>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <input type="checkbox" style="margin-right: 10px;">
+                                    <span style="font-size: 13px; font-weight: 500;">Dellane Resome Clientire...</span>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <input type="checkbox" checked style="margin-right: 10px;">
+                                    <span style="font-size: 13px; font-weight: 500; color: #3b82f6;">Plupiuer visa Saeremier</span>
+                                </div>
+                                <div style="margin-left: 24px; font-size: 11px; color: #94a3b8; margin-bottom: 10px;">Domeremence exicacies</div>
+                                <div style="display: flex; align-items: center;">
+                                    <span style="width: 16px; height: 16px; background: #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-right: 10px; color: white; font-size: 10px;"><i class="fa fa-user"></i></span>
+                                    <span style="font-size: 13px; font-weight: 500;">Serice Visee</span>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Communication -->
-                        <div class="stat-card" style="display: block;">
-                            <h4 style="margin-bottom: 20px;">Communication</h4>
-                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                                <img src="https://via.placeholder.com/30" style="border-radius: 50%;">
-                                <div>
-                                    <div style="font-size: 13px; font-weight: 500;">Sara Sow</div>
-                                    <div style="font-size: 11px; color: #888;">Bonjour, pour le visa...</div>
-                                </div>
-                                <span style="margin-left: auto; font-size: 10px; color: #888;">2m</span>
+                        <!-- Chat -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Communication & Chat</h3>
+                                <span style="font-size: 11px; color: #64748b;">24/7</span>
                             </div>
-                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                                <img src="https://via.placeholder.com/30" style="border-radius: 50%;">
-                                <div>
-                                    <div style="font-size: 13px; font-weight: 500;">Paul Kabongo</div>
-                                    <div style="font-size: 11px; color: #888;">Merci pour l'info !</div>
+                            <div style="padding: 0 20px;">
+                                <div style="display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
+                                    <img src="https://via.placeholder.com/32" style="border-radius: 50%; width: 32px; height: 32px;">
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 12px; font-weight: 600;">Eaqtaner...</div>
+                                        <div style="font-size: 11px; color: #64748b;">Desses de accome in bouur.</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <i class="fa fa-comment-o" style="font-size: 10px; color: #64748b;"></i> 7 <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; display: inline-block;"></span>
+                                    </div>
                                 </div>
-                                <span style="margin-left: auto; font-size: 10px; color: #888;">1h</span>
+                                <div style="display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
+                                    <img src="https://via.placeholder.com/32" style="border-radius: 50%; width: 32px; height: 32px;">
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 12px; font-weight: 600;">Berae Stemier, accgents</div>
+                                        <div style="font-size: 11px; color: #64748b;">Deme questime omere frene dopo...</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <i class="fa fa-comment-o" style="font-size: 10px; color: #64748b;"></i> 2 <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; display: inline-block;"></span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 10px; padding: 10px 0; border-bottom: none;">
+                                    <img src="https://via.placeholder.com/32" style="border-radius: 50%; width: 32px; height: 32px;">
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 12px; font-weight: 600;">Buetine ViSA. art ïne</div>
+                                        <div style="font-size: 11px; color: #64748b;">Cunset des veumen imenee au Soe...</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <i class="fa fa-comment-o" style="font-size: 10px; color: #64748b;"></i> 1 <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; display: inline-block;"></span>
+                                    </div>
+                                </div>
                             </div>
-                            <a href="admin-chat.html" class="btn-secondary" style="width: 100%; text-align: center; font-size: 12px;">Voir Messagerie</a>
+                        </div>
+
+                        <!-- Staff -->
+                        <div class="card">
+                            <div class="card-header" style="background: #e0f2fe; border-bottom: none; border-radius: 12px 12px 0 0;">
+                                <h3 style="color: #0369a1;"><i class="fa fa-user"></i> A call attance coduments</h3>
+                                <i class="fa fa-chevron-down" style="font-size: 10px; color: #0369a1;"></i>
+                            </div>
+                            <div style="padding: 10px 20px; background: #e0f2fe; border-radius: 0 0 12px 12px; margin-bottom: 10px;">
+                                <span style="font-size: 11px; color: #0369a1;">Commneencommuexcmmentine : 80 14/</span>
+                            </div>
+                            
+                            <div style="padding: 0 20px 20px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748b; margin-bottom: 10px;">
+                                    <span>Comeirené à</span>
+                                    <span>Apturmens heerap c:78</span>
+                                </div>
+                                <ul class="staff-list">
+                                    <li class="staff-item">
+                                        <div class="staff-info">
+                                            <img src="https://via.placeholder.com/36" class="staff-img">
+                                            <div>
+                                                <div style="font-weight: 600; font-size: 12px;">Parcanons . Achary</div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="staff-btn">Aller au CRM</a>
+                                    </li>
+                                    <li class="staff-item">
+                                        <div class="staff-info">
+                                            <img src="https://via.placeholder.com/36" class="staff-img">
+                                            <div>
+                                                <div style="font-weight: 600; font-size: 12px;">Moise Onana, Schary</div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="staff-btn" style="background: #a7f3d0; color: #065f46;">Aller au CRM</a>
+                                    </li>
+                                    <li class="staff-item">
+                                        <div class="staff-info">
+                                            <img src="https://via.placeholder.com/36" class="staff-img">
+                                            <div>
+                                                <div style="font-weight: 600; font-size: 12px;">Emeline Youlou, Seany</div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="staff-btn">Allir au CRM</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
     <script>
         // Simple Sidebar Toggle Script
         document.querySelector('.menu-toggle').addEventListener('click', function() {

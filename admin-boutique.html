@@ -3,10 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Boutique et Commerce Locaux | MoKo</title>
+    <title>Marketplace & Commerces | Admin MoKo</title>
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="assets/css/admin-design.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific Styles for Boutique Page to match the photo */
+        .marketplace-tabs {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--admin-border);
+            padding-bottom: 10px;
+        }
+
+        .tab-item {
+            font-size: 14px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .tab-item.active {
+            background-color: #dcfce7;
+            color: #166534;
+            font-weight: 600;
+        }
+
+        .tab-item:hover {
+            color: var(--admin-primary);
+        }
+        
+        .page-header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .flag-icon { width: 16px; height: 12px; margin-right: 6px; border-radius: 2px; display: inline-block; vertical-align: middle; }
+        
+        .btn-green-solid {
+            background-color: #2d7d63; /* Moko Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-action-group {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .btn-action {
+            padding: 6px 12px;
+            border: 1px solid var(--admin-border);
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #64748b;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-action.validate { background: #2d7d63; color: white; border-color: #2d7d63; }
+        .btn-action.suspend { background: #fff; color: #64748b; }
+        
+        /* Custom Table Styling for this page */
+        .custom-table th { background: #f1f5f9; text-transform: none; font-size: 13px; color: #475569; }
+        .custom-table td { vertical-align: middle; padding: 12px 16px; }
+        
+        .cat-badge {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            background: #e2e8f0;
+            color: #475569;
+            display: inline-block;
+        }
+        .cat-badge.mode { background: #dcfce7; color: #166534; }
+        .cat-badge.tech { background: #e0f2fe; color: #0369a1; }
+        .cat-badge.alim { background: #fef9c3; color: #854d0e; }
+        
+        .status-pill {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+            display: inline-block;
+            min-width: 80px;
+        }
+        .status-pill.valid { background: #2d7d63; color: white; }
+        .status-pill.pending { background: #f1f5f9; color: #64748b; } /* Greyish for pending in photo */
+        .status-pill.new { background: #2d7d63; color: white; }
+        .status-pill.prepared { background: #fcd34d; color: #92400e; }
+        .status-pill.assigned { background: #10b981; color: white; }
+        .status-pill.delivered { background: #2d7d63; color: white; }
+        .status-pill.canceled { background: #ef4444; color: white; }
+
+        .star-rating { color: #cbd5e1; font-size: 12px; }
+        .star-rating .filled { color: #fbbf24; }
+
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -14,7 +129,7 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
-                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+                <span class="sidebar-brand">Admin</span>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
@@ -29,16 +144,13 @@
                 <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
             </ul>
-            <div class="sidebar-footer">
-                <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px;"><i class="fa fa-sign-out"></i> Déconnexion</a>
-            </div>
         </aside>
 
         <!-- Main Content -->
         <main class="admin-main">
             <!-- Header -->
             <header class="admin-header">
-                <div style="display: flex; align-items: center;">
+                <div class="header-left">
                     <button class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <div class="header-search">
                         <i class="fa fa-search"></i>
@@ -49,7 +161,7 @@
                 <div class="header-profile">
                     <div class="profile-info">
                         <span class="profile-name">Admin Principal</span>
-                        <span class="profile-role">Super Admin</span>
+                        <span class="profile-role">Super Administrateur</span>
                     </div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
                 </div>
@@ -57,72 +169,170 @@
 
             <!-- Content -->
             <div class="admin-content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <i class="fa fa-shopping-bag" style="color: var(--admin-primary);"></i>
+                <!-- Tabs Header -->
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                    <h2 style="font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                        <span style="background: #2d7d63; color: white; padding: 4px 8px; border-radius: 6px; font-size: 14px;">:0</span>
                         Marketplace & Commerces
+                    </h2>
+                    
+                    <div class="marketplace-tabs" style="margin-bottom: 0; border-bottom: none;">
+                        <a href="#" class="tab-item active"><i class="fa fa-check-square"></i> Boutiques</a>
+                        <a href="#" class="tab-item">Produits</a>
+                        <a href="#" class="tab-item">Commandes</a>
+                        <a href="#" class="tab-item">Catégories</a>
+                        <a href="#" class="tab-item">Livraisons</a>
+                        <a href="#" class="tab-item"><i class="fa fa-chevron-down"></i></a>
                     </div>
-                    <a href="admin-boutique-add.html" class="btn-primary">
-                        <i class="fa fa-plus"></i> Ajouter une boutique
+                </div>
+
+                <!-- Action Bar -->
+                <div class="page-header-actions">
+                    <a href="admin-boutique-add.html" class="btn-green-solid">
+                        <i class="fa fa-plus"></i> Ajouter / Valider une boutique
                     </a>
-                </div>
-
-                <!-- Stats -->
-                <div class="stats-cards">
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>124</h3>
-                            <p>Boutiques Actives</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-store"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>1,890</h3>
-                            <p>Produits</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-box"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>45</h3>
-                            <p>Commandes (24h)</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-shopping-cart"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>12M FCFA</h3>
-                            <p>Volume Ventes</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-chart-line"></i>
-                        </div>
+                    
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" style="padding: 8px 12px; font-size: 13px;">
+                            <i class="fa fa-bars"></i> Boutique <i class="fa fa-chevron-up"></i>
+                        </button>
+                        <button class="btn-secondary" style="padding: 8px 12px; font-size: 13px;">
+                            Touts 3160, 5210 <i class="fa fa-chevron-down"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Table -->
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3>Liste des Boutiques</h3>
-                        <div class="table-actions">
-                            <button class="btn-secondary"><i class="fa fa-filter"></i> Filtrer</button>
-                            <button class="btn-secondary"><i class="fa fa-download"></i> Exporter</button>
-                        </div>
-                    </div>
+                <!-- Boutiques Table -->
+                <div class="card">
                     <div class="table-responsive">
-                        <table class="admin-table">
+                        <table class="admin-table custom-table">
                             <thead>
                                 <tr>
                                     <th>Nom de la boutique</th>
-                                    <th>Ville</th>
-                                    <th>Note</th>
+                                    <th>Ville <i class="fa fa-sort"></i></th>
+                                    <th>Note <i class="fa fa-sort"></i></th>
+                                    <th>Catégories</th>
+                                    <th>Statut <i class="fa fa-sort"></i></th>
+                                    <th>Actions <i class="fa fa-caret-down"></i></th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <strong>AF Mobil Shop</strong>
+                                        </div>
+                                    </td>
+                                    <td><span class="flag-icon" style="background: #007a5e;"></span> Kinshasa <i class="fa fa-chevron-right" style="font-size: 10px; color: #ccc;"></i></td>
+                                    <td>
+                                        <div class="star-rating">
+                                            <i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td><span class="cat-badge mode">En attente</span></td>
+                                    <td><span class="status-badge status-pending">En attente</span></td>
+                                    <td><a href="admin-boutique-details.html" class="btn-action">▶ Voir</a></td>
+                                    <td>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action validate">Valider</button>
+                                            <button class="btn-action suspend">Suspendre</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <strong>Biomarket Brazzaville</strong>
+                                        </div>
+                                    </td>
+                                    <td><span class="flag-icon" style="background: #009e60;"></span> Brazzaville <i class="fa fa-chevron-right" style="font-size: 10px; color: #ccc;"></i></td>
+                                    <td>
+                                        <div class="star-rating">
+                                            <i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill valid">Validée</span></td>
+                                    <td><span class="status-badge status-pending">En attente</span></td>
+                                    <td><a href="admin-boutique-details.html" class="btn-action">▶ Voir</a></td>
+                                    <td>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action validate">Valider</button>
+                                            <button class="btn-action suspend">Suspendre</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <strong>Hi-Tech Kinshasa</strong>
+                                        </div>
+                                    </td>
+                                    <td><span class="flag-icon" style="background: #007a5e;"></span> Kinshasa <i class="fa fa-chevron-right" style="font-size: 10px; color: #ccc;"></i></td>
+                                    <td>
+                                        <div class="star-rating">
+                                            <i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-pill valid">Validée</span></td>
+                                    <td><span class="status-badge status-suspendue">Suspendue</span></td>
+                                    <td><a href="admin-boutique-details.html" class="btn-action">▶ Voir</a></td>
+                                    <td>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action validate">Valider</button>
+                                            <button class="btn-action suspend">Suspendre</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <strong>The Best Fashion</strong>
+                                        </div>
+                                    </td>
+                                    <td><span class="flag-icon" style="background: #ce1126;"></span> Douala <i class="fa fa-chevron-right" style="font-size: 10px; color: #ccc;"></i></td>
+                                    <td>
+                                        <div class="star-rating">
+                                            <i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i>
+                                        </div>
+                                    </td>
+                                    <td><span class="cat-badge mode">Mode</span></td>
+                                    <td><span class="status-badge status-pending">En attente</span></td>
+                                    <td><a href="admin-boutique-details.html" class="btn-action">▶ Voir</a></td>
+                                    <td>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action validate">Valider</button>
+                                            <button class="btn-action suspend">Suspendre</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Products Catalog Section -->
+                <div style="margin-top: 30px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="font-size: 18px; color: #333;">Catalogue Produits</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" style="font-size: 12px; padding: 6px 12px;"><i class="fa fa-download"></i> Kaza / clic</button>
+                        <button class="btn-secondary" style="font-size: 12px; padding: 6px 12px;"><i class="fa fa-motorcycle"></i> Assigner à un livreur</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="admin-table custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Boutique</th>
+                                    <th>Prix (FCFA)</th>
+                                    <th>Stock</th>
                                     <th>Catégorie</th>
                                     <th>Statut</th>
                                     <th>Actions</th>
@@ -132,56 +342,143 @@
                                 <tr>
                                     <td>
                                         <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>AF Mobil Shop</strong>
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <div>
+                                                <strong>Riz 5kg</strong>
+                                                <span class="star-rating" style="display: block; font-size: 10px;"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i></span>
+                                            </div>
                                         </div>
                                     </td>
-                                    <td>Kinshasa</td>
-                                    <td>⭐⭐⭐⭐⭐</td>
-                                    <td>Tech</td>
-                                    <td><span class="status-badge status-en-attente">En attente</span></td>
+                                    <td><span style="font-size: 12px; color: #2d7d63;"><i class="fa fa-store"></i> AF Mobil Shop</span></td>
+                                    <td><strong>3,250 FCFA</strong></td>
+                                    <td>16 <i class="fa fa-random" style="font-size: 10px; color: #94a3b8;"></i></td>
+                                    <td><span class="cat-badge mode">Alimentation</span></td>
+                                    <td><span class="status-pill new">Nouveau</span></td>
                                     <td>
-                                        <a href="admin-boutique-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Valider</button>
-                                        <button class="action-btn btn-delete">Suspendre</button>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action">Modifier</button>
+                                            <button class="btn-action"><i class="fa fa-user"></i></button>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Biomarket Brazzaville</strong>
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 4px;">
+                                            <strong>Samsung Galaxy A13</strong>
                                         </div>
                                     </td>
-                                    <td>Brazzaville</td>
-                                    <td>⭐⭐⭐⭐</td>
-                                    <td>Alimentation</td>
-                                    <td><span class="status-badge status-validee">Validée</span></td>
+                                    <td><span style="font-size: 12px; color: #0369a1;"><i class="fa fa-store"></i> Hi-Tech Kinshasa</span></td>
+                                    <td><strong>120,000 FCFA</strong></td>
+                                    <td>25 <i class="fa fa-eye" style="font-size: 10px; color: #0369a1;"></i></td>
+                                    <td><span class="cat-badge tech">Tech</span></td>
+                                    <td><span class="status-pill prepared">Préparé</span></td>
                                     <td>
-                                        <a href="admin-boutique-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                        <button class="action-btn btn-delete">Suspendre</button>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action">Modifier</button>
+                                            <button class="btn-action"><i class="fa fa-user"></i></button>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>The Best Fashion</strong>
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <div>
+                                                <strong>Huile 1L</strong>
+                                                <span class="star-rating" style="display: block; font-size: 10px;"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i></span>
+                                            </div>
                                         </div>
                                     </td>
-                                    <td>Douala</td>
-                                    <td>⭐⭐⭐⭐⭐</td>
-                                    <td>Mode</td>
-                                    <td><span class="status-badge status-validee">Validée</span></td>
+                                    <td><span style="font-size: 12px; color: #854d0e;"><i class="fa fa-store"></i> Biomarket Brazza</span></td>
+                                    <td><strong>1,000 FCFA</strong></td>
+                                    <td>50 <i class="fa fa-cube" style="font-size: 10px; color: #0369a1;"></i></td>
+                                    <td><span class="cat-badge tech">Tech</span></td>
+                                    <td><span class="status-pill assigned">Assigné</span></td>
                                     <td>
-                                        <a href="admin-boutique-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                        <button class="action-btn btn-delete">Suspendre</button>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action">Modifier</button>
+                                            <button class="btn-action"><i class="fa fa-user"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <strong>Basket Nike Air Force</strong>
+                                        </div>
+                                    </td>
+                                    <td><span style="font-size: 12px; color: #854d0e;"><i class="fa fa-store"></i> The Best Fashion</span></td>
+                                    <td><strong>82,000 FCFA</strong></td>
+                                    <td>8 <i class="fa fa-tag" style="font-size: 10px; color: #166534;"></i></td>
+                                    <td><span class="cat-badge mode">Mode</span></td>
+                                    <td><span class="status-pill delivered">Livrée</span></td>
+                                    <td>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action">Modifier</button>
+                                            <button class="btn-action"><i class="fa fa-user"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <strong>Sanaa Supermarket</strong>
+                                        </div>
+                                    </td>
+                                    <td><span style="font-size: 12px; color: #0369a1;"><i class="fa fa-store"></i> Sanaa Supermarket</span></td>
+                                    <td><strong>1,500 FCFA</strong></td>
+                                    <td>45 <i class="fa fa-cubes" style="font-size: 10px; color: #166534;"></i></td>
+                                    <td><span class="cat-badge tech">Alimentation</span></td>
+                                    <td><span class="status-pill canceled">Annulé</span></td>
+                                    <td>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action">Modifier</button>
+                                            <button class="btn-action"><i class="fa fa-user"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://via.placeholder.com/32" style="border-radius: 50%;">
+                                            <strong>Librairie Bonheur</strong>
+                                        </div>
+                                    </td>
+                                    <td><span style="font-size: 12px; color: #166534;"><i class="fa fa-store"></i> Librairie Bonheur</span></td>
+                                    <td><strong>600 FCFA</strong></td>
+                                    <td>125 <i class="fa fa-book" style="font-size: 10px; color: #166534;"></i></td>
+                                    <td><span class="cat-badge alim">Education</span></td>
+                                    <td><span class="status-pill" style="background: white; border: 1px solid #ccc; color: #333;">42,000 +</span></td>
+                                    <td>
+                                        <div class="btn-action-group">
+                                            <button class="btn-action">Modifier</button>
+                                            <button class="btn-action"><i class="fa fa-user"></i></button>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-size: 13px; color: #64748b;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span><i class="fa fa-file-text-o"></i> 1-6 sur 360</span>
+                        <button class="btn-secondary" style="padding: 2px 8px;"><i class="fa fa-filter"></i></button>
+                    </div>
+                    
+                    <div style="display: flex; gap: 5px;">
+                        <button class="btn-secondary" style="padding: 4px 8px;"><i class="fa fa-angle-double-left"></i></button>
+                        <button class="btn-secondary" style="padding: 4px 8px;"><i class="fa fa-angle-left"></i></button>
+                        <button style="background: #2d7d63; color: white; border: none; padding: 4px 10px; border-radius: 4px;">1</button>
+                        <button class="btn-secondary" style="padding: 4px 10px;">3</button>
+                        <button class="btn-secondary" style="padding: 4px 8px;"><i class="fa fa-angle-right"></i></button>
+                        <button class="btn-secondary" style="padding: 4px 12px;">32 sur 10</button>
+                        <button class="btn-secondary" style="padding: 4px 12px;">6 1390 next</button>
                     </div>
                 </div>
             </div>

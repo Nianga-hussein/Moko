@@ -3,10 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Événements & Loisirs | MoKo</title>
+    <title>Événements & Loisirs | Admin MoKo</title>
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="assets/css/admin-design.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific Styles for Evenements Page */
+        .event-tabs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .tab-pill {
+            font-size: 13px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+            background: #fff;
+            border: 1px solid var(--admin-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-pill.active {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 600;
+            border-color: #cbd5e1;
+        }
+        
+        .tab-pill i { color: #2d7d63; }
+
+        .btn-green-solid {
+            background-color: #2d7d63; /* Moko Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Custom Table Styling */
+        .custom-table th { background: #f8fafc; text-transform: none; font-size: 12px; color: #64748b; font-weight: 600; }
+        .custom-table td { vertical-align: middle; padding: 12px 16px; font-size: 13px; }
+        
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            color: white;
+            text-align: center;
+            min-width: 70px;
+            display: inline-block;
+        }
+        .pill-green { background: #2d7d63; }
+        .pill-light-green { background: #dcfce7; color: #166534; }
+        .pill-yellow { background: #fcd34d; color: #92400e; }
+        .pill-gray { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }
+        .pill-red { background: #fee2e2; color: #991b1b; }
+        
+        .event-img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        .organizer-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+
+        .action-select {
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 4px;
+            font-size: 11px;
+            color: #64748b;
+            background: white;
+        }
+        
+        /* Calendar Preview */
+        .calendar-preview {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin-top: 10px;
+        }
+        .cal-day { font-size: 10px; color: #64748b; padding: 4px; }
+        .cal-date { font-size: 11px; padding: 8px 4px; border-radius: 4px; position: relative; }
+        .cal-date.active { background: #2d7d63; color: white; }
+        .cal-date.event-blue { background: #3b82f6; color: white; }
+        .cal-date.event-orange { background: #f97316; color: white; }
+        
+        .cal-event-label {
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8px;
+            white-space: nowrap;
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 1px 4px;
+            border-radius: 2px;
+            z-index: 10;
+            display: none;
+        }
+        .cal-date:hover .cal-event-label { display: block; }
+
+        @media (max-width: 991px) {
+            .main-grid, .bottom-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -14,7 +147,7 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
-                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+                <span class="sidebar-brand">Admin</span>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
@@ -35,18 +168,18 @@
         <main class="admin-main">
             <!-- Header -->
             <header class="admin-header">
-                <div style="display: flex; align-items: center;">
+                <div class="header-left">
                     <button class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <div class="header-search">
                         <i class="fa fa-search"></i>
-                        <input type="text" placeholder="Rechercher événement, organisateur...">
+                        <input type="text" placeholder="Rechercher boutique, client, dossier...">
                     </div>
                 </div>
                 
                 <div class="header-profile">
                     <div class="profile-info">
                         <span class="profile-name">Admin Principal</span>
-                        <span class="profile-role">Super Admin</span>
+                        <span class="profile-role">Super Administrateur</span>
                     </div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
                 </div>
@@ -54,132 +187,289 @@
 
             <!-- Content -->
             <div class="admin-content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <i class="fa fa-calendar" style="color: var(--admin-primary);"></i>
+                <!-- Page Title & Tabs -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
+                    <h2 style="font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                        <span style="background: #2d7d63; color: white; padding: 6px; border-radius: 6px; font-size: 14px;"><i class="fa fa-calendar-check-o"></i></span>
                         Événements & Loisirs
-                    </div>
-                    <a href="admin-evenements-add.html" class="btn-primary">
-                        <i class="fa fa-plus"></i> Ajouter un événement
-                    </a>
-                </div>
-
-                <!-- Stats -->
-                <div class="stats-cards">
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>32</h3>
-                            <p>Événements Actifs</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-calendar-check"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>2,175</h3>
-                            <p>Tickets Vendus</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-ticket-alt"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>3.8M FCFA</h3>
-                            <p>Recettes (30j)</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-money-bill"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>83%</h3>
-                            <p>Taux de remplissage</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-users"></i>
-                        </div>
+                    </h2>
+                    
+                    <div class="event-tabs">
+                        <a href="#" class="tab-pill active">32 Événements actifs</a>
+                        <a href="#" class="tab-pill">2,175 Tickets vendus</a>
+                        <a href="#" class="tab-pill">3.8 M FCFA</a>
+                        <a href="#" class="tab-pill">Taux de remplissage 83%</a>
                     </div>
                 </div>
 
-                <!-- Table -->
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3>Événements à venir</h3>
-                        <div class="table-actions">
-                            <button class="btn-secondary"><i class="fa fa-filter"></i> Filtrer</button>
+                <!-- Secondary Tabs -->
+                <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; gap: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+                        <a href="#" style="font-weight: 600; color: #1e293b; text-decoration: none; border-bottom: 2px solid #2d7d63; padding-bottom: 10px;">Événements</a>
+                        <a href="#" style="color: #64748b; text-decoration: none;">Billetteries</a>
+                        <a href="#" style="color: #64748b; text-decoration: none;">Catégories</a>
+                        <a href="#" style="color: #64748b; text-decoration: none;">Zones</a>
+                    </div>
+                    <a href="admin-evenements-add.html" class="btn-green-solid" style="font-size: 12px; padding: 8px 16px;">+ Ajouter un événement</a>
+                </div>
+
+                <!-- Main Grid -->
+                <div class="main-grid">
+                    <!-- Left: Events Table -->
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="card-header">
+                            <h3>Événements</h3>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-secondary" style="font-size: 11px;">Transmettre <i class="fa fa-chevron-down"></i></button>
+                                <button class="btn-secondary" style="font-size: 11px;">FCFA <i class="fa fa-chevron-down"></i></button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="admin-table custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Événements</th>
+                                        <th>Type</th>
+                                        <th>Facilité</th>
+                                        <th>Dates & Heure</th>
+                                        <th>Tickets</th>
+                                        <th>Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <img src="https://via.placeholder.com/32" class="event-img">
+                                                <strong>Afrobeat Music Festival</strong>
+                                            </div>
+                                        </td>
+                                        <td>Concert</td>
+                                        <td>Facile<br><span style="font-size: 10px; color: #64748b;">Modifier</span></td>
+                                        <td>21, 26, 2024<br><span style="font-size: 10px; color: #64748b;">08:00 - 20:00</span></td>
+                                        <td>FCFA<br><span style="font-size: 10px; color: #64748b;">Complet</span></td>
+                                        <td><span class="status-pill pill-green">OUVERT</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <img src="https://via.placeholder.com/32" class="event-img">
+                                                <strong>Tech & Innovation</strong>
+                                            </div>
+                                        </td>
+                                        <td>Conférence</td>
+                                        <td>Connus<br><span style="font-size: 10px; color: #64748b;">Modifier</span></td>
+                                        <td>21, 24, 2024<br><span style="font-size: 10px; color: #64748b;">09:00 - 18:00</span></td>
+                                        <td>Gratuit<br><span style="font-size: 10px; color: #64748b;">Ouvert</span></td>
+                                        <td><select class="action-select"><option>Billetterie</option></select></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <img src="https://via.placeholder.com/32" class="event-img">
+                                                <strong>Marathon de Douala</strong>
+                                            </div>
+                                        </td>
+                                        <td>Sport</td>
+                                        <td>Brouillon<br><span style="font-size: 10px; color: #64748b;">En attente</span></td>
+                                        <td>22, 24, 2024<br><span style="font-size: 10px; color: #64748b;">06:00 - 12:00</span></td>
+                                        <td>FCFA<br><span style="font-size: 10px; color: #64748b;">Ouvert</span></td>
+                                        <td><span class="status-pill pill-yellow">Bientôt</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <img src="https://via.placeholder.com/32" class="event-img">
+                                                <strong>Musée des Cultures</strong>
+                                            </div>
+                                        </td>
+                                        <td>Culture</td>
+                                        <td>Brouillon<br><span style="font-size: 10px; color: #64748b;">En attente</span></td>
+                                        <td>22, 24, 2024<br><span style="font-size: 10px; color: #64748b;">09:00 - 17:00</span></td>
+                                        <td>Gratuit<br><span style="font-size: 10px; color: #64748b;">Ouvert</span></td>
+                                        <td><span class="status-pill pill-light-green">Actif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <img src="https://via.placeholder.com/32" class="event-img">
+                                                <strong>Kribi Kite Surf</strong>
+                                            </div>
+                                        </td>
+                                        <td>Sport</td>
+                                        <td>Brouillon<br><span style="font-size: 10px; color: #64748b;">En attente</span></td>
+                                        <td>23, 24, 2024<br><span style="font-size: 10px; color: #64748b;">10:00 - 18:00</span></td>
+                                        <td>Complet<br><span style="font-size: 10px; color: #64748b;">Fermé</span></td>
+                                        <td><span class="status-pill pill-light-green">Terminé</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>Événement</th>
-                                    <th>Type</th>
-                                    <th>Date</th>
-                                    <th>Lieu</th>
-                                    <th>Statut</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Afrobeat Music Festival</strong>
-                                        </div>
-                                    </td>
-                                    <td>Concert</td>
-                                    <td>24 Juin 2024</td>
-                                    <td>Stade Martyrs</td>
-                                    <td><span class="status-badge status-active">En vente</span></td>
-                                    <td>
-                                        <a href="admin-evenements-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Tech & Innovation Conf</strong>
-                                        </div>
-                                    </td>
-                                    <td>Conférence</td>
-                                    <td>12 Juil 2024</td>
-                                    <td>Pullman Hotel</td>
-                                    <td><span class="status-badge status-active">En vente</span></td>
-                                    <td>
-                                        <a href="admin-evenements-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Marathon de Douala</strong>
-                                        </div>
-                                    </td>
-                                    <td>Sport</td>
-                                    <td>15 Aout 2024</td>
-                                    <td>Centre Ville</td>
-                                    <td><span class="status-badge status-pending">Bientôt</span></td>
-                                    <td>
-                                        <a href="admin-evenements-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                    <!-- Right: Ticketing & Calendar -->
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <!-- Ticketing -->
+                        <div class="card" style="margin-bottom: 0;">
+                            <div class="card-header">
+                                <h3>Billetterie</h3>
+                            </div>
+                            <div style="padding: 0 16px;">
+                                <table class="admin-table custom-table" style="font-size: 11px;">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Prix</th>
+                                            <th>Afrobeat</th>
+                                            <th>QR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Standard</strong></td>
+                                            <td>5,000</td>
+                                            <td style="color: #2d7d63;">300/400</td>
+                                            <td><i class="fa fa-check-square" style="color: #2d7d63;"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>VIP</strong></td>
+                                            <td>15,000</td>
+                                            <td style="color: #2d7d63;">40/50</td>
+                                            <td><i class="fa fa-check-square" style="color: #2d7d63;"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Early Bird</strong></td>
+                                            <td>3,000</td>
+                                            <td style="color: #2d7d63;">Complet</td>
+                                            <td><i class="fa fa-check-square" style="color: #2d7d63;"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Calendar -->
+                        <div class="card" style="margin-bottom: 0;">
+                            <div class="card-header">
+                                <h3>Calendrier</h3>
+                                <button class="btn-secondary" style="font-size: 10px;">Assigner <i class="fa fa-chevron-down"></i></button>
+                            </div>
+                            <div class="calendar-preview">
+                                <div class="calendar-grid">
+                                    <div class="cal-day">Lun</div><div class="cal-day">Mar</div><div class="cal-day">Mer</div><div class="cal-day">Jeu</div><div class="cal-day">Ven</div><div class="cal-day">Sam</div><div class="cal-day">Dim</div>
+                                    
+                                    <div class="cal-date">1</div><div class="cal-date">2</div><div class="cal-date">3</div><div class="cal-date">4</div><div class="cal-date">5</div><div class="cal-date">6</div><div class="cal-date">7</div>
+                                    <div class="cal-date event-blue">8</div><div class="cal-date">9</div><div class="cal-date">10</div><div class="cal-date event-orange">11</div><div class="cal-date">12</div><div class="cal-date">13</div><div class="cal-date">14</div>
+                                    <div class="cal-date">15</div><div class="cal-date">16</div><div class="cal-date active">17</div><div class="cal-date">18</div><div class="cal-date">19</div><div class="cal-date">20</div><div class="cal-date">21</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Bottom Grid -->
+                <div class="bottom-grid">
+                    <!-- Left: Préventes -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Préventes</h3>
+                            <button class="btn-secondary" style="font-size: 11px;">Afficher plus <i class="fa fa-chevron-down"></i></button>
+                        </div>
+                        <div style="padding: 0 20px;">
+                            <table class="admin-table custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Catégorie</th>
+                                        <th>Prix</th>
+                                        <th>Vente événement</th>
+                                        <th>Afrobeat</th>
+                                        <th>QR / Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Standard</strong></td>
+                                        <td>5,000</td>
+                                        <td><span class="status-pill pill-green">#0376</span> 344</td>
+                                        <td>00,000 14,000</td>
+                                        <td><span class="status-pill pill-light-green">Gratuit</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>VIP</strong></td>
+                                        <td>15,000</td>
+                                        <td><span class="status-pill pill-green">#0374</span> 928</td>
+                                        <td>00,000 0.0</td>
+                                        <td><span class="status-pill pill-light-green">Terminé</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Early Bird</strong></td>
+                                        <td>3,000</td>
+                                        <td><span class="status-pill pill-green">#0374</span> 621</td>
+                                        <td>60 0</td>
+                                        <td><span class="status-pill pill-light-green">Terminé</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right: Organisateurs -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Organisateurs</h3>
+                            <button class="btn-secondary" style="font-size: 11px;">Assigner prestataire <i class="fa fa-chevron-down"></i></button>
+                        </div>
+                        <div style="padding: 0 20px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f1f5f9;">
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <img src="https://via.placeholder.com/36" class="organizer-img">
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 13px;">Jean Boama</div>
+                                        <div style="font-size: 11px; color: #64748b;">Consultant événementiel</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>021 0000 099</div>
+                                    <div style="color: #64748b;">Actif</div>
+                                </div>
+                                <span class="status-pill pill-green" style="font-size: 9px;">ACTIF</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f1f5f9;">
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <img src="https://via.placeholder.com/36" class="organizer-img">
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 13px;">Aziza Soumare</div>
+                                        <div style="font-size: 11px; color: #64748b;">Consultante freelance</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>021 0000 028</div>
+                                    <div style="color: #64748b;">Médiateur</div>
+                                </div>
+                                <span class="status-pill pill-light-green" style="font-size: 9px;">SUPPLÉANT</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: none;">
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <img src="https://via.placeholder.com/36" class="organizer-img">
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 13px;">Kwezi Events</div>
+                                        <div style="font-size: 11px; color: #64748b;">Consultation / Boem</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>09 8 008 2024</div>
+                                    <div style="color: #64748b;">Bonne entente</div>
+                                </div>
+                                <span class="status-pill pill-yellow" style="font-size: 9px;">EN ATTENTE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
+
     <script>
         // Simple Sidebar Toggle Script
         document.querySelector('.menu-toggle').addEventListener('click', function() {

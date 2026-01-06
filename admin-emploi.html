@@ -3,10 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Emploi & Business | MoKo</title>
+    <title>Emploi & Business | Admin MoKo</title>
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="assets/css/admin-design.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific Styles for Emploi Page */
+        .emploi-tabs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .tab-pill {
+            font-size: 13px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+            background: #fff;
+            border: 1px solid var(--admin-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-pill.active {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 600;
+            border-color: #cbd5e1;
+        }
+        
+        .tab-pill i { color: #2d7d63; }
+
+        .btn-green-solid {
+            background-color: #2d7d63; /* Moko Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Custom Table Styling */
+        .custom-table th { background: #f8fafc; text-transform: none; font-size: 12px; color: #64748b; font-weight: 600; }
+        .custom-table td { vertical-align: middle; padding: 12px 16px; font-size: 13px; }
+        
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            color: white;
+            text-align: center;
+            min-width: 70px;
+            display: inline-block;
+        }
+        .pill-green { background: #2d7d63; }
+        .pill-light-green { background: #dcfce7; color: #166534; }
+        .pill-yellow { background: #fcd34d; color: #92400e; }
+        .pill-gray { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }
+        
+        .action-select {
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 4px;
+            font-size: 11px;
+            color: #64748b;
+            background: white;
+        }
+
+        /* Right Panel Cards */
+        .right-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .right-card-header h3 { font-size: 14px; font-weight: 600; }
+
+        .applicant-item {
+            background: white;
+            border: 1px solid var(--admin-border);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 12px;
+        }
+        .applicant-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .applicant-info h4 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+        .applicant-info p { font-size: 11px; color: #64748b; margin-bottom: 4px; }
+        .applicant-actions { display: flex; gap: 6px; }
+        
+        .company-logos {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .company-logo-box {
+            border: 1px solid var(--admin-border);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            flex: 1;
+        }
+        .company-logo-img { height: 24px; object-fit: contain; margin-bottom: 6px; }
+        .company-stats { font-size: 10px; color: #64748b; }
+
+        /* Candidats / CV Table (Bottom Left) */
+        .cv-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .cv-score {
+            background: #2d7d63;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .cv-score.warning { background: #d97706; }
+
+        @media (max-width: 991px) {
+            .main-grid, .bottom-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -14,7 +170,7 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
-                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+                <span class="sidebar-brand">Admin</span>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
@@ -35,18 +191,18 @@
         <main class="admin-main">
             <!-- Header -->
             <header class="admin-header">
-                <div style="display: flex; align-items: center;">
+                <div class="header-left">
                     <button class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <div class="header-search">
                         <i class="fa fa-search"></i>
-                        <input type="text" placeholder="Rechercher emploi, entreprise, candidat...">
+                        <input type="text" placeholder="Rechercher boutique, client, dossier...">
                     </div>
                 </div>
                 
                 <div class="header-profile">
                     <div class="profile-info">
                         <span class="profile-name">Admin Principal</span>
-                        <span class="profile-role">Super Admin</span>
+                        <span class="profile-role">Super Administrateur</span>
                     </div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
                 </div>
@@ -54,121 +210,292 @@
 
             <!-- Content -->
             <div class="admin-content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <i class="fa fa-briefcase" style="color: var(--admin-primary);"></i>
+                <!-- Page Title & Tabs -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
+                    <h2 style="font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                        <span style="background: #2d7d63; color: white; padding: 6px; border-radius: 6px; font-size: 14px;"><i class="fa fa-briefcase"></i></span>
                         Emploi & Business
-                    </div>
-                    <a href="admin-emploi-add.html" class="btn-primary">
-                        <i class="fa fa-plus"></i> Publier une offre
-                    </a>
-                </div>
-
-                <!-- Stats -->
-                <div class="stats-cards">
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>96</h3>
-                            <p>Offres Actives</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-bullhorn"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>675</h3>
-                            <p>Candidatures reçues</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-file-alt"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>150</h3>
-                            <p>Entreprises partenaires</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-building"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>34%</h3>
-                            <p>Taux de recrutement</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-handshake"></i>
-                        </div>
+                    </h2>
+                    
+                    <div class="emploi-tabs">
+                        <a href="#" class="tab-pill active"><i class="fa fa-list"></i> Offres actives 96</a>
+                        <a href="#" class="tab-pill">675 Candidatures reçues</a>
+                        <a href="#" class="tab-pill">150 Entreprises partenaires</a>
+                        <a href="#" class="tab-pill">34%</a>
                     </div>
                 </div>
 
-                <!-- Table -->
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3>Dernières Offres d'Emploi</h3>
-                        <div class="table-actions">
-                            <button class="btn-secondary"><i class="fa fa-filter"></i> Filtrer</button>
+                <!-- Main Grid -->
+                <div class="main-grid">
+                    <!-- Left: Job Offers Table -->
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="card-header">
+                            <h3>Offres d'emploi</h3>
+                            <a href="admin-emploi-add.html" class="btn-green-solid" style="font-size: 12px; padding: 6px 12px;">+ Publier une offre</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="admin-table custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Poste</th>
+                                        <th>Entreprise</th>
+                                        <th>Lieu</th>
+                                        <th>Contrat</th>
+                                        <th>Salaire</th>
+                                        <th>Statut</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Web Developer</strong></td>
+                                        <td>Agence Yodo</td>
+                                        <td>Douala</td>
+                                        <td>CDI</td>
+                                        <td>600,000 FCFA</td>
+                                        <td><span class="status-pill pill-green">Publiée</span></td>
+                                        <td><select class="action-select"><option>Douala</option></select></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Assistant Marketing</strong></td>
+                                        <td>Food World</td>
+                                        <td>Kinshasa</td>
+                                        <td>CDI</td>
+                                        <td>400,000 FCFA</td>
+                                        <td><span class="status-pill pill-light-green">Finis</span></td>
+                                        <td><select class="action-select"><option>Kinshasa</option></select></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Responsable Logistique</strong></td>
+                                        <td>MaxiLogistics</td>
+                                        <td>Brazzaville</td>
+                                        <td>CDD</td>
+                                        <td>1,250,000 FCFA</td>
+                                        <td><span class="status-pill pill-yellow">En cours</span></td>
+                                        <td><select class="action-select"><option>Gnoué</option></select></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Senior Accountant</strong></td>
+                                        <td>Realco Group</td>
+                                        <td>Libreville</td>
+                                        <td>CDI</td>
+                                        <td>700,000 FCFA</td>
+                                        <td><span class="status-pill pill-green">Pourvue</span></td>
+                                        <td><select class="action-select"><option>Thurieve</option></select></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chauffeur Transport Goods</strong></td>
+                                        <td>Sanso Afrique</td>
+                                        <td>Bamako</td>
+                                        <td>Freelance</td>
+                                        <td>Exp à nég.</td>
+                                        <td><span class="status-pill pill-green">Vérifier</span></td>
+                                        <td><select class="action-select"><option>Vérifier</option></select></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Commercial Terrain</strong></td>
+                                        <td>Expatriate Group</td>
+                                        <td>Dakar</td>
+                                        <td>CDI</td>
+                                        <td>Exp à nég.</td>
+                                        <td><span class="status-pill pill-gray">Fermée</span></td>
+                                        <td><select class="action-select"><option>Fermée</option></select></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>Poste</th>
-                                    <th>Entreprise</th>
-                                    <th>Ville</th>
-                                    <th>Type</th>
-                                    <th>Salaire</th>
-                                    <th>Statut</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Web Developer</strong></td>
-                                    <td>Agence Yodo</td>
-                                    <td>Douala</td>
-                                    <td>CDI</td>
-                                    <td>600,000 FCFA</td>
-                                    <td><span class="status-badge status-active">Publiée</span></td>
-                                    <td>
-                                        <a href="admin-emploi-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Assistant Marketing</strong></td>
-                                    <td>Food World</td>
-                                    <td>Kinshasa</td>
-                                    <td>Stage</td>
-                                    <td>150,000 FCFA</td>
-                                    <td><span class="status-badge status-pending">En révision</span></td>
-                                    <td>
-                                        <a href="admin-emploi-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Responsable Logistique</strong></td>
-                                    <td>MaxiLogistics</td>
-                                    <td>Brazzaville</td>
-                                    <td>CDD</td>
-                                    <td>800,000 FCFA</td>
-                                    <td><span class="status-badge status-active">Publiée</span></td>
-                                    <td>
-                                        <a href="admin-emploi-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                    <!-- Right: Quick Actions / Candidates Preview -->
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="right-card-header">
+                            <span style="font-size: 12px; color: #64748b;">Afrique</span>
+                            <span style="font-size: 12px; color: #64748b;">Vier business</span>
+                        </div>
+
+                        <div class="applicant-item">
+                            <img src="https://via.placeholder.com/40" class="applicant-avatar">
+                            <div class="applicant-info" style="flex: 1;">
+                                <h4>Karine Kabongo</h4>
+                                <p>Développeuse Web</p>
+                            </div>
+                            <button class="btn-secondary" style="font-size: 10px;">Assigner recruteur <i class="fa fa-chevron-down"></i></button>
+                        </div>
+
+                        <div class="applicant-item">
+                            <img src="https://via.placeholder.com/40" class="applicant-avatar">
+                            <div class="applicant-info" style="flex: 1;">
+                                <h4>Jean Ndiaee</h4>
+                                <p>Douala, Cameroun - 3 ans exp</p>
+                            </div>
+                            <div class="applicant-actions">
+                                <button class="btn-secondary" style="padding: 4px;"><i class="fa fa-eye"></i></button>
+                                <button class="btn-secondary" style="padding: 4px;"><i class="fa fa-download"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="applicant-item">
+                            <img src="https://via.placeholder.com/40" class="applicant-avatar">
+                            <div class="applicant-info" style="flex: 1;">
+                                <h4>Feline Travail</h4>
+                                <p>Logistique & Transport</p>
+                            </div>
+                            <div class="applicant-actions">
+                                <button class="btn-secondary" style="padding: 4px;"><i class="fa fa-eye"></i></button>
+                                <button class="btn-secondary" style="padding: 4px;"><i class="fa fa-download"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="applicant-item">
+                            <img src="https://via.placeholder.com/40" class="applicant-avatar">
+                            <div class="applicant-info" style="flex: 1;">
+                                <h4>Koustue Traore</h4>
+                                <p>Comptable Senior</p>
+                            </div>
+                            <div class="applicant-actions">
+                                <button class="btn-secondary" style="padding: 4px;"><i class="fa fa-eye"></i></button>
+                                <button class="btn-secondary" style="padding: 4px;"><i class="fa fa-download"></i></button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-secondary" style="width: 100%;">Assigner recruteur <i class="fa fa-chevron-down"></i></button>
                     </div>
                 </div>
+
+                <!-- Bottom Grid -->
+                <div class="bottom-grid">
+                    <!-- Left: Candidats / CV -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Candidats / CV</h3>
+                            <button class="btn-secondary" style="font-size: 11px;">Assigner recruteur <i class="fa fa-chevron-right"></i></button>
+                        </div>
+                        <div style="padding: 0 20px;">
+                            <div class="cv-row">
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <img src="https://via.placeholder.com/32" class="applicant-avatar">
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 13px;">Delphine Kabongo</div>
+                                        <div style="font-size: 11px; color: #64748b;">Management, Ecesier proTik</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>Mainement 88%</div>
+                                    <div style="color: #64748b;">Gestiance, expert</div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>60 Jour</div>
+                                    <div style="color: #64748b;">18 offres</div>
+                                </div>
+                                <span class="cv-score">88%</span>
+                            </div>
+                            <div class="cv-row">
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <img src="https://via.placeholder.com/32" class="applicant-avatar">
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 13px;">Jean Ndiege</div>
+                                        <div style="font-size: 11px; color: #64748b;">Conception produit & design</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>Conception produit</div>
+                                    <div style="color: #64748b;">Design graphique</div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>60 Jour</div>
+                                    <div style="color: #64748b;">Social media</div>
+                                </div>
+                                <span class="cv-score">82%</span>
+                            </div>
+                            <div class="cv-row">
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <img src="https://via.placeholder.com/32" class="applicant-avatar">
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 13px;">Design Bassolé</div>
+                                        <div style="font-size: 11px; color: #64748b;">Assistante, Gestionnaire</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>Comptabilité Finance</div>
+                                    <div style="color: #64748b;">Talentueux</div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>10 Jour</div>
+                                    <div style="color: #64748b;">14 S6nor</div>
+                                </div>
+                                <span class="cv-score">82%</span>
+                            </div>
+                            <div class="cv-row" style="border-bottom: none;">
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <img src="https://via.placeholder.com/32" class="applicant-avatar">
+                                    <div>
+                                        <div style="font-weight: 600; font-size: 13px;">Faustin Bassolé</div>
+                                        <div style="font-size: 11px; color: #64748b;">Compta banque</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>Comptabilité Finance</div>
+                                    <div style="color: #64748b;">Talentueux</div>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <div>20 Jour</div>
+                                    <div style="color: #64748b;">14 S6nor</div>
+                                </div>
+                                <span class="cv-score warning">74%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Entreprises -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Entreprises</h3>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div class="company-logos">
+                                <div class="company-logo-box">
+                                    <div style="font-weight: 700; color: #1e3a8a; margin-bottom: 4px;">ProTik</div>
+                                    <div class="company-stats">Offres actives<br><span style="color: #2d7d63;">5 offres validés 89%</span></div>
+                                </div>
+                                <div class="company-logo-box">
+                                    <div style="font-weight: 700; color: #0369a1; margin-bottom: 4px;">MaxiLogistics</div>
+                                    <div class="company-stats">Offres actives<br><span style="color: #2d7d63;">2 offres Yodés 80%</span></div>
+                                </div>
+                                <div class="company-logo-box">
+                                    <div style="font-weight: 700; color: #b91c1c; margin-bottom: 4px;">Agence Yodo</div>
+                                    <div class="company-stats">Offres actives<br><span style="color: #2d7d63;">1 offre Yodés Backlé</span></div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 20px;">
+                                <div class="visa-type-row visa-type-header" style="grid-template-columns: 1fr 1fr 1fr;">
+                                    <div>Candidature / CV</div>
+                                    <div>Demandes business</div>
+                                    <div>ProTik <i class="fa fa-chevron-down"></i></div>
+                                </div>
+                                <div class="visa-type-row" style="grid-template-columns: 1fr 1fr 1fr; border-bottom: none;">
+                                    <div>
+                                        <strong>ProTik</strong><br>
+                                        <span style="font-size: 10px; color: #64748b;">5 offres actives</span>
+                                    </div>
+                                    <div style="font-size: 11px; color: #64748b;">
+                                        <div style="margin-bottom: 4px;"><i class="fa fa-database"></i> 580 données</div>
+                                        <div>6 offres actives</div>
+                                    </div>
+                                    <div style="font-size: 11px; color: #64748b;">
+                                        <div style="margin-bottom: 4px;"><i class="fa fa-users"></i> 1 600 vues</div>
+                                        <div>3 offres actives</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
+
     <script>
         // Simple Sidebar Toggle Script
         document.querySelector('.menu-toggle').addEventListener('click', function() {

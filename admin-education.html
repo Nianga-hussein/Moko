@@ -3,10 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Education & Formations | MoKo</title>
+    <title>Education & Formation | Admin MoKo</title>
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="assets/css/admin-design.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific Styles for Education Page */
+        .edu-tabs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .tab-pill {
+            font-size: 13px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+            background: #fff;
+            border: 1px solid var(--admin-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-pill.active {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 600;
+            border-color: #cbd5e1;
+        }
+        
+        .tab-pill i { color: #2d7d63; }
+
+        .btn-green-solid {
+            background-color: #2d7d63; /* Moko Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Custom Table Styling */
+        .custom-table th { background: #f8fafc; text-transform: none; font-size: 12px; color: #64748b; font-weight: 600; }
+        .custom-table td { vertical-align: middle; padding: 12px 16px; font-size: 13px; }
+        
+        .school-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .star-rating { color: #cbd5e1; font-size: 11px; }
+        .star-rating .filled { color: #fbbf24; }
+        
+        .btn-view-details {
+            background: #2d7d63;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Candidates List */
+        .candidate-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 12px;
+        }
+        .candidate-item:last-child { border-bottom: none; }
+        
+        .candidate-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .candidate-info h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+        .candidate-info p { font-size: 11px; color: #64748b; }
+        
+        .program-badge {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .pill-green { background: #dcfce7; color: #166534; }
+        .pill-yellow { background: #fef3c7; color: #92400e; }
+        .pill-blue { background: #e0f2fe; color: #0369a1; }
+
+        @media (max-width: 991px) {
+            .main-grid, .bottom-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -14,7 +145,7 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
-                <span style="font-weight: 600; font-size: 18px;">Admin</span>
+                <span class="sidebar-brand">Admin</span>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
@@ -35,7 +166,7 @@
         <main class="admin-main">
             <!-- Header -->
             <header class="admin-header">
-                <div style="display: flex; align-items: center;">
+                <div class="header-left">
                     <button class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <div class="header-search">
                         <i class="fa fa-search"></i>
@@ -46,7 +177,7 @@
                 <div class="header-profile">
                     <div class="profile-info">
                         <span class="profile-name">Admin Principal</span>
-                        <span class="profile-role">Super Admin</span>
+                        <span class="profile-role">Super Administrateur</span>
                     </div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="profile-img">
                 </div>
@@ -54,132 +185,259 @@
 
             <!-- Content -->
             <div class="admin-content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <i class="fa fa-graduation-cap" style="color: var(--admin-primary);"></i>
-                        Education & Formations
+                <!-- Page Title & Tabs -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
+                    <h2 style="font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                        <span style="background: #2d7d63; color: white; padding: 6px; border-radius: 6px; font-size: 14px;"><i class="fa fa-graduation-cap"></i></span>
+                        Education & Formation
+                    </h2>
+                    
+                    <div class="edu-tabs">
+                        <a href="#" class="tab-pill active"><i class="fa fa-university"></i> Établissements</a>
+                        <a href="#" class="tab-pill">278 Programmes</a>
+                        <a href="#" class="tab-pill"><i class="fa fa-users"></i> 180 Candidatures en révision</a>
                     </div>
-                    <a href="admin-education-add.html" class="btn-primary">
+                </div>
+
+                <!-- Action Bar -->
+                <div style="margin-bottom: 24px; display: flex; justify-content: space-between;">
+                    <a href="admin-education-add.html" class="btn-green-solid">
                         <i class="fa fa-plus"></i> Ajouter un établissement
                     </a>
-                </div>
-
-                <!-- Stats -->
-                <div class="stats-cards">
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>85</h3>
-                            <p>Établissements</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-university"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>450</h3>
-                            <p>Formations</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-book"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>1,200</h3>
-                            <p>Candidatures</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-user-graduate"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>98%</h3>
-                            <p>Taux de réponse</p>
-                        </div>
-                        <div class="stat-icon">
-                            <i class="fa fa-check-circle"></i>
-                        </div>
+                    
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" style="font-size: 13px;"><i class="fa fa-search"></i></button>
+                        <button class="btn-secondary" style="font-size: 13px;">Sort: Note Élevée <i class="fa fa-chevron-down"></i></button>
                     </div>
                 </div>
 
-                <!-- Table -->
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3>Liste des Établissements</h3>
-                        <div class="table-actions">
-                            <button class="btn-secondary"><i class="fa fa-filter"></i> Filtrer</button>
+                <!-- Main Grid -->
+                <div class="main-grid">
+                    <!-- Left: Establishments List -->
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="table-responsive">
+                            <table class="admin-table custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Établissement</th>
+                                        <th>Type</th>
+                                        <th>Note</th>
+                                        <th>Ville</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/36" class="school-logo">
+                                                <strong>École La Fontaine</strong>
+                                            </div>
+                                        </td>
+                                        <td>Primaire</td>
+                                        <td>
+                                            <span class="star-rating"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star"></i></span>
+                                        </td>
+                                        <td>Brazzaville</td>
+                                        <td><a href="admin-education-details.html" class="btn-view-details">Voir détails</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/36" class="school-logo">
+                                                <strong>Université Lemba</strong>
+                                            </div>
+                                        </td>
+                                        <td>Université</td>
+                                        <td>
+                                            <span class="star-rating"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                                        </td>
+                                        <td>Kinshasa</td>
+                                        <td><a href="admin-education-details.html" class="btn-view-details">Voir détails</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/36" class="school-logo">
+                                                <strong>Prestige Institute</strong>
+                                            </div>
+                                        </td>
+                                        <td>Formation Pro</td>
+                                        <td>
+                                            <span class="star-rating"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i></span>
+                                        </td>
+                                        <td>Pointe-Noire</td>
+                                        <td><a href="admin-education-details.html" class="btn-view-details">Voir détails</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/36" class="school-logo">
+                                                <strong>Académie Bellevue</strong>
+                                            </div>
+                                        </td>
+                                        <td>Secondaire</td>
+                                        <td>
+                                            <span class="star-rating"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star"></i></span>
+                                        </td>
+                                        <td>Douala</td>
+                                        <td><a href="admin-education-details.html" class="btn-view-details">Voir détails</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <img src="https://via.placeholder.com/36" class="school-logo">
+                                                <strong>École IBM Kesidou</strong>
+                                            </div>
+                                        </td>
+                                        <td>Technique</td>
+                                        <td>
+                                            <span class="star-rating"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                                        </td>
+                                        <td>Alger</td>
+                                        <td><a href="admin-education-details.html" class="btn-view-details">Voir détails</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right: Candidatures -->
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="card-header">
+                            <h3>Candidatures</h3>
+                            <button class="btn-secondary" style="font-size: 11px; padding: 2px 6px;">Tout voir</button>
+                        </div>
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <div class="candidate-item">
+                                <img src="https://via.placeholder.com/40" class="candidate-avatar">
+                                <div class="candidate-info" style="flex: 1;">
+                                    <h4>Nyembo Pascal</h4>
+                                    <p>Université Lemba</p>
+                                    <p style="margin-top: 4px;"><span class="program-badge">BTS Compta</span></p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span class="status-pill pill-blue">Nouveau</span>
+                                    <p style="font-size: 10px; color: #94a3b8; margin-top: 4px;">10:30</p>
+                                </div>
+                            </div>
+                            <div class="candidate-item">
+                                <img src="https://via.placeholder.com/40" class="candidate-avatar">
+                                <div class="candidate-info" style="flex: 1;">
+                                    <h4>Partiné Lemba</h4>
+                                    <p>Prestige Institute</p>
+                                    <p style="margin-top: 4px;"><span class="program-badge">Marketing</span></p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span class="status-pill pill-yellow">En cours</span>
+                                    <p style="font-size: 10px; color: #94a3b8; margin-top: 4px;">Hier</p>
+                                </div>
+                            </div>
+                            <div class="candidate-item">
+                                <img src="https://via.placeholder.com/40" class="candidate-avatar">
+                                <div class="candidate-info" style="flex: 1;">
+                                    <h4>Olivier Manalla</h4>
+                                    <p>Université Lemba</p>
+                                    <p style="margin-top: 4px;"><span class="program-badge">Licence Info</span></p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span class="status-pill pill-green">Admis</span>
+                                    <p style="font-size: 10px; color: #94a3b8; margin-top: 4px;">2 jrs</p>
+                                </div>
+                            </div>
+                            <div class="candidate-item">
+                                <img src="https://via.placeholder.com/40" class="candidate-avatar">
+                                <div class="candidate-info" style="flex: 1;">
+                                    <h4>Cinthya Manianga</h4>
+                                    <p>École La Fontaine</p>
+                                    <p style="margin-top: 4px;"><span class="program-badge">Primaire</span></p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span class="status-pill pill-blue">Nouveau</span>
+                                    <p style="font-size: 10px; color: #94a3b8; margin-top: 4px;">3 jrs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section: Programmes -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Programmes & Cursus</h3>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn-secondary" style="font-size: 11px;">+ Ajouter programme</button>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="admin-table">
+                        <table class="admin-table custom-table">
                             <thead>
                                 <tr>
-                                    <th>Nom de l'établissement</th>
-                                    <th>Type</th>
-                                    <th>Ville</th>
-                                    <th>Formations</th>
-                                    <th>Note</th>
-                                    <th>Actions</th>
+                                    <th>Programme</th>
+                                    <th>Établissement</th>
+                                    <th>Durée</th>
+                                    <th>Niveau</th>
+                                    <th>Diplôme</th>
+                                    <th>Statut</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Université de Kinshasa</strong>
-                                        </div>
-                                    </td>
-                                    <td>Université</td>
-                                    <td>Kinshasa</td>
-                                    <td>120</td>
-                                    <td>⭐⭐⭐⭐</td>
-                                    <td>
-                                        <a href="admin-education-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
+                                    <td><strong>BTS Comptabilité</strong></td>
+                                    <td>Université Lemba</td>
+                                    <td>2 ans</td>
+                                    <td>Bac</td>
+                                    <td><span class="status-pill pill-green">Bac + 2</span></td>
+                                    <td><span class="status-pill pill-green">Actif</span></td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Institut Français</strong>
-                                        </div>
-                                    </td>
-                                    <td>Centre de Langue</td>
-                                    <td>Brazzaville</td>
-                                    <td>15</td>
-                                    <td>⭐⭐⭐⭐⭐</td>
-                                    <td>
-                                        <a href="admin-education-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
+                                    <td><strong>Infirmier Diplômé</strong></td>
+                                    <td>Prestige Institute</td>
+                                    <td>3 ans</td>
+                                    <td>Bac</td>
+                                    <td><span class="status-pill pill-green">Bac + 3</span></td>
+                                    <td><span class="status-pill pill-green">Actif</span></td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://via.placeholder.com/30" style="border-radius: 4px;">
-                                            <strong>Code Academy</strong>
-                                        </div>
-                                    </td>
-                                    <td>Formation Pro</td>
-                                    <td>Douala</td>
-                                    <td>8</td>
-                                    <td>⭐⭐⭐⭐</td>
-                                    <td>
-                                        <a href="admin-education-details.html" class="action-btn btn-view">Voir</a>
-                                        <button class="action-btn btn-edit">Modifier</button>
-                                    </td>
+                                    <td><strong>Licence InfoGestion</strong></td>
+                                    <td>Université Lemba</td>
+                                    <td>3 ans</td>
+                                    <td>Bac + 2</td>
+                                    <td><span class="status-pill pill-green">Bac + 3</span></td>
+                                    <td><span class="status-pill pill-yellow">Fermé</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Management Tourisme</strong></td>
+                                    <td>Académie Bellevue</td>
+                                    <td>2 ans</td>
+                                    <td>Bac</td>
+                                    <td><span class="status-pill pill-green">Bac + 2</span></td>
+                                    <td><span class="status-pill pill-green">Actif</span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+                <!-- Pagination -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-size: 13px; color: #64748b;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span><i class="fa fa-list"></i> 1-10 sur 85</span>
+                    </div>
+                    
+                    <div style="display: flex; gap: 5px;">
+                        <button class="btn-secondary" style="padding: 4px 8px;"><i class="fa fa-angle-left"></i></button>
+                        <button class="btn-secondary" style="padding: 4px 10px; background: #2d7d63; color: white; border-color: #2d7d63;">1</button>
+                        <button class="btn-secondary" style="padding: 4px 10px;">2</button>
+                        <button class="btn-secondary" style="padding: 4px 10px;">3</button>
+                        <button class="btn-secondary" style="padding: 4px 8px;"><i class="fa fa-angle-right"></i></button>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
+
     <script>
         // Simple Sidebar Toggle Script
         document.querySelector('.menu-toggle').addEventListener('click', function() {
