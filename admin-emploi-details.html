@@ -21,8 +21,11 @@
                 <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Boutique & Commerce</a></li>
                 <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
                 <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+                <li><a href="admin-voyage.html"><i class="fa fa-plane"></i> Voyage & Visas</a></li>
                 <li><a href="admin-emploi.html" class="active"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+                <li><a href="admin-service.html"><i class="fa fa-concierge-bell"></i> Services & Quotidien</a></li>
                 <li><a href="admin-evenements.html"><i class="fa fa-calendar"></i> Événements & Loisirs</a></li>
+                <li><a href="admin-chat.html"><i class="fa fa-comments"></i> Messagerie</a></li>
                 <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
             </ul>
@@ -131,5 +134,11 @@
             </div>
         </main>
     </div>
+    <script>
+        // Simple Sidebar Toggle Script
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.admin-sidebar').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
