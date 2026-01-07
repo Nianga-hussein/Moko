@@ -40,7 +40,7 @@ foreach ($file in $files) {
                 <li><a href="admin-service.html" class="$active_service"><i class="fa fa-concierge-bell"></i> Services & Quotidien</a></li>
                 <li><a href="admin-evenements.html" class="$active_evenements"><i class="fa fa-calendar"></i> Événements & Loisirs</a></li>
                 <li><a href="admin-chat.html" class="$active_chat"><i class="fa fa-comments"></i> Messagerie</a></li>
-                <li><a href="#"><i class="fa fa-users"></i> Utilisateurs</a></li>
+                <li><a href="admin-utilisateurs.html"><i class="fa fa-users"></i> Utilisateurs</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
             </ul>
 "@

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="MOKO Admin - Détails Utilisateur">
+  <title>MoKo Admin | Détails Utilisateur</title>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/media/LOGO.jpg">
+  <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+  <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/admin-design.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --moko-primary: #FF3D00;
+      --moko-primary-100: #fff5f2;
+      --moko-primary-200: #ffd7cc;
+      --moko-success: #16a34a;
+      --moko-warning: #f59e0b;
+      --moko-gray-900: #0f172a;
+      --moko-gray-700: #334155;
+      --moko-gray-500: #64748b;
+      --moko-gray-300: #cbd5e1;
+      --moko-gray-200: #e2e8f0;
+      --moko-gray-100: #f1f5f9;
+      --moko-white: #ffffff;
+    }
+    body { background: #f8fafc; color: var(--moko-gray-900); }
+    .layout { display: grid; grid-template-columns: 280px 1fr 380px; gap: 24px; min-height: 100vh; padding: 16px; }
+    .sidebar {
+      background: var(--moko-white);
+      border: 1px solid var(--moko-gray-200);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(2,8,20,0.05);
+      position: sticky; top: 16px; height: calc(100vh - 32px);
+    }
+    .sidebar-header { display:flex; align-items:center; gap:10px; padding:16px; border-bottom:1px solid var(--moko-gray-200); }
+    .sidebar-header img { height:28px; }
+    .menu { list-style:none; padding:12px; margin:0; }
+    .menu a { display:flex; gap:10px; padding:10px 12px; border-radius:10px; color:var(--moko-gray-700); text-decoration:none; }
+    .menu a.active { background:#ecfdf5; border:1px solid #d1fae5; }
+    .main { display:flex; flex-direction:column; gap:16px; }
+    .header { display:flex; gap:12px; align-items:center; background:var(--moko-white); border:1px solid var(--moko-gray-200); border-radius:16px; padding:16px; }
+    .search { position:relative; flex:1; }
+    .search input { width:100%; border:1px solid var(--moko-gray-300); background:var(--moko-gray-100); border-radius:10px; padding:12px 40px 12px 38px; }
+    .search i { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--moko-gray-500); }
+    .card { background:var(--moko-white); border:1px solid var(--moko-gray-200); border-radius:16px; padding:16px; }
+    .profile-head { display:flex; align-items:center; gap:12px; }
+    .avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; }
+    .title { font-weight:700; }
+    .chips { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--moko-gray-200); background:var(--moko-gray-100); color:var(--moko-gray-700); }
+    .chip.primary { background: var(--moko-primary-100); color: var(--moko-primary); border-color: var(--moko-primary-200); }
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    .list { list-style:none; padding:0; margin:0; }
+    .list li { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--moko-gray-200); }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; }
+    .btn { padding:10px 12px; border-radius:10px; border:1px solid var(--moko-gray-300); background:var(--moko-gray-100); text-decoration:none; color:var(--moko-gray-900); }
+    .btn-primary { background:var(--moko-primary); border-color:var(--moko-primary); color:#fff; }
+    .right { display:flex; flex-direction:column; gap:12px; background:var(--moko-white); border:1px solid var(--moko-gray-200); border-radius:16px; padding:12px; position:sticky; top:16px; height:calc(100vh - 32px); overflow:auto; }
+    @media (max-width: 1200px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar, .right { position:relative; top:0; height:auto; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <img src="assets/media/logo moko.png" alt="MoKo Logo" class="sidebar-logo">
+        <span class="sidebar-brand">Admin</span>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="admin-dashboard.html"><i class="fa fa-th-large"></i> Tableau de bord</a></li>
+        <li><a href="admin-boutique.html"><i class="fa fa-shopping-bag"></i> Marketplace & Commerces</a></li>
+        <li><a href="admin-immobilier.html"><i class="fa fa-building"></i> Immobilier & Logement</a></li>
+        <li><a href="admin-education.html"><i class="fa fa-graduation-cap"></i> Education & Formation</a></li>
+        <li><a href="admin-voyage.html"><i class="fa fa-plane"></i> Voyage & Visas</a></li>
+        <li><a href="admin-emploi.html"><i class="fa fa-briefcase"></i> Emploi & Business</a></li>
+        <li><a href="admin-service.html"><i class="fa fa-concierge-bell"></i> Services & Quotidien</a></li>
+        <li><a href="admin-evenements.html"><i class="fa fa-calendar"></i> Événements & Loisirs</a></li>
+        <li><a href="admin-chat.html"><i class="fa fa-comments"></i> Messagerie</a></li>
+        <li><a href="admin-utilisateurs.html" class="active"><i class="fa fa-users"></i> Utilisateurs</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Paramètres</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <div class="header">
+        <div class="search">
+          <i class="fa fa-search"></i>
+          <input type="text" placeholder="Rechercher…">
+        </div>
+        <a class="btn" href="admin-utilisateurs.html"><i class="fa fa-arrow-left"></i>&nbsp;Retour</a>
+      </div>
+
+      <div class="card">
+        <div class="profile-head">
+          <img class="avatar" src="assets/media/blog/blog-1.png" alt="">
+          <div>
+            <div class="title">Sétért Mugues</div>
+            <div style="color:var(--moko-gray-500); font-size:12px;">Photo: 83 Avc FCFA</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip primary"><i class="fa fa-user"></i> Client</span>
+          <span class="chip"><i class="fa fa-briefcase"></i> Prestataire</span>
+          <span class="chip"><i class="fa fa-store"></i> Vendeur</span>
+          <span class="chip"><i class="fa fa-building"></i> Entreprise</span>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h6 style="margin-bottom:8px;">Informations</h6>
+          <ul class="list">
+            <li><span>Nom</span><strong>Sétért Mugues</strong></li>
+            <li><span>Téléphone</span><strong>(+237) 699 78 XX</strong></li>
+            <li><span>Email</span><strong>setert@moko.cg</strong></li>
+            <li><span>Rôle</span><strong>Client, Prestataire, Vendeur</strong></li>
+            <li><span>Statut</span><strong>Actif</strong></li>
+            <li><span>Vérification identité</span><strong>Vérifié</strong></li>
+            <li><span>Date d’inscription</span><strong>23 avr. 2021</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h6 style="margin-bottom:8px;">Finance & Réservations</h6>
+          <ul class="list">
+            <li><span>Solde</span><strong>25,000 FCFA</strong></li>
+            <li><span>Transactions</span><strong>33</strong></li>
+            <li><span>Retraits</span><strong>3</strong></li>
+            <li><span>Réservations</span><strong>9</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h6 style="margin-bottom:8px;">Historique des décisions</h6>
+        <ul class="list">
+          <li><span>21 jan. 2022</span><strong>Promu: Admin Systèmes</strong></li>
+          <li><span>04 avr. 2022</span><strong>Modifié: Statut Actif</strong></li>
+          <li><span>24 avr. 2022</span><strong>Inscription confirmée</strong></li>
+        </ul>
+        <div class="actions" style="margin-top:10px;">
+          <a class="btn" href="#"><i class="fa fa-envelope"></i>&nbsp;Contacter</a>
+          <a class="btn" href="#"><i class="fa fa-shield-alt"></i>&nbsp;Veiller</a>
+          <a class="btn" href="#"><i class="fa fa-ban"></i>&nbsp;Restreindre</a>
+          <a class="btn-primary" href="#"><i class="fa fa-upload"></i>&nbsp;Promouvoir</a>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right">
+      <div class="card">
+        <h6 style="margin-bottom:8px;">Entreprises</h6>
+        <div class="chips">
+          <span class="chip"><i class="fa fa-building"></i> Hobsie</span>
+          <span class="chip"><i class="fa fa-hammer"></i> Mondeur</span>
+          <span class="chip"><i class="fa fa-map-pin"></i> Moppeil</span>
+        </div>
+      </div>
+      <div class="card">
+        <h6 style="margin-bottom:8px;">Commandes récentes</h6>
+        <ul class="list">
+          <li><span>Online: Assistance consulaire</span><strong>83,800 FCFA</strong></li>
+          <li><span>Orders: Réservations visas</span><strong>45,900 FCFA</strong></li>
+          <li><span>Orders: Services premium</span><strong>89,800 FCFA</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h6 style="margin-bottom:8px;">Visa & Réservations</h6>
+        <ul class="list">
+          <li><span>Entreprise</span><strong>1</strong></li>
+          <li><span>Famille</span><strong>2</strong></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+  <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+  <script src="assets/js/vendor/bootstrap.min.js"></script>
+</body>
+</html>
