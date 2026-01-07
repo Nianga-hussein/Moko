@@ -35,6 +35,16 @@
     .list-lite { list-style:none; padding:0; margin:0; }
     .list-lite li { display:flex; justify-content:space-between; align-items:center; padding:8px 10px; border:1px solid var(--admin-border); border-radius:8px; background:#fff; font-size:12px; color:#475569; margin-bottom:8px; }
     .actions-bar { display:flex; gap:8px; flex-wrap:wrap; padding:0 16px 16px; }
+    /* Header responsive adjustments */
+    .header-center { flex: 1; text-align: center; display: none; }
+    .header-title { font-weight: 700; color: var(--admin-text); font-size: 14px; display: block; }
+    .header-subrole { font-size: 12px; color: #64748b; display: block; }
+    .header-left .header-search { width: clamp(180px, 40vw, 600px); }
+    @media (max-width: 768px) {
+      .header-left .header-search { display: none; }
+      .header-center { display: block; }
+      .profile-info { display: block !important; text-align: right; }
+    }
   </style>
 </head>
 <body>
@@ -67,6 +77,10 @@
             <i class="fa fa-search"></i>
             <input type="text" placeholder="Rechercher numöro, transaction…">
           </div>
+        </div>
+        <div class="header-center">
+          <span class="header-title">Admin Finance</span>
+          <span class="header-subrole">Super Administrateur</span>
         </div>
         <div class="header-profile">
           <div class="profile-info">
