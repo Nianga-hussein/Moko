@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyNow | Se connecter</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/media/LOGO.jpg">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+
+    <style>
+        body { background-color: #f0f0f0; }
+        .container { max-width: 400px; margin-top: 100px; }
+        #message { font-weight: bold; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="mb-4 text-center">Se connecter</h2>
+
+        <form id="loginForm">
+            <div class="mb-3">
+                <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+            <div id="message" class="mt-2 text-center"></div>
+        </form>
+    </div>
+
+    <!-- JS -->
+    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const messageDiv = document.getElementById('message');
+
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            messageDiv.textContent = "Connexion en cours...";
+            messageDiv.style.color = "black";
+
+            try {
+                // Assure-toi que Laravel tourne sur http://127.0.0.1:8000
+                const response = await fetch('http://127.0.0.1:8000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    messageDiv.style.color = 'green';
+                    messageDiv.textContent = 'Connexion réussie !';
+
+                    // Exemple de redirection vers une page admin
+                    window.location.href = '/admin-utilisateurs.html';
+                } else {
+                    messageDiv.style.color = 'red';
+                    messageDiv.textContent = data.message || 'Identifiants incorrects';
+                }
+
+            } catch (err) {
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = 'Erreur serveur';
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>
